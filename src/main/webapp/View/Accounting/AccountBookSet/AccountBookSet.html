@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        label.label_text {
+            padding: 10px;
+            line-height: 200%;
+        }
+
+        input.input_select {
+                     margin-left: 20px;
+                     font-size: 30px;
+                     vertical-align: middle;
+                 }
+
+        input.input_number {
+            margin-left: 20px;
+            width: 50px;
+        }
+
+        input.print-input {
+            width: 60px;
+            margin: 5px;
+        }
+
+        table.print-table {
+            border-spacing: 20px 10px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="AccountBookSet.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+</head>
+<body>
+    <div id="button_group">
+        <a id="add_button" href="###" class="easyui-linkbutton" iconCls= "icon-add" onclick="obj.add()">增加</a>
+        <a id="delete_button" href="###" class="easyui-linkbutton" iconCls= "icon-remove" onclick="obj.remove()">删除</a>
+        <a id="in_button" href="###" class="easyui-linkbutton" iconCls= "icon-redo">转入</a>
+        <a id="out_button" href="###" class="easyui-linkbutton" iconCls= "icon-undo">转出</a>
+        <a id="copy_button" href="###" class="easyui-linkbutton" iconCls= "icon-reload">复制</a>
+        <a id="print_set_button" href="###" class="easyui-linkbutton" iconCls= "icon-set" onclick="obj.setPrint()">打印参数设置</a>
+        <a id="print_button" href="###" class="easyui-linkbutton" iconCls= "icon-print">打印</a>
+        <a id="save_button" href="###" class="easyui-linkbutton" iconCls= "icon-save" onclick="obj.save()">保存</a>
+    </div>
+    <div style="position: absolute; top: 0px; bottom: 0px; padding: 5px; width: 100%; border: 1px solid #ccc">
+        <table id="main_table"></table>
+    </div>
+
+    <!--帮助窗口，提示科目编号-->
+    <div id="helpWin" class="easyui-window" style="position:relative;">
+        <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+            <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="Text1" type="text"/>
+                <a id="search" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItemNoClick()">查找</a>
+            </p>
+            <p><label>上级名称:</label> <input class="easyui-textbox" style="width:295px" id="Text2" type="text"/></p>
+        </div>
+
+        <div  style="height:84%" >
+            <table id="itemTable"></table>
+        </div>
+
+    </div>
+
+    <div id="tb_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevel_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click();">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="obj.selectClick()">选定</a>
+    </div>
+
+    <div id="printSetWin" class="easyui-window">
+        <div style="float: left; margin: 20px; background:#fafafa;">
+            <label><b>设置维护</b></label>
+            <div style="margin: 10px; width: 250px; height: 260px">
+                <table id="printTable"></table>
+            </div>
+        </div>
+        <div style="float: right; margin-top: 20px; margin-right: 20px; height: 295px; background:#fafafa;">
+            <label><b>打印设置</b></label>
+            <table class="print-table">
+                <tr>
+                    <td>标题字体：</td>
+                    <td>
+                        <select id="title_font" class="easyui-combobox print-input" data-options="required:true" missingMessage="不能为空">
+                            <option value="中黑体">中黑体</option>
+                            <option value="细宋体">细宋体</option>
+                        </select>
+                    </td>
+                    <td>标题字号：</td>
+                    <td><input id="title_size" class="easyui-numberbox print-input" data-options="required:true,min:6,max:72" missingMessage="不能为空"></td>
+                </tr>
+                <tr>
+                    <td>表体字体：</td>
+                    <td>
+                        <select id="form_font" class="easyui-combobox print-input" data-options="required:true" missingMessage="不能为空">
+                            <option value="中黑体">中黑体</option>
+                            <option value="细宋体">细宋体</option>
+                        </select>
+                    </td>
+                    <td>表体字号：</td>
+                    <td><input id="form_size" class="easyui-numberbox print-input" data-options="required:true,min:6,max:72" missingMessage="不能为空"></td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td>纸张类型：</td>-->
+                    <!--<td>-->
+                        <!--<select id="paper_type" class="easyui-combobox print-input" data-options="required:true">-->
+                            <!--<option value="A4">A4</option>-->
+                            <!--<option value="A5">A5</option>-->
+                            <!--<option value="B4">B4</option>-->
+                            <!--<option value="B5">B5</option>-->
+                        <!--</select>-->
+                    <!--</td>-->
+                    <!--<td>打印质量：</td>-->
+                    <!--<td>-->
+                        <!--<select id="print_quality" class="easyui-combobox print-input">-->
+                            <!--<option value="高">高</option>-->
+                            <!--<option value="中">中</option>-->
+                            <!--<option value="低">低</option>-->
+                            <!--<option value="草">草</option>-->
+                            <!--<option value="缺省">缺省</option>-->
+                        <!--</select>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <tr>
+                    <td>横向放大：</td>
+                    <td><input id="trans_dir" class="easyui-numberbox print-input" value="100" data-options="required:true" missingMessage="不能为空"></td>
+                    <td>输出方式：</td>
+                    <td>
+                        <select id="output_type" class="easyui-combobox" data-options="required:true" missingMessage="不能为空">
+                            <option value="2">横向</option>
+                            <option value="1">纵向</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>纵向放大：</td>
+                    <td><input id="mach_dir" class="easyui-numberbox" value="100" data-options="required:true"></td>
+                    <td>输出份数：</td>
+                    <td><input id="output_copy" class="easyui-numberbox print-input" value="1" data-options="required:true" missingMessage="不能为空"></td>
+                </tr>
+                <tr>
+                    <td>页左空白：</td>
+                    <td><input id="left_blank" class="easyui-numberbox print-input" value="100" data-options="required:true" missingMessage="不能为空"></td>
+                    <td>页右空白：</td>
+                    <td><input id="right_blank" class="easyui-numberbox print-input"></td>
+                </tr>
+                <tr>
+                    <td>页顶空白：</td>
+                    <td><input id="top_blank" class="easyui-numberbox print-input" value="100" data-options="required:true" missingMessage="不能为空" ></td>
+                    <td>页底空白：</td>
+                    <td><input id="bottom_blank" class="easyui-numberbox print-input"></td>
+                </tr>
+                <tr>
+                    <td>纸张类型：</td>
+                    <td>
+                        <select id="paper_type" class="easyui-combobox print-input" data-options="required:true">
+                            <option value="A4">A4</option>
+                            <option value="A5">A5</option>
+                            <option value="B4">B4</option>
+                            <option value="B5">B5</option>
+                        </select>
+                    </td>
+                    <td>打印页号</td>
+                    <td><input id="print_num" class="easyui-textbox print-input"></td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <div style="float:right; margin-right: 20px; padding:5px;">
+            <a href="#" class="easyui-linkbutton" style="margin: 10px; width: 80px" iconCls="icon-ok" onclick="obj.savePrintFor()">确定</a>
+            <a href="#" class="easyui-linkbutton" style="margin: 10px; width: 80px" iconCls="icon-cancel" onclick="$('#printSetWin').window('close')">取消</a>
+        </div>
+    </div>
+
+</body>
+</html>

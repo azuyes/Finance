@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset = "utf-8" />
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts.js"></script>
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts3.js"></script>
+    <script src="../../JavaScript/echarts/theme3/chalk.js"></script>
+    <script src="../../JavaScript/echarts/theme3/dark.js"></script>
+    <script src="../../JavaScript/echarts/theme3/essos.js"></script>
+    <script src="../../JavaScript/echarts/theme3/halloween.js"></script>
+    <script src="../../JavaScript/echarts/theme3/infographic.js"></script>
+    <script src="../../JavaScript/echarts/theme3/macarons.js"></script>
+    <script src="../../JavaScript/echarts/theme3/purple-passion.js"></script>
+    <script src="../../JavaScript/echarts/theme3/roma.js"></script>
+    <script src="../../JavaScript/echarts/theme3/shine.js"></script>
+    <script src="../../JavaScript/echarts/theme3/vintage.js"></script>
+    <script src="../../JavaScript/echarts/theme3/walden.js"></script>
+    <script src="../../JavaScript/echarts/theme3/westeros.js"></script>
+    <script src="../../JavaScript/echarts/theme3/wonderland.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="SiteBasicOperatingExpenses.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <title></title>
+</head>
+<body>
+    <form id="form1" >
+        <div id="Head" style="height: 80px">
+            <input id="DropDownList_SelectTime" style="width: 70px"/>
+            <input class="easyui-combobox" id="DropDownList_SelectSalesMethod" style="width: 90px" data-options="required:true"/>
+            <input class="easyui-combobox" id="DropDownList_SelectDepartment" data-options="required:true"/>
+            <a id="Button_ToReport"  class="easyui-linkbutton" style="width: 80px; height: 30px; margin: 10px;" >转到报表</a>
+        </div>
+        <div id="ReportForm" style="position: absolute; overflow-y: auto; height: 99%; left: 4px; right: 0px; display: none; margin-right: 4px;" class="tablecaption">
+            <a id="Export" href="#" class="easyui-linkbutton" style="width: 80px;" >导出报表</a>
+            <a id="Back" href="#" class="easyui-linkbutton" style="width: 80px;" >返回</a>
+            <table id="DataGrid" class="easyui-datagrid" style="width:550px;"></table>
+        </div>
+    </form>
+    <div id="Chart" style="position: absolute; overflow-y: auto; height: 99%; width: 99%;">
+        <div id="main" style="height: 500px;"></div>
+    </div>
+    <script type="text/javascript">
+//        var now = new Date();   //获取当前时间
+//        var year = now.getFullYear();
+//        var month = "";
+        myCharts();    //调用函数
+//        window.addEventListener("resize", function () {
+//            myChart.resize();
+//        });
+    </script>
+</body>
+</html>

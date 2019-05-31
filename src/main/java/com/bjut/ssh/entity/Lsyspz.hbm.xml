@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lsyspz" table="lsyspz" schema="ssh_finance">
+        <id name="yspzAutoId" column="YSPZ_AutoId"/>
+        <property name="itemNo" column="ItemNo"/>
+        <property name="inputDate" column="InputDate"/>
+        <property name="voucherNo" column="VoucherNo"/>
+        <property name="entryNo" column="EntryNo"/>
+        <property name="summary" column="Summary"/>
+        <property name="bkpDirection" column="BkpDirection"/>
+        <property name="money" column="Money"/>
+        <property name="qty" column="Qty"/>
+        <property name="unitPrice" column="UnitPrice"/>
+        <property name="fWb" column="F_WB"/>
+        <property name="fQt" column="F_QT"/>
+        <property name="fHl" column="F_HL"/>
+        <property name="fQtwb" column="F_QTWB"/>
+        <property name="fQthl" column="F_QTHL"/>
+        <property name="originalNo" column="OriginalNo"/>
+    </class>
+</hibernate-mapping>

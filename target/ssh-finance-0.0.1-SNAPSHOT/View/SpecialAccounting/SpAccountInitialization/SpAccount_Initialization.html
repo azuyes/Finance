@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="SpAccount_Initialization.js"></script>
+    <style>
+    	div{   
+			white-space:nowrap;  
+		} 
+    </style>
+</head>
+<body class="easyui-layout" style="margin: 0px 5px 0px 5px;" >
+	<!--主界面-->
+    <div id="specialInit" style="height:100%;width:100%;">
+        <div style="padding:0px 0px 10px 5px;height:40px;background:#fafafa;border:1px solid #ccc">
+            <p>
+            	<lable>当前级数:</lable> <input class="easyui-textbox" id="level" type="text"/>
+                <label>上级科目编号: </label><input class="easyui-textbox" id="upperNo" type="text"/>
+                <label>上级科目名称: </label><input class="easyui-textbox" id="upperName" type="text"/>
+             </p>  
+	    </div>
+        <div  style="position:absolute;top:51px;bottom:0px;height:100%;width:100%;margin:0px,10px;">
+            <table id="initTable"></table>  
+  	    </div>
+    </div>
+    <div id="tb" style="padding:5px;height:auto">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="$javascript:$('#specialWin1').window('open');">初始化1</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="$javascrpt:$('#specialWin2').window('open');">初始化2</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick=";">上级</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick=";">下级</a>
+		</div>
+   
+    <!--核算初始化窗口-->
+    <div id="specialWin1" closed="true">
+        <table id="specialTable"></table> 
+    </div>
+    <!--核算初始化窗口2-->
+    <div id="specialWin2" closed="true">
+        <table id="specialTable2" "></table>                       	   
+    </div>
+</body>
+</html>

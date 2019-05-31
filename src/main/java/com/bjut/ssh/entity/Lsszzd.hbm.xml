@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lsszzd" table="lsszzd" schema="ssh_finance">
+        <id name="szzdAutoId" column="SZZD_AutoId"/>
+        <property name="printNo" column="PrintNo"/>
+        <property name="setNo" column="SetNo"/>
+        <property name="setNote" column="SetNote"/>
+        <property name="titleFont" column="TitleFont"/>
+        <property name="titleSize" column="TitleSize"/>
+        <property name="bodyFont" column="BodyFont"/>
+        <property name="bodySize" column="BodySize"/>
+        <property name="horZoom" column="HorZoom"/>
+        <property name="verZoom" column="VerZoom"/>
+        <property name="printQua" column="PrintQua"/>
+        <property name="outputType" column="OutputType"/>
+        <property name="pageSize" column="PageSize"/>
+        <property name="leftMargin" column="LeftMargin"/>
+        <property name="rightMargin" column="RightMargin"/>
+        <property name="topMargin" column="TopMargin"/>
+        <property name="bottomMargin" column="BottomMargin"/>
+        <property name="defaulTuse" column="DefaulTuse"/>
+    </class>
+</hibernate-mapping>

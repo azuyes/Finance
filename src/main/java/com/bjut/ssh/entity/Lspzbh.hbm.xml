@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lspzbh" table="lspzbh" schema="ssh_finance">
+        <id name="pzbhAutoId" column="PZBH_AutoId"/>
+        <property name="voucherName" column="VoucherName"/>
+        <property name="voucherFirstChar" column="VoucherFirstChar"/>
+        <property name="voucherNo" column="VoucherNo"/>
+        <property name="iniDate" column="IniDate"/>
+        <property name="fPzgs" column="F_PZGS"/>
+        <property name="fPzys" column="F_PZYS"/>
+    </class>
+</hibernate-mapping>

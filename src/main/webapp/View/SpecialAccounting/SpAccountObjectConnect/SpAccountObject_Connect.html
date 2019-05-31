@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title></title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+	    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+	    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="SpAccountObject_Connect.js"></script>
+		<script type="text/javascript" src="../../../main.js"></script>
+		<style>
+			.textbox{
+				height:20px;
+				margin:0;
+				padding:0 2px;
+				box-sizing:content-box;
+			}
+			div{   
+				white-space:nowrap;  /*规定段落中的文本不进行换行，防止因屏幕放大或缩小导致文本换行*/
+			} 
+		</style>
+	</head>
+	<body class="easyui-layout" style="margin: 0px 5px 0px 5px;" >
+		<!--初始提示出入科目编号界面-->
+	    <div id="box">
+		    <form style="padding:10px 20px 10px 40px;">
+	            <div style="height:20px"></div>
+	            <div style="height:40px">
+			         <p><label>请输入科目编号:</label> <input class="easyui-textbox" id="itemNo_input" type="text"  /></p>
+	            </div>
+	            <div style="height:20px"></div>
+	        </form>
+	    </div>
+	    
+		<!--帮助窗口，提示科目编号-->
+		<div id="helpWin" style="position:relative;">
+		    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+		        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_ItemNo" type="text"/>
+		             <a id="search" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItemNoClick()" >查找</a>
+		        </p>
+		        <p><label>上级名称:</label>
+				</p>
+		    </div>
+		    <div  style="height:84%" >
+		        <table id="itemTable"></table>      
+		    </div>
+		</div>
+
+		<div id="tb_helpWin" style="padding:5px;height:auto">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-back" disabled="disabled" onclick="">上级</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-next" disabled="disabled" onclick="">下级</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectClick()">选定</a>
+		</div>
+    	
+    	<!--核算对象定义主界面-->
+	    <div id="mainDisplay" style="visibility:hidden;height:100%;width:100%;">
+	        <div style="padding:0px 0px 10px 5px;height:40px;background:#fafafa;border:1px solid #ccc">
+	            <p>
+	            	<lable>核算科目编号:</lable>
+					<label id="itemNo_label" style="display:inline-block; width:200px"></label>
+	                <label>核算科目名称: </label>
+					<label id="itemName_label" style="display:inline-block; width:100px"></label>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="connectClick()">确定关联</a>
+				</p>
+		    </div>
+	
+	        <div  class="easyui-layout" style="position:absolute;top:50px;bottom:0px;height:100%;width:100%;margin:0px,10px;">
+
+				<div id="spTree1Display" data-options="region:'west'" style="width:50%;border:1px solid #ccc;padding: 50px;">
+					<!--<p><label>选择核算类别1编号: </label><input  id="catNo1"/></p>-->
+					<div id="spTree1" >
+		           		<ul id="specialObjectTree1"></ul> 
+			    	</div>
+	        	</div>
+	    			
+		    	<div id="spTree2Display" data-options="region:'east'" style="visibility:hidden;width:50%;border:1px solid #ccc;padding:50px">
+					<!--<label>选择核算类别2编号: </label><input  id="catNo2"/>-->
+					<div id="spTree2" >
+	               		<ul id="specialObjectTree2"></ul> 
+		  	    	</div>
+		    	</div>
+		       	 	
+	  	    </div>
+	
+	    </div>
+	</body>
+</html>

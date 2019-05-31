@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title></title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+	    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+	    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="Contacts_Management.js"></script>
+		<script type="text/javascript" src="../../../main.js"></script>
+		<style>
+			.textbox{
+				height:20px;
+				margin:0;
+				padding:0 2px;
+				box-sizing:content-box;
+			}
+		</style>
+	</head>
+	<body class="easyui-layout" style="margin: 0px 5px 0px 5px;" >
+		<!--主界面-->
+		<div style="position:absolute;height:100%;width:100%;">
+   			<table id="box"> </table>    
+    	</div>   
+    	
+    	<div id="tb" style="padding:5px;height:auto">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="add();">增加</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="deleteClick();">删除</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-people" onclick="edit();">详细信息</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-ma" onclick="batchDefinitionClick();">批量定义</a>
+			<!--<a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick=";">条件查询</a>-->
+
+			<input id="search_input" class="easyui-searchbox" data-options="searcher:searchTable,prompt:'请输入单位编号或单位名称'" style="width:200px">
+		</div>
+
+		<div id="add_dialog" class="easyui-dialog" title="添加往来单位" style="width:400px;height: 230px" closed ="true" data-options="buttons:'#dlg-buttons'">
+			<div style="padding:10px 60px 20px 60px">
+				<form id="add_form" method="post">
+					<table cellpadding="5">
+						<tr>
+							<td>单位编号:</td>
+							<td><input id="companyNo" name="companyNo" class="easyui-textbox " data-options="required:true" validType="length[6,6]" missingMessage="请输入单位编号!" invalidMessage="请输入6位的单位编号"></input></td>
+						</tr>
+						</tr>
+						<tr>
+							<td>单位名称:</td>
+							<td><input id="companyName" name="companyName" class="easyui-textbox " data-options="required:true" validType="length[1,36]" missingMessage="请输入单位名称!" invalidMessage="请输入1-36个字的单位名称"></input></td>
+						</tr>
+						<tr>
+							<td>单位类别:</td>
+							<td><input id="catName1" name="catName1"  ></input></td>
+						</tr>
+					</table>
+					<p>温馨提示：若无单位类别信息，请先添加往来分类</p>
+				</form>
+			</div>
+			<div id="dlg-buttons" style="text-align:center;padding:5px">
+				<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="save();">确定</a>
+				<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="$javascript:$('#add_dialog').dialog('close');">取消</a>
+
+			</div>
+		</div>
+		</div>
+
+		<!--显示详细信息对话框-->
+	         <form id="datailForm" method="post">
+		    	<table cellpadding="5">
+		    		<tr>
+		    			<td>单位编号:</td>
+		    			<td><input id="companyNo_input" class="easyui-textbox" disabled="true" type="text" name="companyNo_input" ></input></td>
+		    		    <td>单位名称:</td>
+		    			<td><input id="companyName_input" class="easyui-textbox" type="text" name="companyName_input" data-options="required:true"></input></td>
+	                </tr>
+		    		<tr>
+		    			<td>联 系 人:</td>
+		    			<td><input id="cont_input" class="easyui-textbox" type="text" name="cont_input" ></input></td>
+		    		    <td>联系电话:</td>
+		    			<td><input id="tel_input" class="easyui-textbox" type="text" name="tel_input"></input></td>
+	                </tr>
+	                <tr>
+		    			<td>开户银行:</td>
+		    			<td><input id="bank_input" class="easyui-textbox" type="text" name="bank_input" ></input></td>
+		    		    <td>开户账号:</td>
+		    			<td><input id="account_input" class="easyui-textbox" type="text" name="account_input" ></input></td>
+	                </tr>
+	                <tr>
+		    			<td>信誉状况:</td>
+		    			<td><input id="creditStanding_input" class="easyui-textbox" type="text" name="creditStanding_input" ></input></td>
+						<td>邮政编码:</td>
+						<td><input id=companyPost_input" class="easyui-textbox" type="text" name="companyPost_input" ></input></td>
+	                </tr>
+	                <tr>
+						<td>统一社会<br>信用代码:</td>
+						<td><input id="taxIdNo_input" class="easyui-textbox" type="text" name="taxIdNo_input" ></input></td>
+						<td>单位类别:</td>
+						<td><input id="catName_edit" name="catName1"  ></input></td>
+					</tr>
+		    		<tr>
+	                    <td>联系地址:</td>
+		    			<td><input id="companyAddr_input" class="easyui-textbox" type="text" name="companyAddr_input" data-options="multiline:true"  style="height:50px"></input></td>
+		    			<td>备&nbsp;&nbsp;注:</td>
+		    			<td><input id="memo_input" class="easyui-textbox" type="text" name="memo_input" data-options="multiline:true"  style="height:50px"></input></td>
+		    		</tr>
+		    	</table>
+		    </form>
+	        <!--显示批量定义窗口-->
+	        <div id="batchDefinitionWin" closed="true">
+	            <div class="easyui-layout" style="height:420px; ">
+	                <div data-options="region:'west'" style="width:300px;">
+	                    <table id="companyTable"></table> 
+	                </div>
+	                <div data-options="region:'east'" style="width:350px;">
+	                    <table id="itemTable"></table> 
+	                </div>                 
+		        </div>
+	            <div class="easyui-layout" style="padding:2px 5px 1px 1px;height:28px;margin: 3px 0px 0px 0px;background: #fafafa;">
+	            	<div style="float:right">
+            			 <a id="ok" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="batchDefine();">确认</a>
+                   		 <a id="cancel" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#batchDefinitionWin').window('close')">取消</a>
+	            	</div>
+		        </div>
+	        </div>
+	</body>
+</html>

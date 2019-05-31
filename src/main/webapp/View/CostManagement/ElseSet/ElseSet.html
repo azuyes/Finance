@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset = "utf-8" />
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts.js"></script>
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts3.js"></script>
+    <script src="../../JavaScript/echarts/theme3/theme1.js"></script>
+    <script src="../../JavaScript/echarts/theme3/chalk.js"></script>
+    <script src="../../JavaScript/echarts/theme3/dark.js"></script>
+    <script src="../../JavaScript/echarts/theme3/essos.js"></script>
+    <script src="../../JavaScript/echarts/theme3/halloween.js"></script>
+    <script src="../../JavaScript/echarts/theme3/infographic.js"></script>
+    <script src="../../JavaScript/echarts/theme3/macarons.js"></script>
+    <script src="../../JavaScript/echarts/theme3/purple-passion.js"></script>
+    <script src="../../JavaScript/echarts/theme3/roma.js"></script>
+    <script src="../../JavaScript/echarts/theme3/shine.js"></script>
+    <script src="../../JavaScript/echarts/theme3/vintage.js"></script>
+    <script src="../../JavaScript/echarts/theme3/walden.js"></script>
+    <script src="../../JavaScript/echarts/theme3/westeros.js"></script>
+    <script src="../../JavaScript/echarts/theme3/wonderland.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="ElseSet.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <title></title>
+</head>
+<body class="easyui-layout">
+<div style="position:absolute;height:100%;width:100%;">
+    <!--表格显示区-->
+    <table id="grid"  class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"
+           idfield="itemid" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">
+        <!-- 表格标题-->
+        <!--表格内容-->
+    </table>
+    <!-- 功能区 -->
+    <div id="tb" style="padding: 5px; height: auto">
+    </div>
+</div>
+<div>
+    <div id="dlg" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+         data-options="closed:true,buttons:'#dlg-buttons'">
+        <form id="fm" method="post">
+            <table padding="7">
+                <tr>
+                    <td><label>项目编号：</label></td>
+                    <td>
+                        <input id="ItemID" name="ItemID" class="easyui-validatebox" data-options="required:true" validType="numberOfDigits[8,8]"/>
+                        <input name="Test" id="test" type="hidden" />
+                        <input name="AdminID" id="AdminID" type="hidden" />
+                        <input id="key" name="key" onkeydown= "if(event.keyCode==13)reloadgrid()"  type="hidden"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>项目名称：</label></td>
+                    <td><input id="ItemName" name="ItemName" class="easyui-validatebox" data-options="required:true" validtype="length[1,40]" invalidMessage="有效长度1-40" style="width: 160px;" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close')">关闭</a>
+    </div>
+    <div id="dlg_defined" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+         data-options="closed:true,buttons:'#dlg-buttons_defined'">
+        <form id="fm_defined" method="post">
+            <table padding="7">
+                <tr>
+                    <td><label>项目类型：</label></td>
+                    <td><input id="ItemType_defined" name="ItemType" class="easyui-combobox" data-options="required:true" style="width: 160px;" /></td>
+                </tr>
+                <tr>
+                    <td><label>项目名称：</label></td>
+                    <td><input id="ItemName_defined" name="ItemName" class="easyui-combobox" data-options="required:true" style="width: 160px;" /></td>
+                </tr>
+                <tr>
+                    <td><label>项目编号：</label></td>
+                    <td>
+                        <input id="ItemID_defined" name="ItemID" class="easyui-validatebox" data-options="required:true" style="width: 160px;"/>
+                        <input name="Test" id="test_defined" type="hidden" />
+                        <input name="AdminID" id="AdminID_defined" type="hidden" />
+                        <input id="key_defined" name="key" onkeydown= "if(event.keyCode==13)reloadgrid()"  type="hidden"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="dlg-buttons_defined">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData_defined()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_defined').dialog('close')">关闭</a>
+    </div>
+    <div id="dlg_fixed" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+         data-options="closed:true,buttons:'#dlg-buttons_fixed'">
+        <form id="fm_fixed" method="post">
+            <table padding="7">
+                <tr>
+                    <td><label>项目编号：</label></td>
+                    <td>
+                        <input id="ItemID_fixed" name="ItemID" class="easyui-validatebox" data-options="required:true" style="width: 160px;"/>
+                        <input name="Test" id="test_fixed" type="hidden" />
+                        <input name="AdminID" id="AdminID_fixed" type="hidden" />
+                        <input id="key_fixed" name="key" onkeydown= "if(event.keyCode==13)reloadgrid()"  type="hidden"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>项目名称：</label></td>
+                    <td><input id="ItemName_fixed" name="ItemName" class="easyui-validatebox" data-options="required:true" style="width: 160px;" /></td>
+                </tr>
+                <tr>
+                    <td><label>关联字段类型：</label></td>
+                    <td><input id="RelatedItemType" name="relatedItemType" class="easyui-combobox" data-options="required:true" style="width: 160px;" /></td>
+                </tr>
+                <tr>
+                    <td><label>关联字段名称：</label></td>
+                    <td><input id="RelatedItemName" name="relatedItemName" class="easyui-combobox" data-options="required:true" style="width: 160px;" /></td>
+                </tr>
+                <tr>
+                    <td><label>关联字段编号：</label></td>
+                    <td><input id="RelatedItemNo" name="relatedItemNo" class="easyui-combobox" data-options="required:true" style="width: 160px;" /></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+    <div id="dlg-buttons_fixed">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData_fixed()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_fixed').dialog('close')">关闭</a>
+    </div>
+    <div id="dlg_menuShow" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+         data-options="closed:true,buttons:'#dlg-buttons_menuShow'">
+        <form id="fm_menuShow" method="post">
+            <table padding="7">
+                <tr>
+                    <td><label>菜单栏名称：</label></td>
+                    <td>
+                        <input id="MenuName" name="MenuName" class="easyui-validatebox" data-options="required:true" style="width: 160px;"/>
+                        <input name="Test" id="test_MenuName" type="hidden" />
+                        <input name="AdminID" id="AdminID_MenuName" type="hidden" />
+                        <input id="key_MenuName" name="key" onkeydown= "if(event.keyCode==13)reloadgrid()"  type="hidden"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>是否显示：</label></td>
+                    <td><input id="IsShow" name="IsShow" class="easyui-combobox" data-options="required:true" style="width: 160px;" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="dlg-buttons_menuShow">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData_menuShow()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_menuShow').dialog('close')">关闭</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

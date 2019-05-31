@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+     <style>
+        input.input_select {
+            margin-left: 20px;
+            font-size: 30px;
+            vertical-align: middle;
+        }
+
+        input.input_number {
+            margin-left: 20px;
+            width: 50px;
+        }
+
+        input.input_text {
+            width: 150px;
+            margin: 5px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="TimeSet.js"></script>
+</head>
+<body>
+    <div id="time_box" class="easyui-window">
+    	<div style="margin:10px">
+	    	<label >当前财务日期：</label>
+	        <input id="former_year" type="number" class="easyui-numberbox" style="width:50px" min="1" />年
+	        <input id="former_mouth" type="number" class="easyui-numberbox" style="width:50px" max="12" min="1" />月
+	        <input id="former_day" type="number" class="easyui-numberbox" style="width:50px" max="31" min="1" />日
+	        <br /><br />
+	        <label >修改财务日期：</label>
+	        <input id="new_year" type="number" class="easyui-numberbox" style="width:50px"  min="1"/>年
+	        <input id="new_mouth" type="number" class="easyui-numberbox" style="width:50px" max="12" min="1" />月
+	        <input id="new_day" type="number" class="easyui-numberbox" style="width:50px" max="31" min="1" />日
+	        <br />
+    	</div>
+		<div style="float:right">
+			<a id="yes_button" href="###" class="easyui-linkbutton" style="margin:5px;">确认</a>
+	        <a id="cancel_button" href="###" class="easyui-linkbutton" style="margin:5px;">取消</a>
+		</div>
+
+    </div>
+</body>
+</html>

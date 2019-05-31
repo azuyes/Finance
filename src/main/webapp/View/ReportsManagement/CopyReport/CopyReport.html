@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.form.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="../../JavaScript/handsontable.full.zh.js"></script>
+    <script type="text/javascript" src="../../JavaScript/layer/layer.js"></script>
+    <script type="text/javascript" src="CopyReport.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/handsontable.full.min.css" />
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+    
+    
+    <!-- <%-- 弹出操作框1--%> -->
+    <div id="dlg_1" class="easyui-dialog" style="width:500px; height:auto; padding: 10px 20px"
+         data-options="buttons:'#dlg-buttons_1',title:'月度结转',closable:false">
+        <div style="height:153px;margin:1px 1px;border:1px solid #aaa;padding:2px 1px 0px 1px;">
+            
+            <img src="../../CSS/ReportCopy.png" style="float:left;margin:0 0;padding:0 0;width:120px;height:150px;"/>
+            <div style="width:290px;float:left;padding-left:3px;margin-left: 10px;">
+                <p>提示：</p>
+                <p style="text-indent:2em;margin:5px 5px;">报表月度结转完成本月报表到下月报表的期末结转操作。</p>
+                <p style="text-indent:2em;margin:5px 5px;">注：月结可以进行多次，并且允许结转到除本月以外的任意月份（本年度以内）；</p>
+                <p style="text-indent:2em;margin:5px 5px;">没有选择指定报表文件，系统会仅修改报表财务系统日期，不会复制报表。</p>
+            </div>
+        </div>
+        <div style="height:85px;">
+            <div style="width:60%;height:80px;float:left;margin:2px 10px 2px 1px;border:1px solid #aaa;vertical-align:central;">
+                <table id="Table2" style="width:100%;height:50px;padding-left:5px;">
+                    <tr>
+                        <td><label style="font-size:small;">将</label></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label id="lb_date" style="font-size:small;"></label>
+                            <input id="rptMonth" name="rptMonth" style="width:60px;"/>
+                        </td>
+                        <td>
+                            <label style="font-size:small;">期间中所选中的报表</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="font-size:small;">结转至:</label></td>
+                        <td>
+                            <input id="copyMonth" name="copyMonth" class="easyui-numberspinner" style="width:60px;" data-options="value:1,min:1,max:12,precision:0,suffix:'月'"/>
+                            <label style="font-size:small;">期间</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width:35%;height:80px;float:right;border:1px solid #aaa;margin:2px 1px;text-align:center;">
+                <input id="isClearData" type="checkbox" style="margin-top: 15px;"/><label style="font-size:small;">数据清理</label><br />
+                <a id="chooseRpt_btn" herf="#" class="easyui-linkbutton" style="margin-top:8px;" data-options="iconCls:'icon-search'">指定文件</a>
+            </div>
+        </div>
+    </div>  
+    <div id="dlg-buttons_1">  
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="text-align:right">
+                    <a id="dlg_1_ok" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="">确定</a>
+                    <a href="#" class="easyui-linkbutton" style="margin-right:18px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_1').dialog('close');window.parent.tabsClose('#tab1');">取消</a>
+                </td>
+            </tr>
+        </table>
+    </div>  
+    
+    <!--选择报表框-->
+    <div id="dlg_2" class="easyui-dialog" style="width:350px; height:auto; padding: 10px 20px"  
+         data-options="buttons:'#dlg-buttons_2',title:'报表结转--选择报表',closed:true,closable:false">
+        <div style="margin-bottom:3px">
+            <label>日期：</label>
+            <input id="yearTime" name="yearTime" style="width:50px;"/>
+            <label>年</label>
+            <input id="monthTime" name="monthTime" style="width:40px;"/>
+            <label>月</label>
+        </div>
+        <div>
+            <table id="chooseRptBox" class="easyui-datagrid" style="width:100%;height:150px;margin-top:10px;">
+            </table>
+        </div>
+    </div>
+    <div id="dlg-buttons_2">  
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="text-align:left;">
+                    <input id="rptSelectAll" type="checkbox" style="margin-left:15px;"/><label style="font-size:small;vertical-align:top;">全部报表</label>
+                </td>
+                <td style="text-align:right">
+                    <a id="dlg_2_ok" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="">确定</a>
+                    <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_2').dialog('close')">取消</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--选择报表框-->
+    <div id="dlg_3" class="easyui-dialog" style="width:350px; height:auto; padding: 10px 20px"
+         data-options="buttons:'#dlg-buttons_3',title:'报表结转--选择覆盖报表',closed:true,closable:false">
+        <div style="margin-bottom:3px">
+            <label>下列报表已存在，请选择需要覆盖的报表</label>
+        </div>
+        <div>
+            <table id="chooseCoverRptBox" class="easyui-datagrid" style="width:100%;height:150px;margin-top:10px;">
+            </table>
+        </div>
+    </div>
+    <div id="dlg-buttons_3">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="text-align:left;">
+                    <input id="coverRptSelectAll" type="checkbox" style="margin-left:15px;"/><label style="font-size:small;vertical-align:top;">全部覆盖</label>
+                </td>
+                <td style="text-align:right">
+                    <a id="dlg_3_ok" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="">确定</a>
+                    <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-back'" onclick="javascript:$('#dlg_3').dialog('close');$('#dlg_1').dialog('open');">返回</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

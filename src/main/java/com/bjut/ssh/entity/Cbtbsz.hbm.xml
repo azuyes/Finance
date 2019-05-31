@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Cbtbsz" table="cbtbsz" schema="ssh_finance1">
+        <id name="graphNo" column="GraphNo"/>
+        <property name="graphName" column="GraphName"/>
+        <property name="graphTheme" column="GraphTheme"/>
+        <property name="graphData1" column="GraphData1"/>
+        <property name="dataType1" column="DataType1"/>
+        <property name="dataFunction1" column="DataFunction1"/>
+        <property name="graphData2" column="GraphData2"/>
+        <property name="dataType2" column="DataType2"/>
+        <property name="dataFunction2" column="DataFunction2"/>
+        <property name="graphData3" column="GraphData3"/>
+        <property name="dataType3" column="DataType3"/>
+        <property name="dataFunction3" column="DataFunction3"/>
+        <property name="setNo" column="SetNo"/>
+        <property name="showStatus" column="ShowStatus"/>
+    </class>
+</hibernate-mapping>

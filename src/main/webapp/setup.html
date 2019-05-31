@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>登录页面</title>
+		<script type="text/javascript" src="View/JavaScript/jquery.min.js"></script>
+	    <script type="text/javascript" src="View/JavaScript/jquery.easyui.min.js"></script>
+	    <link rel="stylesheet" type="text/css" href="View/CSS/themes/default/easyui.css" />
+	    <link rel="stylesheet" type="text/css" href="View/CSS/themes/icon.css" />
+	    <link rel="stylesheet" type="text/css" href="View/CSS/table.css" />
+	    <script type="text/javascript" src="View/JavaScript/easyui-lang-zh_CN.js"></script>
+	    <script type="text/javascript" src="View/JavaScript/easyui-validatebox-extend.js"></script>
+	    <script type="text/javascript" src="setup.js"></script>
+	</head>
+	<body style="background-image: url(View/Resourse/Login/login.png);">
+		<form style="position: absolute; top: 20%; left: 41%; width: 308px;" method="post">
+			<div>
+				<h4>请选择要连接的数据库:</h4>
+				<select style="height:30px;width:250px" id="database" name="database">
+				<option value ="jdbc:mysql://127.0.0.1:3306/ssh_finance?characterEncoding=utf8&useSSL=true">Mysql数据库</option>
+				<option value ="jdbc:oracle:thin:@localhost:1521:sshfinance">Oracle数据库</option>
+				<option value="jdbc:sqlserver://localhost;DatabaseName=ssh_finance">SQLServer数据库</option>
+				</select>
+			</div>
+	   		 <hr />
+			<div >
+				<h4>请选择数据库驱动:</h4>
+				<select style="height:30px; width:250px" id="jdbc_driver" name="jdbc_driver">
+					<option value ="com.mysql.jdbc.driver">Mysql数据库驱动</option>
+					<option value ="oracle.jdbc.driver.OracleDriver">Oracle数据库驱动</option>
+					<option value="com.microsoft.sqlserver.jdbc.SQLServerDriver">SQLServer数据库驱动</option>
+				</select>
+			</div>
+			<hr />
+			<div >
+				 <h4>请输入数据库用户名:</h4>
+				 <input id="jdbc_username" name="jdbc_username" style="font-size:15px;text-align:center;border-color: white; border-width: 0px; height:30px; width:250px" placeholder="请输入数据库用户名"/>
+			</div>
+			<hr />
+			<div >
+				<h4>请输入数据库用户密码:</h4>
+				<input id="jdbc_password" name="jdbc_password" style="font-size:15px;text-align:center; border-color: white; border-width: 0px; height:30px;width:250px" placeholder="请输入数据库用户密码"/>
+			</div>
+			<br />
+	    <div>
+	        <a href="#"  class="easyui-linkbutton"  style="height:30px;width:100px;margin-left: 70px" onclick="setup()" >确认</a>
+	    </div>
+	          <br />
+			<div>
+				<label id="showInfo"  style="text-align:center;display:none;color:Red; height: 30px; width: 250px;margin-left:40px;"></label>
+			</div>
+		</form>
+	</body>
+</html>

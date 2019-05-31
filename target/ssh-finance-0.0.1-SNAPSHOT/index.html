@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript" src="View/JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="View/JavaScript/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="View/CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="View/CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="View/CSS/table.css" />
+    <script type="text/javascript" src="View/JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="View/JavaScript/easyui-validatebox-extend.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+
+</head>
+<body>
+
+        <div class="easyui-layout" style="width: 100%; top: 0px; bottom: 2px; position: absolute;">
+            <div id="north" data-options="region:'north'" style="height: 82px;">
+                <div style="height: 50px; background-image: url('View/Resourse/BG.png'); background-size: 100% 100%;">
+                    <div id="time1" style="text-align: right; font-family: 微软雅黑; font-size: 15px; color: #FFFFFF; vertical-align: bottom; margin-right: 1%">时间</div>
+                    <div id="ul" style="text-align: right; margin-top: 10px;">
+                    	<a id="Unit" href="#" onclick="InitGrid()" style="font-family: 微软雅黑; font-size: 14px; color: #FFFFFF; text-decoration: none"></a>&nbsp;
+                        <a id="User" href="#" onclick="InitGrid()" style="font-family: 微软雅黑; font-size: 14px; color: #FFFFFF; text-decoration: none"></a>&nbsp;
+                        <a href="help/help.html" style="font-family: 微软雅黑; font-size: 15px; color: #FFFFFF; text-decoration: none">帮助</a>&nbsp;
+                        <a href="#" style="font-family: 微软雅黑; font-size: 15px; color: #FFFFFF; text-decoration: none" onclick="Exit()">退出</a>&nbsp;
+                    </div>
+                </div>
+                <div id="north_menu" style="height: 30px; background-image: url('View/Resourse/Application/background_Catalogue.png'); background-size: 100% 100%; padding-left: 10px;">
+                    <a id="accounting_module" class="Catalogue" onclick="display('Accounting')">财务处理</a>
+                    <a id="report_module" class="Catalogue" onclick="display('ReportManagement')">报表管理</a>
+                    <a id="auxiliary_module" class="Catalogue" onclick="display('Auxiliary')">辅助管理</a>
+                    <a id="other_module" class="Catalogue" onclick="display('OtherManagement')">其他设置</a>
+                </div>
+            </div>
+            <div id="west_accounting" class="easyui-layout" style="width: 100%; position: absolute; top: 80px; bottom: 0px;">
+                <div data-options="region:'west',split:true" title="财务处理" style="width: 12%; position: relative; min-width: 170px;">
+                    <div class="easyui-accordion" data-options="fit:false,border:false" style="width: 100%; position: relative;">
+                        <div id="voucher_deal" title="凭证处理" style="display: none">
+                            <ul class="ul">
+                                <li id="AccountingVouchersInput" class="lii" onclick="addTab('#tab0','记账凭证输入','View/Accounting/AccountingVouchersInput/AccountingVouchersInput.html')">记账凭证输入
+                                </li>
+                                <li id="AccountingVouchersReview" class="lii" onclick="addTab('#tab0','记账凭证复核','View/Accounting/AccountingVouchersReview/AccountingVouchersReview.html')">记账凭证复核
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="statistical_query" title="统计查询">
+                            <ul class="ul">
+                                <li id="Assets_Statistic" class="lii" onclick="addTab('#tab0','科目余额查询','View/Accounting/ClassifyAndSummary/Assets_ClassifyAndSummary.html')">科目余额查询
+
+                                </li>
+                                <li id="Assets_DetailSearch" class="lii" onclick="addTab('#tab0','明细账查询','View/Accounting/AssetsRead/AssetsDetail_Search/AssetsDetail_Search.html')">明细账查询
+                                </li>
+                                <li id="Assets_SummarizeSearch" class="lii" onclick="addTab('#tab0','任意多栏式账查询','View/Accounting/AssetsRead/ClassifyAndSummary_Search/ClassifyAndSummary_Search.html')">任意多栏式账查询
+                                </li>
+                                <li id="Assets_ChangeSearch" class="lii" onclick="addTab('#tab0','日记式账查询','View/Accounting/AssetsRead/AssetsChange/AssetsChange_Search.html')">日记式账查询
+                                </li>
+                                <li id="Assets_DepartmentDpreSearch" class="lii" onclick="addTab('#tab0','凭证流水查询','View/Accounting/AssetsRead/DepartmentDepreciation/DepreciationDepartment.html')">凭证流水查询
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="monthly_carrydown" title="月结处理">
+                            <ul class="ul">
+                                <li id="TimeSet" class="lii" onclick="addTab('#tab0','财务日期维护','View/Accounting/TimeSet/TimeSet.html')">财务日期维护
+                                </li>
+                                <li id="Assets_DetailInitial" class="lii" onclick="addTab('#tab0','月末结账','View/Accounting/DetailInitial/Assets_DetailInitial.html')">月末结账
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="accounting_initiate" title="账务初始化">
+                            <ul class="ul">
+                                <li id="StructureDefinition" class="lii" onclick="addTab('#tab0','科目结构设置','View/Accounting/StructureDefinition/StructureDefinition.html')" style="color: #585858">科目结构设置
+                                </li>
+                                <li id="OtherEnvironment" class="lii" onclick="addTab('#tab0','其他环境设置','View/Accounting/OtherEnvironment/OtherEnvironment.html')" style="color: #585858">其他环境设置
+                                </li>
+                                <li id="CaptionOfAccount" class="lii" onclick="addTab('#tab0','会计科目设置','View/Accounting/CaptionOfAccount/CaptionOfAccount.html')" style="color: #585858">会计科目设置
+                                </li>
+                                <li id="SpecialAccount" class="lii" onclick="addTab('#tab0','特殊科目设置','View/Accounting/SpecialAccount/SpecialAccount.html')" style="color: #585858">特殊科目设置
+                                </li>
+                                <li id="AccountBookSet" class="lii" onclick="addTab('#tab0','账册字典维护','View/Accounting/AccountBookSet/AccountBookSet.html')" style="color: #585858">账册字典维护
+                                </li>
+                                <li id="AccountBookOutput" class="lii" onclick="addTab('#tab0','账册输出定义','View/Accounting/AccountBookOutput/AccountBookOutput.html')" style="color: #585858">账册输出定义
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="center" data-options="region:'center'" style="width: 88%; height: 100%;">
+                    <div id="tab0" class="easyui-tabs" style="width: 100%; border-bottom-width: 0px; height: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <div id="west_report" class="easyui-layout" style="width: 100%; position: absolute; top: 80px; bottom: 0px;">
+                <div data-options="region:'west',split:true" title="报表管理" style="width: 12%; position: relative; min-width: 170px;">
+                    <div class="easyui-accordion" data-options="fit:false,border:false" style="width: 100%; position: relative;">
+                        <div id="form_management" title="报表文件管理" data-options="iconCls:'icon-chart'">
+                            <ul class="ul">
+                                <li id="CreateReport" class="lii" onclick="addTab('#tab1','新建报表','View/ReportsManagement/CreateReport/CreateReport.html')">新建报表</li>
+                                <li id="OpenReport" class="lii" onclick="addTab('#tab1','打开报表','View/ReportsManagement/OpenReport/OpenReport.html')">打开报表</li>
+                                <li id="CopyReport" class="lii" onclick="addTab('#tab1','复制报表','View/ReportsManagement/CopyReport/CopyReport.html')">复制报表</li>
+                                <li id="DeleteReport" class="lii" onclick="addTab('#tab1','删除报表','View/ReportsManagement/DeleteReport/DeleteReport.html')">删除报表</li>
+                                <li id="ImportReport" class="lii" onclick="addTab('#tab1','转入报表','View/ReportsManagement/ImportReport/ImportReport.html')">转入报表</li>
+                                <li id="ExportReport" class="lii" onclick="addTab('#tab1','转出报表','View/ReportsManagement/ExportReport/ExportReport.html')">转出报表</li>
+                            </ul>
+                        </div>
+                        <div id="form_state" title="报表状态切换" data-options="iconCls:'icon-chart'">
+                            <ul class="ul">
+                                <li id="SiteProductionCost" class="lii" onclick="addTab('#tab1','公式状态','View/CostVisualization/CostQueryAnalyze/SiteProductionCost.html')">公式状态</li>
+                                <li id="SiteBasicOperatingExpenses" class="lii" onclick="addTab('#tab1','数据状态','View/CostVisualization/CostQueryAnalyze/SiteBasicOperatingExpenses.html')">数据状态</li>
+                            </ul>
+                        </div>
+                        <div id="form_calculate" title="其他功能" class="table" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li id="Calculate" class="lii" onclick="addTab('#tab1','计算报表','View/CostVisualization/CostQueryAnalyze/SiteProductionCost.html')">公式状态</li>
+                                <li id="Change" class="lii" onclick="addTab('#tab1','报表转结','View/CostVisualization/CostQueryAnalyze/SiteProductionCost.html')">公式状态</li>
+                            </ul>
+                        </div>                     
+                    </div>
+                </div>
+                <div data-options="region:'center'" style="width: 88%; height: 100%;">
+                    <div id="tab1" class="easyui-tabs" style="width: 100%; border-bottom-width: 0px; height: 100%;">
+                    </div>
+                </div>
+            </div>
+            <div id="west_auxiliary" class="easyui-layout" style="width: 100%; position: absolute; top: 80px; bottom: 0px;">
+                <div data-options="region:'west',split:true" title="辅助管理" style="width: 12%; position: relative; min-width: 170px;">
+                    <div class="easyui-accordion" data-options="fit:false,border:false" style="width: 100%; position: relative;">
+                        <div title="往来设置" data-options="iconCls:'icon-people'">
+                            <ul class="ul">
+                                <li class="lii" onclick="addTab('#tab2','单位类别定义','View/Contacts/ContactsCategory/Contacts_Category.html')">单位类别定义
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','单位字典维护','View/Contacts/ContactsManagement/Contacts_Management.html')">单位字典维护
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','往来单位初始化','View/Contacts/ContactsInitialization/Contacts_Initialization.html')">往来单位初始化
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','往来余额查询','View/Contacts/ContactsBalanceSearch/ContactsBalance_Search.html')">往来余额查询
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','往来帐页查询','View/Contacts/ContactsAccountPageSearch/ContactsAccountPage_Search.html')">往来帐页查询
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div title="核算设置" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li class="lii" onclick="addTab('#tab2','专项核算类别定义','View/SpecialAccounting/SpAccountCategory/SpAccount_Category.html')">专项核算类别定义
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','核算对象定义','View/SpecialAccounting/SpAccountObjectDef/SpAccountObject_Def.html')">核算对象定义
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','核算对象关联科目','View/SpecialAccounting/SpAccountObjectConnect/SpAccountObject_Connect.html')">核算对象关联科目
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','专项核算初始化','View/SpecialAccounting/SpAccountInitialization/SpAccount_Initialization.html')">专项核算初始化
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','专项核算余额查询','View/SpecialAccounting/SpAccountBalanceSearch/SpAccountBalance_Search.html')">专项核算余额查询
+                                </li>
+                                <li class="lii" onclick="addTab('#tab2','专项账页查询','View/SpecialAccounting/SpAccountPageSearch/SpAccountPage_Search.html')">专项账页查询
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-options="region:'center'" style="width: 88%; height: 100%;">
+                    <div id="tab2" class="easyui-tabs" style="width: 100%; border-bottom-width: 0px; height: 100%;">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="west_other" class="easyui-layout" style="width: 100%; position: absolute; top: 80px; bottom: 0px;">
+                <div data-options="region:'west',split:true" title="其他设置" style="width: 12%; position: relative; min-width: 170px;">
+                    <div class="easyui-accordion" data-options="fit:false,border:false" style="width: 100%; position: relative;">
+                        <div title="数据管理" data-options="iconCls:'icon-people'">
+                            <ul class="ul">
+                                <li class="lii" onclick="addTab('#tab3','数据备份','View/DataManagement/DataBak/DataBak.html')">数据备份
+                                </li>
+                                <li class="lii" onclick="addTab('#tab3','历史数据备份','View/DataManagement/HistoryDataBak/HistoryDataBak.html')">历史数据备份
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div title="用户管理" data-options="iconCls:'icon-set'">
+                            <ul class="ul">
+                                <li class="lii" onclick="addTab('#tab3','用户管理','View/UserManagement/UserManagement/UserManagement.html')">用户管理
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-options="region:'center'" style="width: 88%; height: 100%;">
+                    <div id="tab3" class="easyui-tabs" style="width: 100%; border-bottom-width: 0px; height: 100%;">
+                    </div>
+                </div>
+            </div>
+            
+            <input id="Hidden_FinanceDate" type="hidden" />
+        </div>
+        <div>
+            <!-- 弹出操作框 -->
+            <div id="dlg" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+                data-options="closed:true,buttons:'#dlg-buttons'">
+
+                <form id="fm" method="post">
+                    <table padding="5">
+                        <tr>
+                            <td>
+                                <label>系统用户编号：</label>
+                            </td>
+                            <td>
+                                <input id="SystemUserID" name="SystemUserID" class="easyui-validatebox" data-options="required:true" validtype="numberOfDigits[6,6]" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>系统用户名：</label>
+                            </td>
+                            <td>
+                                <input id="SystemUserName" name="SystemUserName" class="easyui-validatebox" data-options="required:true" validtype="length[1,10]" invalidmessage="有效长度为1-10" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>新密码：</label></td>
+                            <td>
+                                <input id="Password" name="Password" class="easyui-validatebox" data-options="required:true" validtype="length[1,6]" invalidmessage="有效长度为1-6" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div id="dlg-buttons">
+                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+                <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close')">关闭</a>
+            </div>
+        </div>
+
+</body>
+</html>

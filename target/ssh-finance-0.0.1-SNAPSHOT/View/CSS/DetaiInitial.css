@@ -1,0 +1,22 @@
+  .table2
+        {
+            border: solid 1px #D5D5D5;
+            border-collapse: collapse;
+            height: auto;         
+        }
+        .table2 tr
+        {
+            border: 1px solid #D5D5D5;
+            font-size: 12px;
+            background: #669ff8;
+            color: #fff;
+            height:60px;
+        }      
+        .table2 td
+        {
+            border: 1px solid #D5D5D5;
+            font-size: 12px;
+            height:20px;
+        }
+
+

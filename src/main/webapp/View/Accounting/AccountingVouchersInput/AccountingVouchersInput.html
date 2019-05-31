@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        label.label_text {
+            margin-top: 10px;
+            line-height: 200%;
+            vertical-align: middle;
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="AccountingVouchersInput.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+</head>
+<body>
+
+
+    <!--当前时间-->
+    <div id="dlg_date" class="easyui-dialog" title="选择时间" data-options="iconCls:'icon-save'" style="width: 220px; height: 120px; padding: 10px">
+        <label id="current_time" style="font-size: 13px">时间：</label>
+        <input id="year_input" type="number" style="width: 50px" max="" />
+        <label id="year">年</label>
+        <input id="month_input" type="number" style="width: 50px" min="1" max="12" />
+        <label id="month">月</label>
+        <div>
+            <a id="yes_button" href="#" class="easyui-linkbutton" style="width: 100px; height: 30px; float: right; margin: 10px;" iconcls="icon-ok">确定</a>
+        </div>
+    </div>
+
+    <div id="win_money" class="easyui-window">
+        <table id="money_table"></table>
+    </div>
+
+    <div id="win_acc" class="easyui-window">
+        <table id="acc_table"></table>
+    </div>
+
+    <!--帮助窗口，提示科目编号-->
+    <div id="helpWin" class="easyui-window" style="position:relative;">
+        <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+            <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="Text1" type="text"/>
+                <a id="search" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItemNoClick()">查找</a>
+            </p>
+            <p><label>上级名称:</label> <input class="easyui-textbox" style="width:295px" id="Text2" type="text"/></p>
+        </div>
+
+        <div  style="height:84%" >
+            <table id="itemTable"></table>
+        </div>
+
+    </div>
+
+    <div id="tb_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevel_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click();">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="obj.selectClick()">选定</a>
+    </div>
+
+    <div id="tb_acc" style="padding:5px;height:auto">
+        核算对象1上级：<input type="text" style="width: 80px; border: 0" id="spNo1Upper" readonly/>
+        核算对象2上级：<input type="text" style="width: 80px; border: 0" id="spNo2Upper" readonly/>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="$('#win_acc').window('close');">确认</a>
+    </div>
+
+    <!--startprint-->
+    <div id="main_window">
+        <input name="Hidden_data" type="hidden" />
+        <div id="button_group">
+            <div id="readonly_mode">
+                <a id="input_button" href="#" class="easyui-linkbutton" iconCls= "icon-add" onclick="obj.addVoucher()">录入</a>
+                <a id="change_button" href="#" class="easyui-linkbutton" iconCls= "icon-edit" onclick="obj.switchMode(false)">修改</a>
+                <a id="search_button" href="#" class="easyui-linkbutton" iconCls= "icon-search">查找</a>
+                <a id="last_button" href="#" class="easyui-linkbutton" iconCls= "icon-back" onclick="obj.back()">上一张</a>
+                <a id="next_button" href="#" class="easyui-linkbutton" iconCls= "icon-next" onclick="obj.next()">下一张</a>
+                <a id="delete_voucher_button" href="#" class="easyui-linkbutton" iconCls= "icon-remove" onclick="obj.removeVoucher()">删除凭证</a>
+                <a id="print_button" href="#" class="easyui-linkbutton" iconCls= "icon-print" onclick="obj.print()">打印</a>
+            </div>
+            <div id="edit_mode">
+                <a id="add_button" href="#" class="easyui-linkbutton" iconCls= "icon-add" onclick="obj.add()">增加</a>
+                <a id="save_button" href="#" class="easyui-linkbutton" iconCls= "icon-add" onclick="obj.save()">保存</a>
+                <a id="delete_button" href="#" class="easyui-linkbutton" iconCls= "icon-remove" onclick="obj.remove()">删除</a>
+                <a id="quit_button" href="#" class="easyui-linkbutton" iconCls= "icon-edit" onclick="obj.quit()">退出</a>
+            </div>
+        </div>
+        <!--<h1 class="title_text">记账凭证</h1>-->
+        <div style="width:100%;height:30px;vertical-align:middle; ">
+            <div style="float: left;">
+                <label class="label_text" style="margin-left: 5px">单位名称：
+                    <input id="unit_name" type="text" style="border: 0; font-size:16px; width:90px" readonly>
+                </label>
+                <label class="label_text" style="margin-left: 5px">日 期：
+                    <input id="year_month" type="text" style="border: 0; font-size:16px; width:90px" readonly>
+                    <input id="day" type="number" ondblclick="getInputDate()" style="width:40px" min="1" max="31">日
+                </label>
+            </div>
+            <div style="float: right;" >
+                <label class="label_text">凭证编号：</label>
+                <input id="voucher_no" type="text" style="border: 0; width: 50px;" readonly/>
+            </div>
+        </div>
+        <br />
+
+        <div style=" position: absolute;
+                     top:50px;
+                     bottom: 80px;
+                     padding: 5px;
+                     width: 99%;
+                     border: 1px solid #ccc">
+            <div>
+                <div style="float: left;">
+                    <label class="label_text">摘 要：</label>
+                    <input id="summary" class="easyui-textbox" data-options="required:true" missingMessage="不能为空" style=" width: 500px"/>
+                </div>
+                <div  style="float: right;" >
+                    <label class="label_text">附 件：</label>
+                    <input id="atta" type="number" style="width: 30px"/>张
+                </div>
+            </div>
+            <table id="main_table" style="top:30px"></table>
+        </div>
+        <div style="position: absolute;
+                    bottom: 50px;
+                    height: 30px;
+                    width: 100%;
+                    vertical-align:middle; ">
+            <!--<div style="position:relative; float:left">-->
+                <!--<label class="label_text">合 计：</label>-->
+                <!--<input class="easyui-textbox" />-->
+            <!--</div>-->
+            <div style="position:relative; float:left">
+                <label class="label_text" >会计主管：
+                    <input id="director" type="text" style="border: 0" readonly/>
+                </label>
+                <label class="label_text" >复 核：
+                    <input id="auditor" type="text" style="border: 0" readonly/>
+                </label>
+                <label class="label_text" >制 单：
+                    <input id="preact_doc" type="text" style="border: 0" readonly/>
+                </label>
+            </div>
+            <div style="position:relative; float:right">
+                <label class="label_text" >出 纳：
+                    <input id="cashier" type="text" style="border: 0" readonly/>
+                </label>
+                <label class="label_text" >经办人：
+                    <input id="operator" type="text" style="border: 0" readonly/>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!--endprint-->
+</body>
+</html>
+

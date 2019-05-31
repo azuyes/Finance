@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lspass" table="lspass" schema="ssh_finance">
+        <id name="userNo" column="UserNo"/>
+        <property name="userPass" column="UserPass"/>
+        <property name="userName" column="UserName"/>
+        <property name="userId" column="UserID"/>
+        <property name="userNote" column="UserNote"/>
+        <property name="department" column="Department"/>
+        <property name="fSykm" column="F_SYKM"/>
+        <property name="fSybb" column="F_SYBB"/>
+        <property name="functionAuthority" column="FunctionAuthority"/>
+    </class>
+</hibernate-mapping>

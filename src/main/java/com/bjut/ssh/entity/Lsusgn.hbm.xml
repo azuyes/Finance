@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lsusgn" table="lsusgn" schema="ssh_finance">
+        <id name="usgnAutoId" column="USGN_AutoId"/>
+        <property name="userNo" column="UserNo"/>
+        <property name="menuNo" column="MenuNo"/>
+    </class>
+</hibernate-mapping>

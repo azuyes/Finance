@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.form.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="../../JavaScript/handsontable.full.zh.js"></script>
+    <script type="text/javascript" src="../../JavaScript/layer/layer.js"></script>
+    <script type="text/javascript" src="ImportReport.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/handsontable.full.min.css" />
+</head>
+<body>
+    
+    
+    <!-- <%-- 弹出操作框--%> -->
+    <div id="dlg" class="easyui-dialog" style="width:450px; height:auto; padding: 10px 20px">
+        <div style="margin-bottom:3px">
+            <!--<input type="file" id="file" onchange="getFilePath()" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;"/> -->
+            <a id="file_btn" herf="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">指定文件</a>
+            <label id="fileName">请指定转入报表的信息文件...</label>
+        </div>
+        <div>
+            <div style="width:70%;float:left;">
+                <table id="importBox" style="height:170px;margin-top:10px;"></table>
+            </div>
+            <div style="width:30%;float:left;">
+                <table id="Table1" style="height:150px;">
+                    <tr>
+                        <td> <label style="font-size:small;">转入日期：</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label id="importYear_label"></label>
+                            <input id="importMonth" name="importMonth" style="width:60px;"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="font-size:small;">转入内容：</label></td>
+                    </tr>
+                    <tr>
+                        <td><input name="RptImport_cb" value="bbsj" type="checkbox"/><label style="font-size:small;">报表数据</label></td>
+                    </tr>
+                    <tr>
+                        <td><input name="RptImport_cb" value="jsgs" type="checkbox"/><label style="font-size:small;">计算公式</label></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>  
+    <div id="dlg-buttons">  
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="text-align:left;">
+                    <input id="importSelectAll" type="checkbox" style="margin-left:15px;"/><label style="font-size:small;">全部报表</label>
+                </td>
+                <td style="text-align:right">
+                    <a id="dlg_ok" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+                    <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close');window.parent.tabsClose('#tab1');">取消</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--转入对话框显示界面-->
+    <div id="turnintoDialog">
+        <form id="importDatForm" method="post" style="padding:10px 10px 10px 10px;" enctype="multipart/form-data">
+            <div style="width:200px;padding:30px 20px 50px 20px">
+                <div style="margin-bottom:20px">
+                    <div>文件:</div>
+                    <input id="datFile" name="datFile" class="easyui-filebox"  data-options="prompt:'请选择.dat文件...',
+   					buttonText:'选择文件',accept:'.dat'" style="width:200px">
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

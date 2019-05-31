@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="SpAccount_Initialization.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+    <style>
+    	div{   
+			white-space:nowrap;  
+		} 
+    </style>
+</head>
+<body class="easyui-layout" style="margin: 0px 5px 0px 5px;" >
+	<!--主界面-->
+    <div id="specialInit" style="height:100%;width:100%;">
+        <div style="padding:0px 0px 10px 5px;height:40px;background:#fafafa;border:1px solid #ccc">
+            <p>
+            	<lable>当前级数:</lable>
+                <label id="levelNow_label" style="display:inline-block; width:200px"></label>
+                <label>上级科目编号: </label>
+                <label id="upperItemNo_label" style="display:inline-block; width:200px"></label>
+                <label>上级科目名称: </label>
+                <label id="upperItemName_label" style="display:inline-block; width:200px"></label>
+             </p>
+	    </div>
+        <div  style="position:absolute;top:51px;bottom:0px;height:100%;width:100%;margin:0px,10px;">
+            <table id="main_table"></table>
+  	    </div>
+    </div>
+    <div id="tb" style="padding:5px;height:auto">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="initialization_click()">初始化</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevel_click()">上级</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click()">下级</a>
+		</div>
+   
+    <!--核算初始化窗口-->
+    <div id="specialWinJe1" closed="true">
+        <div id="initSpecialJe1" style="height:100%;width:100%;margin:0px 0px;">
+            <table id="specialTableJe1"></table>
+        </div>
+    </div>
+
+    <div id="tbInit" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="uperLevelInit_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="nextLevelInit_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="save1()">存盘</a>
+        <a href="#" id="close_button1" class="easyui-linkbutton" disabled="true" iconCls="icon-cancel" onclick="close1()">关闭</a>
+    </div>
+
+    <div id="specialWinSl1" closed="true">
+        <div id="initSpecialSl1" style="height:100%;width:100%;margin:0px 0px;">
+            <table id="specialTableSl1"></table>
+        </div>
+    </div>
+
+    <div id="tbInitSl1" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="uperLevelInit_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="nextLevelInitSl1_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="save1()">存盘</a>
+        <a href="#" id="close_button2" class="easyui-linkbutton"  iconCls="icon-cancel" onclick="close2()">关闭</a>
+    </div>
+
+
+    <div id="specialWinJe2" closed="true">
+        <div id="initSpecialJe2" style="height:100%;width:100%;margin:0px 0px;">
+            <table id="specialTableJe2"></table>
+        </div>
+    </div>
+
+    <div id="specialWinSl2" closed="true">
+        <div id="initSpecialSl2" style="height:100%;width:100%;margin:0px 0px;">
+            <table id="specialTableSl2"></table>
+        </div>
+    </div>
+
+    <div id="tbInit1" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="save2()">存盘</a>
+    </div>
+
+    <div id="tbInit2" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="save2()">存盘</a>
+    </div>
+
+
+
+
+
+</body>
+</html>

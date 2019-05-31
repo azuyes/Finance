@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title></title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+	    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+	    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="SpAccount_Category.js"></script>
+	</head>
+	<body class="easyui-layout" style="margin: 0px 0px 0px 5px;" >
+		
+		<div style="position:absolute;height:100%;width:60%;">
+   			<table id="box"> </table>    
+   		</div> 
+   		<div id="tb" style="padding:5px;height:auto">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick=";">增加</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick=";">删除</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-redo" onclick="$javascript:$('#turnintoDialog').dialog('open');">转入</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-undo" onclick="$javascript:$('#turnoutWin').window('open');">转出</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick=";">上级</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick=";">下级</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick=";">存盘</a>
+		</div>
+ 		<!--转入对话框显示界面-->
+	    <div id="turnintoDialog" closed ="true">
+		    <form style="padding:10px 10px 10px 10px;">
+	            <div style="height:40px"></div>
+	            <div style="height:40px">
+	                <label >转入路径:</label>
+	                <input name="turnintoPath" class="easyui-filebox"  style="width:300px;" data-options="prompt:'选择一个文件',buttonText:'&nbsp选择&nbsp '"/>
+	            </div>
+	        </form>
+	    </div>
+
+		<!--转出对话框显示界面-->
+	    <div id="turnoutWin" style="position:relative;" closed ="true">
+	        <div  style="height:83%; border:1px solid #ccc">
+	            <table id="itemTable"></table>      
+		    </div>
+	       <div id="Div1" style="height:17%; padding-top:5px; padding-left:5px; border:1px solid #ccc">
+	            <label>转入路径:</label>
+	            <input name="turnintoPath" class="easyui-textbox" style="width:82%" data-options="prompt:'A:/'"/>
+	            <p></p>
+	            <div>
+	            	<a id="allSelect" class="easyui-linkbutton" data-options="iconCls:'icon-filldata'" href="###">全选</a>
+	           		<a id="ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="###">确定</a>
+	            </div>
+	        </div>
+	    </div>  
+	</body>
+</html>

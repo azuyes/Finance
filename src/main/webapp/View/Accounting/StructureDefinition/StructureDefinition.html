@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        label.label_text {
+            padding: 10px;
+            line-height: 200%;
+        }
+
+        input.input_select {
+            margin-left: 20px;
+            font-size: 30px;
+            vertical-align: middle;
+        }
+
+        input.input_number {
+            width: 40px;
+        }
+
+        input.input_text {
+            width: 150px;
+            margin: 5px;
+        }
+
+        td.margin{
+            width: 20px;
+        }
+        td{
+            white-space: nowrap;
+        }
+        tr{
+            height: 40px;
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="StructureDefinition.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+</head>
+
+<body>
+<form id="form1">
+    <table>
+        <tr>
+            <td><label><b>科目结构</b></label></td>
+            <td><label><b>运算精度</b></label></td>
+        </tr>
+        <tr>
+            <td rowspan="5">
+                <div style="background:#fafafa;border:1px solid #ccc; padding:10px; width:auto; display:inline-block !important; display:inline;">
+                    <table>
+                        <tr>
+                            <td>科目级数：</td>
+                            <td class="margin"></td>
+                            <td><input id="sub_level" type="number" class="easyui-numberbox" style="width:40px" min="1" max="7" value="6" onChange="showLevelInputs()"/></td>
+                        </tr>
+                        <tr>
+                            <td>总账科目：</td>
+                            <td class="margin"></td>
+                            <td><input id="level1" type="number" class="easyui-numberbox" style="width:40px" min="1" value="4"/></td>
+                        </tr>
+                        <tr>
+                            <td>二级科目：</td>
+                            <td class="margin"></td>
+                            <td><input id="level2" type="number" class="easyui-numberbox" style="width:40px" min="3" max="4" value="4"/></td>
+                        </tr>
+                        <tr>
+                            <td>三级科目：</td>
+                            <td class="margin"></td>
+                            <td><input id="level3" type="number" class="easyui-numberbox" style="width:40px" min="1" max="4" value="3"/></td>
+                        </tr>
+                        <tr>
+                            <td>四级科目：</td>
+                            <td class="margin"></td>
+                            <td><input id="level4" type="number" class="easyui-numberbox" style="width:40px" min="1" max="4" value="3"/></td>
+                        </tr>
+                        <tr>
+                            <td>五级科目：</td>
+                            <td class="margin"></td>
+                            <td><input id="level5" type="number" class="easyui-numberbox" style="width:40px" min="1" max="4" value="3"/></td>
+                        </tr>
+                        <tr>
+                            <td>六级科目：</td>
+                            <td class="margin"></td>
+                            <td><input id="level6" type="number" class="easyui-numberbox" style="width:40px" min="1" max="4" value="3"/></td>
+                        </tr>
+                        <tr>
+                            <td>七级科目：</td>
+                            <td class="margin"></td>
+                            <td><input id="level7" type="number" class="easyui-numberbox" style="width:40px" disabled="disabled" min="1" max="4" value="3"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div style="background:#fafafa;border:1px solid #ccc; padding:10px; width:auto; display:inline-block !important; display:inline;">
+                    <table>
+                        <tr>
+                            <td>数量小数位数：</td>
+                            <td class="margin"></td>
+                            <td><input id="quantity_dec" name="数量小数位数" type="number" class="easyui-numberbox" style="width:40px" data-options="required:true" missingMessage="不能为空" min="0" max="4" value="4"/></td>
+                        </tr>
+                        <tr>
+                            <td>单价小数位数：</td>
+                            <td class="margin"></td>
+                            <td><input id="price_dec" name="单价小数位数" type="number" class="easyui-numberbox" style="width:40px" data-options="required:true" missingMessage="不能为空" min="0" value="2"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><label><b>数据长度</b></label></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="background:#fafafa;border:1px solid #ccc; padding:10px; width:auto; display:inline-block !important; display:inline;">
+                    <table>
+                        <tr>
+                            <td>摘要名称长度（汉字）：</td>
+                            <td class="margin"></td>
+                            <td><input id="abs_length" name="摘要名称长度" type="number" class="easyui-numberbox" style="width:40px" data-options="required:true" missingMessage="不能为空" min="1" max="30" value="15"/></td>
+                        </tr>
+                        <tr>
+                            <td>科目名称长度（汉字）：</td>
+                            <td class="margin"></td>
+                            <td><input id="sub_length" name="科目名称长度" type="number" class="easyui-numberbox" style="width:40px" data-options="required:true" missingMessage="不能为空" min="1" max="30" value="15"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="border:1px solid #ccc; padding:5px; width:auto; display:inline-block !important; display:inline;">
+                    <label>财务初始日期：</label>
+                    <input id="begin_date" name="财务初始日期" type="text" class="easyui-datebox" data-options="required:true, formatter:dateformatter, parser: dateparser" missingMessage="不能为空"/>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="border:1px solid #ccc; padding:5px; width:auto; display:inline-block !important; display:inline;">
+                    <label id="first_number_label">凭证首位编号：</label>
+                    <input id="first_num" name="凭证首位编号" class="easyui-textbox" data-options="required:true" missingMessage="不能为空" style="width:60px"/>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td><a id="yes_button" href="###" class="easyui-linkbutton" style="width: 100px; height: 30px;" iconCls="icon-ok" onclick="request()">确定</a></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

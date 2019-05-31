@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="SpAccountBalance_Search2.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+    <style>
+        .textbox{
+            height:20px;
+            margin:0;
+            padding:0 2px;
+            box-sizing:content-box;
+        }
+        #mainDisplay table{
+            border: 2px solid green;
+        }
+
+        #mainDisplay td{
+            border: 1px solid green;
+        }
+        #mainDisplay tr{
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+<body style="height:100%;width:100%" >
+<div id="balanceSearch_Win" style="position:relative;" >
+    <div style="margin:10px;padding:5px 20px; border:1px solid #ccc" >
+        <p><label>请输入查询日期:</label>
+            <input id="year_Input" class="easyui-numberspinner" data-options="value:2018,rmin:2000,max:2018,required:true" style="width:65px;"></input>
+            <label>&nbsp;年&nbsp;</label>
+            <input id="month_Input" class="easyui-numberspinner" data-options="value:1,min:1,max:12,required:true" style="width:65px;"></input>
+            <label>&nbsp;月</label>
+        </p>
+        <p><label>请输入科目编号&nbsp;&nbsp;:</label> <input class="easyui-textbox" style="width: 185px;" id="itemNo_Input" data-options="required:true" missingMessage="请选择科目编号或通配符!"  type="text" />
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'" onclick="wildcardForItemNoClick()"></a>
+        </p>
+        <p><label>请输入核算分类1:</label> <input class="easyui-textbox" style="width: 185px;" id="catNo1_Input" type="text" data-options="required:true" missingMessage="请选择分类编号1或通配符! " /></p>
+        <p><label>请输入核算编号1:</label> <input class="easyui-textbox" style="width: 185px;" id="spNo1_Input" data-options="required:true" missingMessage="请选择核算编号1或通配符!"  type="text"/>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'" onclick="wildcardForSpNo1Click()"></a>
+        </p>
+        <p><label>请输入核算分类2:</label> <input class="easyui-textbox" style="width: 185px;" id="catNo2_Input" data-options="required:true" missingMessage="请选择分类编号2!" type="text"/></p>
+        <p><label>请输入核算编号2:</label> <input class="easyui-textbox" style="width: 185px;" id="spNo2_Input" data-options="required:true" missingMessage="请选择核算编号2或通配符!" type="text"/>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'" onclick="wildcardForSpNo2Click()"></a>
+        </p>
+    </div>
+
+    <div style="margin:10px;padding:5px 20px; border:1px solid #ccc" >
+        <label>帐表格式：</label>
+        <input type="radio" name="searchFormat" value="J" checked="checked" ><span>金额账</span>
+        <input type="radio" name="searchFormat" value="S"><span>数量金额账</span>
+    </div>
+
+    <div style="margin:10px 10px 5px 10px;padding:10px 20px; border:1px solid #ccc" >
+        <label>设置查询选项：</label>
+        <input type="checkbox" name="searchOption" value="1"><span>包含账前凭证</span>
+    </div>
+    <div id="item" style="margin:5px;height:30px;padding:5px 10px; background:#fafafa;" >
+        <div style="float:right;">
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchClick()">查询</a>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#balanceSearch_Win').window('close')">关闭</a>
+        </div>
+    </div>
+</div>
+
+
+<!--帮助窗口，提示科目编号-->
+<div id="itemNo_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_ItemNo" type="text"/>
+            <a id="searchItemNo" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItemNoClick()" >查找</a>
+        </p>
+        <p><label>上级名称:</label>
+            <label id="upperItemName_label"></label>
+        </p>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="itemTable"></table>
+    </div>
+
+    <div id="tbItem_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevel_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectItemNoClick()">选定</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectItemNoForWildcardClick()">通配符</a>
+    </div>
+
+</div>
+
+<!--帮助窗口，提示核算分类编号1-->
+<div id="catNo1_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_CatNo1" type="text"/>
+            <a id="searchCatNo1" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchCatNo1Click()">查找</a>
+        </p>
+        <p><label>上级名称:</label>
+        </p>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="catNo1Table"></table>
+    </div>
+
+    <div id="tbCatNo1_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" disabled="disabled" onclick="">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" disabled="disabled" onclick="">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectcatNo1Click()">选定</a>
+    </div>
+
+</div>
+
+<!--帮助窗口，提示核算对象编号1-->
+<div id="spNo1_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_SpNo1" type="text"/>
+            <a id="search" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchSpNo1Click()">查找</a>
+        </p>
+        <p><label>上级名称:</label>
+            <label id="uperSpName1_Show"></label>
+        </p>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="spNo1Table"></table>
+    </div>
+
+    <div id="tbSpNo1_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevelSp1_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevelSp1_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectSpNo1Click()">选定</a>
+    </div>
+
+</div>
+
+<!--帮助窗口，提示核算分类编号2-->
+<div id="catNo2_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_CatNo2" type="text"/>
+            <a id="search1" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchCatNo2Click()">查找</a>
+        </p>
+        <p><label>上级名称:</label>
+        </p>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="catNo2Table"></table>
+    </div>
+
+    <div id="tbCatNo2_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" disabled="disabled" onclick="">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" disabled="disabled" onclick="">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectcatNo2Click()">选定</a>
+    </div>
+
+</div>
+
+<!--帮助窗口，提示核算对象编号2-->
+<div id="spNo2_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_SpNo2" type="text"/>
+            <a id="search2" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchSpNo2Click()">查找</a>
+        </p>
+        <p><label>上级名称:</label>
+            <label id="uperSpName2_Show"></label>
+        </p>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="spNo2Table"></table>
+    </div>
+
+    <div id="tbSpNo2_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevelSp2_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevelSp2_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectSpNo2Click()">选定</a>
+    </div>
+
+</div>
+
+
+<!--都输入通配符时选择查询数据-->
+<div id="queryDataType_Win" style="position:relative;">
+    <div style="margin:10px 10px 5px 10px;padding:5px 20px; border:1px solid #ccc" >
+        <label>选择查询内容：</label>
+        <table>
+            <tr>
+                <td width="100px"><input type="radio" name="queryDataType" value="1"><span>本月借方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType" value="2"><span>上年结转</span></td>
+                <td width="100px"><input type="radio" name="queryDataType" value="3"><span>本月借贷差额</span></td>
+            </tr>
+            <tr>
+                <td width="100px"><input type="radio" name="queryDataType" value="4"><span>本月贷方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType" value="5"><span>本年借方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType" value="6"><span>本月贷借差额</span></td>
+            </tr>
+            <tr>
+                <td width="100px"><input type="radio" name="queryDataType" checked="checked" value="7"><span>当前余额</span></td>
+                <td width="100px"><input type="radio" name="queryDataType" value="8"><span>本年贷方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType" value="9"><span>本年借贷差额</span></td>
+            </tr>
+            <tr>
+                <td width="100px"></td>
+                <td width="100px"></td>
+                <td width="100px"><input type="radio" name="queryDataType" value="10"><span>本年贷借差额</span></td>
+            </tr>
+        </table>
+    </div>
+    <div id="item2" style="margin:5px;height:30px;padding:5px 10px; background:#fafafa;" >
+        <div style="float:right;">
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchClick8()">查询</a>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#queryDataType_Win').window('close')">关闭</a>
+        </div>
+    </div>
+
+</div>
+
+
+<!--都输入通配符时选择查询数据-->
+<div id="queryDataType_Win1" style="position:relative;">
+    <div style="margin:10px 10px 5px 10px;padding:5px 20px; border:1px solid #ccc" >
+        <label>选择查询内容：</label>
+        <table>
+            <tr>
+                <td width="100px"><input type="radio" name="queryDataType1" value="1"><span>本月借方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType1" value="2"><span>上年结转</span></td>
+                <td width="100px"><input type="radio" name="queryDataType1" value="3"><span>本月借贷差额</span></td>
+            </tr>
+            <tr>
+                <td width="100px"><input type="radio" name="queryDataType1" value="4"><span>本月贷方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType1" value="5"><span>本年借方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType1" value="6"><span>本月贷借差额</span></td>
+            </tr>
+            <tr>
+                <td width="100px"><input type="radio" name="queryDataType1" checked="checked" value="7"><span>当前余额</span></td>
+                <td width="100px"><input type="radio" name="queryDataType1" value="8"><span>本年贷方</span></td>
+                <td width="100px"><input type="radio" name="queryDataType1" value="9"><span>本年借贷差额</span></td>
+            </tr>
+            <tr>
+                <td width="100px"></td>
+                <td width="100px"></td>
+                <td width="100px"><input type="radio" name="queryDataType1" value="10"><span>本年贷借差额</span></td>
+            </tr>
+        </table>
+    </div>
+    <div id="item1" style="margin:5px;height:30px;padding:5px 10px; background:#fafafa;" >
+        <div style="float:right;">
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchClick7()">查询</a>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#queryDataType_Win1').window('close')">关闭</a>
+        </div>
+    </div>
+
+</div>
+
+<!--专项核算余额查询主界面-->
+<div id="mainDisplay" style="visibility:hidden;height:100%;width:100%;">
+    <div style="padding:0px 0px 10px 5px;height:70px;background:#fafafa;border:1px solid #ccc">
+        <div style="width:200px;margin: 10px auto;">
+            <font size="5">专项核算余额</font>
+        </div>
+        <lable>科目:</lable> <input class="easyui-textbox" id="itemNo3" readonly="true" type="text"/>
+        <lable>日期:</lable> <input class="easyui-textbox" id="itemNo2" readonly="true" type="text"/>
+
+    </div>
+    <div id="main" style="top:70px;bottom:0px;width:100%;height:auto">
+        <table id="main_table"></table>
+    </div>
+    <div id="tb" style="padding:5px;height:auto">
+        <a id = "uper_button" href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevelClick()">上级</a>
+        <a id = "next_button" href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevelClick()">下级</a>
+        <a id = "show_button" href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.allDisplayClick()">全显</a>
+
+    </div>
+</div>
+</body>
+</body>
+</html>

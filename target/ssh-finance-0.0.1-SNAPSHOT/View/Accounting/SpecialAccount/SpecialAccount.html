@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        label.label_text {
+            padding: 10px;
+            line-height: 200%;
+        }
+
+        input.input_select {
+            margin-left: 20px;
+            font-size: 30px;
+            vertical-align: middle;
+        }
+
+        input.input_number {
+            margin-left: 20px;
+            width: 50px;
+        }
+
+        input.input_text {
+            width: 150px;
+            margin: 5px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="SpecialAccount.js"></script>
+</head>
+<body>
+    <div id="initializtion" style="height: 100%; width: 100%">
+    	<div id="button_group">
+            <a id="edit_button" href="###" class="easyui-linkbutton" iconCls= 'icon-edit'>定义</a>
+            <a id="previous_level_button" href="###" class="easyui-linkbutton" iconCls= 'icon-back'>上级</a>
+            <a id="next_level_button" href="###" class="easyui-linkbutton" iconCls= 'icon-next'>下级</a>
+            <a id="previous_page_button" href="###" class="easyui-linkbutton" iconCls= 'icon-undo'>前页</a>
+            <a id="next_page_button" href="###" class="easyui-linkbutton" iconCls= 'icon-redo'>后页</a>
+            <a id="yes_button" href="###" class="easyui-linkbutton" iconCls= 'icon-ok'>确定</a>
+        </div>
+    	
+        <div style="padding: 1px; height: 6%; width: 100%; border: 1px solid #ccc">
+            <p>
+                当前级数:
+                <input id="level" type="text" />
+                上级科目编号及名称:
+                <input id="superior_account" type="text" />
+            </p>
+        </div>
+
+        <div style="position: absolute; padding: 5px; top: 80px; bottom: 0px; width: 100%; border: 1px solid #ccc;">
+            <table id="main_table"></table>
+        </div>
+
+    </div>
+    <div id="edit_account_box" class="easyui-window">
+        <div style="height:auto;width:85%;position:relative;padding:10px;margin:10px;background:#fafafa;border:1px solid #ccc;float:left;">
+            <input id="daily_account" type="checkbox" class="input_select" />日记账
+            <input id="dealing" type="checkbox" class="input_select" />往来
+            <input id="special_accounting" type="checkbox" class="input_select" />专项核算
+        </div>
+        <div id="special_accounting_1" style="float:left;margin-left:10px;width:45%">
+            <label id="special_accounting_1_label" class="label_text" style="padding:0px">专项核算类别1</label><br />
+            <input id="special_accounting_1_input" class="input_text" style="width:93%;margin:0px;margin-bottom:5px"/>
+            <div id="special_accounting_1_select" class="easyui-panel">
+                <table id="special1_table"></table>
+            </div>
+        </div>
+        <div id="special_accounting_2" style="float:right;margin-right:10px;width:45%">
+            <label id="special_accounting_2_label" class="label_text" style="padding:0px">专项核算类别2</label><br />
+            <input id="special_accounting_2_input" class="input_text" style="width:93%;margin:0px;margin-bottom:5px"/>
+            <div id="special_accounting_2_select" class="easyui-panel">
+                <table id="special2_table"></table>
+            </div>
+        </div>
+        <div style="float:right;margin:10px">
+            <a id="box_yes_button" href="#" class="easyui-linkbutton">确定</a>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cx-finance</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+    <property name="hibernate.binpath">E:\mysql-5.6.24-winx64\bin</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">false</property>
+    <mapping class="com.bjut.ssh.entity.Lshspz"/>
+    <mapping class="com.bjut.ssh.entity.Lskmzd"/>
+    <mapping resource="com/bjut/ssh/entity/Lskmzd.hbm.xml"/>
+    <mapping resource="com/bjut/ssh/entity/Accrecord.hbm.xml"/>
+    <mapping class="com.bjut.ssh.entity.Accrecord"/>
+</session-factory>
+</hibernate-configuration>

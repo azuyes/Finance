@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title></title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+	    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+	    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+	    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="Contacts_Management.js"></script>
+		<style>
+			.textbox{
+				height:20px;
+				margin:0;
+				padding:0 2px;
+				box-sizing:content-box;
+			}
+		</style>
+	</head>
+	<body class="easyui-layout" style="margin: 0px 5px 0px 5px;" >
+		<!--主界面-->
+		<div style="position:absolute;height:100%;width:100%;">
+   			<table id="box"> </table>    
+    	</div>   
+    	
+    	<div id="tb" style="padding:5px;height:auto">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick=";">增加</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick=";">删除</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-people" onclick="$javascript:$('#detailsDialog').dialog('open');">详细信息</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-ma" onclick="$javascript:$('#batchDefinitionWin').dialog('open');">批量定义</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick=";">条件查询</a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick=";">存盘</a>
+		</div>
+
+		<!--显示详细信息对话框-->
+		<div id="detailsDialog" style="padding:5px" closed="true">
+	         <form id="datailForm" method="post">
+		    	<table cellpadding="5">
+		    		<tr>
+		    			<td>科目编号:</td>
+		    			<td><input class="easyui-validatebox textbox" type="text" name="itemNo" data-options="required:true"></input></td>
+		    		    <td>单位名称:</td>
+		    			<td><input class="easyui-validatebox textbox" type="text" name="companyName" data-options="required:true"></input></td>
+	                </tr>
+		    		<tr>
+		    			<td>联 系 人:</td>
+		    			<td><input class="textbox" type="text" name="cont" ></input></td>
+		    		    <td>联系电话:</td>
+		    			<td><input class="textbox" type="text" name="tel"></input></td>
+	                </tr>
+	                <tr>
+		    			<td>开户银行:</td>
+		    			<td><input class="textbox" type="text" name="bank" ></input></td>
+		    		    <td>开户账号:</td>
+		    			<td><input class="textbox" type="text" name="account" ></input></td>
+	                </tr>
+	                <tr>
+		    			<td>信誉状况:</td>
+		    			<td><input class="textbox" type="text" name="creditStanding" ></input></td>
+		    		    <td>税&nbsp;&nbsp;号:</td>
+		    			<td><input class="textbox" type="text" name="taxIdNo" ></input></td>
+	                </tr>
+	                <tr>
+	                    <td>邮政编码:</td>
+		    			<td><input class="textbox" type="text" name="companyPost" ></input></td>
+		    		</tr>
+		    		<tr>
+	                    <td>联系地址:</td>
+		    			<td><input class="textbox" type="text" name="companyAddr" data-options="multiline:true"  style="height:50px"></input></td>
+		    			<td>备&nbsp;&nbsp;注:</td>
+		    			<td><input class="textbox" type="text" name="taxIdNo" data-options="multiline:true"  style="height:50px"></input></td>
+		    		</tr>
+		    	</table>
+		    </form>
+		</div>
+	        <!--显示批量定义窗口-->
+	        <div id="batchDefinitionWin" closed="true">
+	            <div class="easyui-layout" style="height:420px; ">
+	                <div data-options="region:'west'" style="width:240px;">
+	                    <table id="companyTable"></table> 
+	                </div>
+	                <div data-options="region:'east'" style="width:240px;">
+	                    <table id="itemTable"></table> 
+	                </div>                 
+		        </div>
+	            <div class="easyui-layout" style="padding:2px 5px 1px 1px;height:28px;margin: 3px 0px 0px 0px;background: #fafafa;">
+	            	<div style="float:right">
+            			 <a id="ok" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-ok'"">确认</a>
+                   		 <a id="cancel" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#batchDefinitionWin').window('close')">取消</a>
+	            	</div>
+		        </div>
+	        </div>
+	</body>
+</html>

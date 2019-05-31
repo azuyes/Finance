@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Accrecord" table="accrecord" schema="cx-finance">
+        <id name="id">
+            <column name="id" sql-type="char(3)" length="3"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="char(10)" length="10" not-null="true"/>
+        </property>
+        <property name="flag">
+            <column name="flag" sql-type="int(1)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

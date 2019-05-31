@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lszczd" table="lszczd" schema="ssh_finance">
+        <id name="acontBookNo" column="AcontBookNo"/>
+        <property name="accBookName" column="AccBookName"/>
+        <property name="accBookType" column="AccBookType"/>
+        <property name="accType" column="AccType"/>
+        <property name="pageRules" column="PageRules"/>
+        <property name="absWidth" column="AbsWidth"/>
+        <property name="chaPage" column="ChaPage"/>
+        <property name="printFor" column="PrintFor"/>
+        <property name="formatNo" column="FormatNo"/>
+        <property name="addEmptyRow" column="AddEmptyRow"/>
+        <property name="fTdyn" column="F_TDYN"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lszcdy" table="lszcdy" schema="ssh_finance">
+        <id name="zcdyAutoId" column="ZCDY_AutoId"/>
+        <property name="acontBookNo" column="AcontBookNo"/>
+        <property name="itemNo" column="ItemNo"/>
+        <property name="accLevel" column="AccLevel"/>
+        <property name="combineEntry" column="CombineEntry"/>
+        <property name="oppItem" column="OppItem"/>
+        <property name="summary" column="Summary"/>
+        <property name="daysTge" column="DaysTge"/>
+        <property name="listItemLevel" column="ListItemLevel"/>
+        <property name="itemDir" column="ItemDir"/>
+        <property name="printUse" column="PrintUse"/>
+        <property name="fixCol" column="FixCol"/>
+        <property name="pageCol" column="PageCol"/>
+        <property name="fHblm" column="F_HBLM"/>
+    </class>
+</hibernate-mapping>

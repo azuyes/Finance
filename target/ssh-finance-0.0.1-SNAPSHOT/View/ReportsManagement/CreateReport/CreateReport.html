@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/gc.spread.sheets.excel2013lightGray.11.0.0.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/gc.spread.sheets.resources.zh.11.0.0.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/gc.spread.sheets.all.11.0.0.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/FileSaver.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/gc.spread.excelio.11.0.0.min.js"></script>
+    <style>
+        #formulabox{
+				line-height: 16px;
+				border: 1px solid #808080;
+				overflow: hidden;
+				padding: 3px;
+				height: 16px;
+				margin: 5px 0;
+	    }
+    </style>
+    <script type="text/javascript">
+        var spread;
+        $(document).ready(function () {
+            spread=new GC.Spread.Sheets.Workbook(document.getElementById("bb"), {sheetCount: 0});
+            var spreadNS = GC.Spread.Sheets;
+            var fbx = new spreadNS.FormulaTextBox.FormulaTextBox(document.getElementById('formulabox'));
+            fbx.workbook(spread);
+        });
+        //新建报表弹出框确定按钮点击事件
+        function newReport() {
+            var sheet = new GC.Spread.Sheets.Worksheet('NewSheet');
+            spread.addSheet(0, sheet);
+            var spreadNS = GC.Spread.Sheets;
+            spread.options.allowUserDragMerge = true;//允许拖动单元格合并
+            spread.options.tabStripVisible = false;//隐藏sheet标签栏
+            var rows = Number($("#titleRow").val()) + Number($("#headRow").val()) + Number($("#contentRow").val()) + Number($("#endRow").val());
+            sheet.setRowCount(rows);//设置行数
+            sheet.setColumnCount($("#reportCol").val());//设置列数
+            sheet.addSpan(0, 0, 1, $("#reportCol").val());//合并单元格
+            sheet.getCell(0, 0).value($("#reportName").val()).font('30px Arial');//设置内容，字体
+            sheet.autoFitRow(0);//自动适应行高
+            sheet.getRange(0, 0, 1, $("#reportCol").val()).hAlign(spreadNS.HorizontalAlign.center);//居中
+            sheet.setValue($("#titleRow").val() - 1, 0, "单位：北京工业大学");
+            sheet.setValue(Number($("#titleRow").val()) - 1, Number($("#reportCol").val()) - 1, "金额：元");
+            var range = sheet.getRange(Number($("#titleRow").val()), 0, Number($("#contentRow").val()) + Number($("#headRow").val()), $("#reportCol").val());
+            range.setBorder(new spreadNS.LineBorder("black", spreadNS.LineStyle.thin), {
+                all: true,
+            });//设置边框
+            $("#ExcelContent").css("visibility", "visible");
+            $('#dlg').dialog('close')
+        }
+    </script>
+</head>
+<body>
+    <div>
+			<div id="toolBar" style="border-bottom:1px solid lightgray;">
+				<table cellspacing="0" cellpadding="5" style="">
+					<tr>
+						<td style="border-left:1px solid lightgray;border-right:1px solid lightgray">
+							<table cellspacing="0" cellpadding="5"  width="100%">
+								<tr>
+									<td rowspan="2" style="text-align: center;">
+										<img src="../../CSS/excelIcon/filenew.png"/><br />
+										<span style="font-size:small;">新建</span>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/files.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/disk.png"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="../../CSS/excelIcon/print.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/document_print_preview.png"/>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td style="border-right:1px solid lightgray">
+							<table cellspacing="0" cellpadding="5"  width="100%">
+								<tr>
+									<td rowspan="2">
+										<img src="../../CSS/excelIcon/paste.png"/><br />
+										<span style="font-size: small;">粘贴</span>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/scissors-blue.png"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="../../CSS/excelIcon/documents-text.png"/>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td style="border-right:1px solid lightgray">
+							<table cellspacing="0" cellpadding="5"  width="100%">
+								<tr>
+									<td colspan="3">
+										<select style="width: 100%;">
+											<option value ="font_class">宋体</option>
+										</select>
+									</td>
+									<td>
+										<select style="width: 100%;">
+											<option value ="font_size">11</option>
+										</select>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/增大字号.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/缩小字号.png"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="../../CSS/excelIcon/edit-bold.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/edit-italic.png"/>
+									</td>
+									<td style="border-right:1px solid lightgray">
+										<img src="../../CSS/excelIcon/edit-underline.png"/>
+									</td>
+									<td style="border-right:1px solid lightgray;text-align: center;">
+										<img src="../../CSS/excelIcon/border.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/paint-can.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/03.png"/>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td style="border-right:1px solid lightgray">
+							<table cellspacing="0" cellpadding="5"  width="100%">
+								<tr>
+									<td>
+										<img src="../../CSS/excelIcon/edit_vertical_alignment_top.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/edit-vertical-alignment-middle.png"/>
+									</td>
+									<td style="border-right:1px solid lightgray">
+										<img src="../../CSS/excelIcon/edit-vertical-alignment.png"/>
+									</td>
+									<td style="border-right:1px solid lightgray">
+										<img src="../../CSS/excelIcon/edit-indent.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/自动换行.png"/>
+										<span style="font-size: small;vertical-align:top;">自动换行</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="../../CSS/excelIcon/edit-alignment.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/edit_alignment_center.png"/>
+									</td>
+									<td style="border-right:1px solid lightgray">
+										<img src="../../CSS/excelIcon/edit-alignment-right.png"/>
+									</td>
+									<td style="border-right:1px solid lightgray">
+										<img src="../../CSS/excelIcon/edit-indent-rtl.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/合并后居中.png"/>
+										<span style="font-size: small;vertical-align:top;">合并后居中</span>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td style="border-right:1px solid lightgray">
+							<table cellspacing="0" cellpadding="5"  width="100%">
+								<tr>
+									<td colspan="4">
+										<select style="width: 100%;">
+											<option value ="常规">常规</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="../../CSS/excelIcon/edit-percent.png"/>
+									</td>
+									<td style="border-right:1px solid lightgray">
+										<img src="../../CSS/excelIcon/edit-comma.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/增加小数位数.png"/>
+									</td>
+									<td>
+										<img src="../../CSS/excelIcon/减少小数位数.png"/>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td style="border-right:1px solid lightgray">
+							
+						</td>
+					</tr>
+					<tr>
+						<td style="border-left:1px solid lightgray;border-right:1px solid lightgray;text-align: center;">
+							<span style="font-size: small;">报表</span>
+						</td>
+						<td style="border-right:1px solid lightgray;text-align: center;">
+							<span style="font-size: small;">剪贴板</span>
+						</td>
+						<td style="border-right:1px solid lightgray;text-align: center;">
+							<span style="font-size: small;">字体</span>
+						</td>
+						<td style="border-right:1px solid lightgray;text-align: center;">
+							<span style="font-size: small;">对齐方式</span>
+						</td>
+						<td style="border-right:1px solid lightgray;text-align: center;">
+							<span style="font-size: small;">数字</span>
+						</td>
+						<td style="border-right:1px solid lightgray;text-align: center;">
+							<span style="font-size: small;">...</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+            <div id="formulaBar">
+				<table cellspacing="0" cellpadding="5" width="100%">
+					<tr>
+						<td width="20%">
+							<select style="height:22px;text-align: center;width:100%;padding:0 35%;">
+								<option value="cellValue" style="text-align: center;">A1</option>
+							</select>
+						</td>
+						<td width="3%" style="vertical-align:middle">
+							<img src="../../CSS/excelIcon/tick.png"/>
+						</td>
+						<td width="3%" style="vertical-align:middle">
+							<img src="../../CSS/excelIcon/cross.png"/>
+						</td>
+						<td width="3%" style="vertical-align:middle">
+							<img src="../../CSS/excelIcon/equals.png"/>
+						</td>
+						<td>
+							<div id="formulabox" contenteditable="true" spellcheck="false"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+	</div>
+    <!-- <%-- Excel--%> -->
+    <div id="ExcelContent" style="visibility:hidden;">
+        <!-- <%-- 表格 --%> -->
+	    <div id='bb' style='width:100%; height:800px;'></div>
+    </div>
+    
+    <!-- <%-- 弹出操作框--%> -->
+    <div id="dlg" class="easyui-dialog" style="width:330px; height: auto; padding: 10px 20px"  
+         data-options="buttons:'#dlg-buttons',title:'报表属性'">
+         <form id="fm" method="post">  
+             <table>
+                 <tr>
+                     <td colspan="4"><label>报表编号：</label>
+                     <input id="reportNo" name="reportNo" class="easyui-validatebox" style="width:190px;" data-options="required:true" maxlength="6" />  </td>
+                 </tr>
+                 <tr>
+                     <td colspan="4"><label>报表名称：</label>
+                     <input id="reportName" name="reportName" class="easyui-validatebox" style="width:190px;" data-options="required:true" validtype="length[1,10]" invalidMessage="有效长度为1-10"/> </td>
+                 </tr>
+                 <tr>
+                     <td> <label>标题行数：</label></td>
+                     <td>
+                         <input id="titleRow" name="titleRow" class="easyui-numberspinner" style="width:60px;" data-options="value:2,min:2,precision:0"/>
+                     </td>
+                     <td> <label> 表头行数：</label></td>
+                     <td>
+                         <input id="headRow" name="headRow" class="easyui-numberspinner" style="width:60px;" data-options="value:1,min:1,precision:0"/>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td> <label>表体行数：</label></td>
+                     <td>
+                         <input id="contentRow" name="contentRow" class="easyui-numberspinner" style="width:60px;" data-options="value:20,min:1,precision:0"/>
+                     </td>
+                     <td> <label>表尾行数：</label></td>
+                     <td>
+                         <input id="endRow" name="endRow" class="easyui-numberspinner" style="width:60px;" data-options="value:1,min:1,precision:0"/>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td> <label>报表列数：</label></td>
+                     <td>
+                         <input id="reportCol" name="reportCol" class="easyui-numberspinner" style="width:60px;" data-options="value:10,min:2,precision:0"/>
+                     </td>
+                     <td></td>
+                     <td>
+                     </td>
+                 </tr>
+             </table> 
+         </form>  
+    </div>  
+    <div id="dlg-buttons">  
+         <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="newReport()">确定</a>  
+         <a href="#" class="easyui-linkbutton" style="margin-right:30px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close')">取消</a>  
+    </div>  
+    
+</body>
+</html>

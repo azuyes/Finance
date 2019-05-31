@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.form.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="../../JavaScript/handsontable.full.zh.js"></script>
+    <script type="text/javascript" src="../../JavaScript/layer/layer.js"></script>
+    <script type="text/javascript" src="YearCopyReport.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/handsontable.full.min.css" />
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+    
+    
+    <!-- <%-- 弹出操作框1--%> -->
+    <div id="dlg_1" class="easyui-dialog" style="width:450px; height:auto; padding: 10px 20px"  
+         data-options="buttons:'#dlg-buttons_1',title:'年度结转',closable:false">
+        <div style="height:153px;margin:1px 1px;border:1px solid #aaa;padding:2px 1px 0px 1px;">
+            
+            <img src="../../CSS/ReportCopy.png" style="float:left;margin:0 0;padding:0 0;width:120px;height:150px;"/>
+            <div style="width:260px;float:left;padding-left:3px;">
+                <p>提示：</p>
+                <p style="text-indent:2em;">报表年度结转完成本年报表到下年报表的期末结转操作。</p>
+                <p style="text-indent:2em;">注：年度结转是将本年12月的报表结转到下年1月的操作；</p>
+                <p style="text-indent:2em;">年结每年只能执行一次，并且不能回退。</p>
+            </div>
+        </div>
+        <div style="height:75px;">
+            <div style="width:60%;height:70px;float:left;margin:2px 10px 2px 1px;border:1px solid #aaa;vertical-align:central;">
+                <table id="Table2" style="width:100%;height:50px;padding-left:5px;">
+                    <tr>
+                        <td><label style="font-size:small;">将</label></td><td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label id="lb_form_date" style="font-size:small;"></label>
+                        </td>
+                        <td>
+                            <label style="font-size:small;">期间中所选中的报表</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label style="font-size:small;">结转至:</label></td>
+                        <td>
+                            <label id="lb_to_data" style="font-size:small;"></label>
+                            <label style="font-size:small;">期间</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width:35%;height:65px;float:right;border:1px solid #aaa;margin:2px 1px;text-align:center;padding-top:5px;">
+                <input id="isClearData" type="checkbox"/><label style="font-size:small;">数据清理</label>
+                <a id="btn" herf="#" class="easyui-linkbutton" style="margin-top:8px;" data-options="iconCls:'icon-search'" onclick="javascript:$('#dlg_2').dialog('open')">指定文件</a>      
+            </div>
+        </div>
+    </div>  
+    <div id="dlg-buttons_1">  
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="text-align:right">
+                    <a id="dlg_1_ok" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="">确定</a>
+                    <a href="#" class="easyui-linkbutton" style="margin-right:18px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_1').dialog('close');window.parent.tabsClose('#tab1');">取消</a>
+                </td>
+            </tr>
+        </table>
+    </div>  
+    
+    <!--选择报表框-->
+    <div id="dlg_2" class="easyui-dialog" style="width:350px; height:auto; padding: 10px 20px"  
+         data-options="buttons:'#dlg-buttons_2',title:'报表结转--选择报表',closed:true,closable:false">
+        <div style="margin-bottom:3px">
+            <label>日期：</label>
+            <input id="yearTime" name="yearTime" style="width:50px;"/>
+            <label>年</label>
+            <input id="monthTime" name="monthTime" style="width:40px;"/>
+            <label>月</label>
+        </div>
+        <div>
+            <table id="chooseRptBox" class="easyui-datagrid" style="width:100%;height:150px;margin-top:10px;">
+            </table>
+        </div>
+    </div>  
+    <div id="dlg-buttons_2">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="text-align:left;">
+                    <input id="rptSelectAll" type="checkbox" style="margin-left:15px;"/><label style="font-size:small;vertical-align:top;">全部报表</label>
+                </td>
+                <td style="text-align:right">
+                    <a id="dlg_2_ok" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="">确定</a>
+                    <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_2').dialog('close')">取消</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

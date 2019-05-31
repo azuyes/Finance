@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lswldw" table="lswldw" schema="ssh_finance">
+        <id name="companyNo" column="CompanyNo"/>
+        <property name="catNo1" column="CatNo1"/>
+        <property name="companyName" column="CompanyName"/>
+        <property name="cont" column="Cont"/>
+        <property name="tel" column="Tel"/>
+        <property name="companyAddr" column="CompanyAddr"/>
+        <property name="companyPost" column="CompanyPost"/>
+        <property name="bank" column="Bank"/>
+        <property name="account" column="Account"/>
+        <property name="creditStanding" column="CreditStanding"/>
+        <property name="taxIdNo" column="TaxIdNo"/>
+        <property name="memo" column="Memo"/>
+        <property name="fWbbh" column="F_WBBH"/>
+        <property name="fBzlb" column="F_BZLB"/>
+        <property name="fBzbm" column="F_BZBM"/>
+    </class>
+</hibernate-mapping>

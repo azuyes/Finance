@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lshszd" table="lshszd" schema="ssh_finance">
+        <id name="hszdAutoId" column="HSZD_AutoId"/>
+        <property name="catNo" column="CatNo"/>
+        <property name="spNo" column="SpNo"/>
+        <property name="spLevel" column="SpLevel"/>
+        <property name="finLevel" column="FinLevel"/>
+        <property name="spName" column="SpName"/>
+        <property name="itemNo" column="ItemNo"/>
+        <property name="fWbbh" column="F_WBBH"/>
+        <property name="fBzlb" column="F_BZLB"/>
+        <property name="fBzbm" column="F_BZBM"/>
+        <property name="fSybh" column="F_SYBH"/>
+        <property name="fFj01" column="F_FJ01"/>
+        <property name="fFj02" column="F_FJ02"/>
+        <property name="fFj03" column="F_FJ03"/>
+        <property name="fFj04" column="F_FJ04"/>
+        <property name="fFj05" column="F_FJ05"/>
+        <property name="fFj06" column="F_FJ06"/>
+        <property name="fFj07" column="F_FJ07"/>
+        <property name="fFj08" column="F_FJ08"/>
+        <property name="fFj09" column="F_FJ09"/>
+        <property name="fFj10" column="F_FJ10"/>
+        <property name="fFj11" column="F_FJ11"/>
+        <property name="fFj12" column="F_FJ12"/>
+        <property name="fFj13" column="F_FJ13"/>
+        <property name="fFj14" column="F_FJ14"/>
+        <property name="fFj15" column="F_FJ15"/>
+    </class>
+</hibernate-mapping>

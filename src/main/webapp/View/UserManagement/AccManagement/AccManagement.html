@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+<!--Jquery EasyUI-->
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="AccManagement.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+</head>
+<body class="easyui-layout">   
+    <div style="position:absolute;height:100%;width:100%;">
+   <!--<%--表格显示区--%>-->  
+   <table id="grid"  class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"          
+       idfield="itemid" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">  
+   </table>    
+<!--<%--功能区--%>  -->
+   <div id="tb" style="padding: 5px; height: auto">  
+		<a id="btnAdd" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="ShowAddDialog()">添加账套</a>
+		<a id="btnEdit" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="ShowEditDialog()" >修改信息</a>
+		<a id="btnDelete" href="###"class="easyui-linkbutton" data-options="iconCls:'icon-remove'" onclick="SwitchDialog()">切换账套</a>
+   </div>  
+    </div>   
+    <div>
+    <!--弹出操作框-->
+
+            <div id="dlg" class="easyui-dialog" style="width: 400px; height: auto; padding: 10px 20px"
+             data-options="closed:true,buttons:'#dlg-buttons'">
+                <form id="fm" method="post">
+                <table padding="5">
+                     <tr>
+                         <td style="text-align-last: justify"><label>套账编号：</label></td>
+                         <td><input id="accNo" type="text" name="accNo" class="easyui-textbox" data-options="required:true" validtype="length[3,3]" missingMessage="账套编号不能为空!" invalidMessage="有效长度为3"/>  </td>
+                     </tr>
+                    <tr>
+                        <td style="text-align-last: justify"><label>套账名称：</label></td>
+                        <td><input id="accName" type="text" name="accName" class="easyui-textbox" data-options=" required:true" validtype="length[1,10]" missingMessage="账套名称不能为空!" invalidMessage="最大长度为10"/>  </td>
+                        <input name="Test" id="test" type="hidden" />
+                    </tr>
+                </table>
+                </form>
+            </div>
+
+
+
+        <div id="dlg-buttons">
+         <a href="#" class="easyui-linkbutton" type="submit" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+         <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close')">关闭</a>
+        </div>
+
+        <%--弹出权限选择框--%>
+ <div id="dlg-User" class="easyui-dialog" style="width: 400px;height:400px; padding: 10px 20px;overflow-y:scroll"  
+     data-options="closed:true,buttons:'#dlg-buttons-User'"> 
+             <div><ul id="tt"></ul></div>
+ </div>  
+ <div id="dlg-buttons-User">  
+     <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveRoleData()">保存</a>
+     <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg-User').dialog('close')">关闭</a>  
+ </div>
+
+</div>
+</body>
+</html>

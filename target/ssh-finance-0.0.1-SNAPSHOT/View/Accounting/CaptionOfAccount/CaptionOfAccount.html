@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        label.label_text {
+            padding: 10px;
+            line-height: 200%;
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="CaptionOfAccount.js"></script>
+</head>
+<body>
+    <div id="add_account_box" class="easyui-window">
+        <div>
+            <label id="account_number_label" class="label_text">科目编号：</label>
+            <input id="account_number_input" class="easyui-textbox" style="width: 70px" />
+            <label id="account_name_label" class="label_text">科目名称：</label>
+            <input id="account_name_input" class="easyui-textbox" style="width: 200px" />
+            <br/>
+            <label id="account_attribute_label" class="label_text">科目属性：</label>
+            <input id="account_attribute_input" class="easyui-textbox" style="width: 100px" />
+            <label id="account_form_label" class="label_text">账式：</label>
+            <select id="account_select" class="easyui-combobox" name="dept" style="width:70px;">
+                <option id="money">金额</option>
+                <option id="quality">数量</option>
+            </select>
+            <label id="account_label" class="label_text">科（栏）目：</label>
+            <input id="account_input" class="easyui-textbox" style="width: 50px" />
+        </div>
+
+        <div id="money_information" style="width: 49%; float: left; background: #fafafa; border: 1px solid #ccc;">
+            <div style="margin: 0 auto; width: 50px">
+                <label id="money_information_label"><b>金额信息</b></label>
+            </div>
+            <table>
+                <tr>
+                    <td><label id="begin_remain_label" class="label_text">年初余额：</label></td>
+                    <td><input id="begin_remain_input" class="easyui-textbox-" /></td>
+                </tr>
+                <tr>
+                    <td><label id="this_debit_label" class="label_text">本年借方：</label></td>
+                    <td><input id="this_debit_input" class="easyui-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label id="this_credit_label" class="label_text">本年贷方：</label></td>
+                    <td><input id="this_credit_input" class="easyui-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label id="balance_label" class="label_text">当前余额：</label></td>
+                    <td><input id="balance_input" class="easyui-textbox" /></td>
+                </tr>
+            </table>
+        </div>
+        <div id="quantity_information" style="width: 49%; float: right; background: #fafafa; border: 1px solid #ccc;">
+            <div style="margin: 0 auto; width: 50px">
+                <label id="quantity_information_label"><b>数量信息</b></label>
+            </div>
+            <table>
+                <tr>
+                    <td><label id="begin_quantity_label" class="label_text">年初数量：</label></td>
+                    <td><input id="begin_quantity_input" class="easyui-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label id="this_debit_quantity_label" class="label_text">本年借方：</label></td>
+                    <td><input id="this_debit_quantity_input" class="easyui-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label id="this_credit_quantity_label" class="label_text">本年贷方：</label></td>
+                    <td><input id="this_credit_quantity_input" class="easyui-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label id="quantity_label" class="label_text">当前数量：</label></td>
+                    <td><input id="quantity_input" class="easyui-textbox" /></td>
+                </tr>
+            </table>
+        </div>
+        <div id="form_head" style="margin: 5px; width: 96%;">
+            <table>
+                <tr>
+                    <td><label id="form_head1_label" class="label_text">表头一：</label></td>
+                    <td><input id="form_head1_input" class="easyui-textbox" /></td>
+                    <td><label id="form_head2_label" class="label_text">表头二：</label></td>
+                    <td><input id="form_head2_input" class="easyui-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label id="form_head3_label" class="label_text">表头三：</label></td>
+                    <td><input id="form_head3_input" class="easyui-textbox" /></td>
+                    <td><label id="form_head4_label" class="label_text">表头四：</label></td>
+                    <td><input id="form_head4_input" class="easyui-textbox" /></td>
+                </tr>
+                <tr>
+                    <td><label id="form_head5_label" class="label_text">表头五：</label></td>
+                    <td><input id="form_head5_input" class="easyui-textbox" /></td>
+                    <td><label id="form_head6_label" class="label_text">表头六：</label></td>
+                    <td><input id="form_head6_input" class="easyui-textbox" /></td>
+                </tr>
+            </table>
+            <hr/>
+            <label id="code_category_label" class="label_text">代码类别：</label>
+            <input id="code_category_input" class="easyui-textbox" style="width: 20%" />
+            <label id="standard_code_label" class="label_text">标准代码：</label>
+            <input id="standard_code_input" class="easyui-textbox" style="width: 40%" />
+            <hr/>
+            <div id="box_button_group" style="float: right">
+                <a id="yes_button" href="###" class="easyui-linkbutton" iconCls= "icon-ok">确定</a>
+                <a id="no_button" href="###" class="easyui-linkbutton" iconCls= "icon-no">取消</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="initializtion" style="height: 100%; width: 100%">
+    	<div id="button_group" >
+            <a id="add_button" href="###" class="easyui-linkbutton" iconCls= "icon-add">增加</a>
+            <a id="delete_button" href="###" class="easyui-linkbutton" iconCls= "icon-cancel">删除</a>
+            <a id="edit_button" href="###" class="easyui-linkbutton" iconCls= "icon-edit">修改</a>
+            <a id="previous_level_button" href="###" class="easyui-linkbutton" iconCls= "icon-back">上级</a>
+            <a id="next_level_button" href="###" class="easyui-linkbutton" iconCls= "icon-next">下级</a>
+            <a id="save_button" href="###" class="easyui-linkbutton" iconCls= "icon-ok">转出</a>
+            <a id="quit_button" href="###" class="easyui-linkbutton" iconCls= "icon-no">退出</a>
+        </div>
+        <br/>
+        <div style="position: absolute; top: 0px; height: 94%; width: 100%;">
+        	<div style="display:inline-block !important; display:inline; height: auto; width: 100%; border: 1px solid #ccc">
+	            <p>当前级数:
+	                <input id="level" type="text" />上级科目编号及名称:
+	                <input id="superior_account" type="text" />
+	            </p>
+	        </div>
+	        <div style="position: absolute; bottom: 0px; top: 60px; padding: 5px; width: 100%; border: 1px solid #ccc">
+	            <table id="main_table"></table>
+        	</div>
+        </div>
+    </div>
+</body>
+</html>

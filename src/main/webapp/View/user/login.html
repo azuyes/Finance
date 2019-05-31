@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+</head>
+<script>
+    $(function () {
+        function getContextPath(){
+            var pathName = document.location.pathname;
+            var index = pathName.substr(1).indexOf("/");
+            var result = pathName.substr(0,index+1);
+            return result;
+        }
+    });
+
+</script>
+<body>
+用户登陆 <br>
+<form modelAttribute="user" action="/ssh-finance/user/loginTest" method="post" id="userForm">
+    用户名：<input type="text" name="username" />
+    密码：<input type="password" name="password" />
+    <input type="submit" value="submit" />
+</form>
+</body>
+</html>

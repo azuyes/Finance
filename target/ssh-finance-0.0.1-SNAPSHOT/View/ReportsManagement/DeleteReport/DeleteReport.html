@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/gc.spread.sheets.excel2013lightGray.11.0.0.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/gc.spread.sheets.resources.zh.11.0.0.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/gc.spread.sheets.all.11.0.0.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/FileSaver.js"></script>
+    <script type="text/javascript" src="../../JavaScript/ExcelJS/gc.spread.excelio.11.0.0.min.js"></script>
+    <script type="text/javascript">
+        function deleteConfirm() {
+            $.messager.confirm('报表管理子系统', '确定要删除所选定的所有报表吗？', function (r) {
+
+            });
+        }
+    </script>
+</head>
+<body>
+    
+    
+    <!-- <%-- 弹出操作框--%> -->
+    <div id="dlg" class="easyui-dialog" style="width:350px; height:auto; padding: 10px 20px"  
+         data-options="buttons:'#dlg-buttons',title:'删除报表'">
+        <div style="margin-bottom:3px">
+            <label>日期：</label>
+            <input id="yearTime" name="yearTime" class="easyui-numberbox" style="width:60px;" data-options="value:2017,min:0,precision:0,editable:false"/>
+            <label>年</label>
+            <input id="monthTime" name="monthTime" class="easyui-numberspinner" style="width:60px;" data-options="value:1,min:1,max:12,precision:0"/>
+            <label>月</label>
+        </div>
+        <div>
+            <table id="aa" class="easyui-datagrid" style="width:100%;height:150px;margin-top:10px;"
+                 data-options="rownumbers:true">
+                <thead>
+                    <tr>
+                        <th data-options="field:'reportNum'" style="width:60px">报表编号</th>
+                        <th data-options="field:'reportName'" style="width:200px">报表名称</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>  
+    <div id="dlg-buttons">  
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="text-align:left;">
+                    <input type="checkbox" style="margin-left:15px;"/><label style="font-size:small">全部报表</label>
+                </td>
+                <td style="text-align:right">
+                    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="deleteConfirm()">确定</a>
+                    <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close')">取消</a>
+                </td>
+            </tr>
+        </table>
+    </div>  
+    
+</body>
+</html>

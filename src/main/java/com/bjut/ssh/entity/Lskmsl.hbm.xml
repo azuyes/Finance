@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lskmsl" table="lskmsl" schema="ssh_finance">
+        <id name="kmslAutoId" column="KMSL_AutoId"/>
+        <property name="itemNo" column="ItemNo"/>
+        <property name="head1" column="Head1"/>
+        <property name="head2" column="Head2"/>
+        <property name="head3" column="Head3"/>
+        <property name="head4" column="Head4"/>
+        <property name="head5" column="Head5"/>
+        <property name="head6" column="Head6"/>
+        <property name="budQty" column="BudQty"/>
+        <property name="leftQty" column="LeftQty"/>
+        <property name="unitPrice" column="UnitPrice"/>
+        <property name="debitQty" column="DebitQty"/>
+        <property name="creditQty" column="CreditQty"/>
+        <property name="supQty" column="SupQty"/>
+        <property name="debitQtySup" column="DebitQtySup"/>
+        <property name="creditQtySup" column="CreditQtySup"/>
+        <property name="debitQtyAcm" column="DebitMoneyAcm"/>
+        <property name="creditQtyAcm" column="CreditMoneyAcm"/>
+        <property name="debitQty01" column="DebitQty01"/>
+        <property name="creditQty01" column="CreditQty01"/>
+        <property name="leftQty01" column="LeftQty01"/>
+        <property name="debitQty02" column="DebitQty02"/>
+        <property name="creditQty02" column="CreditQty02"/>
+        <property name="leftQty02" column="LeftQty02"/>
+        <property name="debitQty03" column="DebitQty03"/>
+        <property name="creditQty03" column="CreditQty03"/>
+        <property name="leftQty03" column="LeftQty03"/>
+        <property name="debitQty04" column="DebitQty04"/>
+        <property name="creditQty04" column="CreditQty04"/>
+        <property name="leftQty04" column="LeftQty04"/>
+        <property name="debitQty05" column="DebitQty05"/>
+        <property name="creditQty05" column="CreditQty05"/>
+        <property name="leftQty05" column="LeftQty05"/>
+        <property name="debitQty06" column="DebitQty06"/>
+        <property name="creditQty06" column="CreditQty06"/>
+        <property name="leftQty06" column="LeftQty06"/>
+        <property name="debitQty07" column="DebitQty07"/>
+        <property name="creditQty07" column="CreditQty07"/>
+        <property name="leftQty07" column="LeftQty07"/>
+        <property name="debitQty08" column="DebitQty08"/>
+        <property name="creditQty08" column="CreditQty08"/>
+        <property name="leftQty08" column="LeftQty08"/>
+        <property name="debitQty09" column="DebitQty09"/>
+        <property name="creditQty09" column="CreditQty09"/>
+        <property name="leftQty09" column="LeftQty09"/>
+        <property name="debitQty10" column="DebitQty10"/>
+        <property name="creditQty10" column="CreditQty10"/>
+        <property name="leftQty10" column="LeftQty10"/>
+        <property name="debitQty11" column="DebitQty11"/>
+        <property name="creditQty11" column="CreditQty11"/>
+        <property name="leftQty11" column="LeftQty11"/>
+        <property name="debitQty12" column="DebitQty12"/>
+        <property name="creditQty12" column="CreditQty12"/>
+        <property name="leftQty12" column="LeftQty12"/>
+        <property name="fYsxl" column="F_YSXL"/>
+        <property name="fDs13" column="F_DS13"/>
+        <property name="fJs13" column="F_JS13"/>
+        <property name="fSl13" column="F_SL13"/>
+    </class>
+</hibernate-mapping>

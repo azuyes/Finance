@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset = "utf-8" />
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts.js"></script>
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts3.js"></script>
+    <script src="../../JavaScript/echarts/theme3/theme1.js"></script>
+    <script src="../../JavaScript/echarts/theme3/chalk.js"></script>
+    <script src="../../JavaScript/echarts/theme3/dark.js"></script>
+    <script src="../../JavaScript/echarts/theme3/essos.js"></script>
+    <script src="../../JavaScript/echarts/theme3/halloween.js"></script>
+    <script src="../../JavaScript/echarts/theme3/infographic.js"></script>
+    <script src="../../JavaScript/echarts/theme3/macarons.js"></script>
+    <script src="../../JavaScript/echarts/theme3/purple-passion.js"></script>
+    <script src="../../JavaScript/echarts/theme3/roma.js"></script>
+    <script src="../../JavaScript/echarts/theme3/shine.js"></script>
+    <script src="../../JavaScript/echarts/theme3/vintage.js"></script>
+    <script src="../../JavaScript/echarts/theme3/walden.js"></script>
+    <script src="../../JavaScript/echarts/theme3/westeros.js"></script>
+    <script src="../../JavaScript/echarts/theme3/wonderland.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="DepartmentBudget.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <title></title>
+</head>
+<body class="easyui-layout">
+<div style="position:absolute;height:100%;width:100%;">
+    <!--表格显示区-->
+    <table id="grid"  class="easyui-datagrid"  style="position:relative;width: 100%; height: 100%;"
+           idfield="itemid" pagination="false" data-options="iconCls:'icon-save',rownumbers:true,pageSize:5, pageList:[5,10,15,20],method:'get',toolbar:'#tb',striped:true" fitcolumns="true">
+        <!-- 表格标题-->
+        <!--<thead>-->
+        <!--<tr>-->
+        <!--<th data-options= "field: 'ItemID',width:100">项目编号</th>-->
+        <!--<th data-options= "field: 'ItemName',width:100">项目名称</th>-->
+        <!--<th data-options= "field: 'ItemLevel',width:100">项目级次</th>-->
+        <!--<th data-options= "field: 'AnnualBudget',width:100, editor:{type:'numberbox',options:{precision:1}}" >年度预算</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--表格内容-->
+    </table>
+    <!-- 功能区 -->
+    <div id="tb" style="padding: 5px; height: auto">
+    </div>
+</div>
+<div>
+    <div id="dlg" class="easyui-dialog" style="width: 300px; height: auto; padding: 10px 20px"
+         data-options="closed:true,buttons:'#dlg-buttons'">
+        <form id="fm" method="post">
+            <table padding="7">
+                <tr>
+                    <td><label>图表编号：</label></td>
+                    <td><input id="ChartID" name="ChartID" class="easyui-validatebox" data-options="required:true" validtype="length[6,6]" invalidMessage="有效长度为6" style="width: 160px;"/></td>
+                </tr>
+                <tr>
+                    <td><label>图表名称：</label></td>
+                    <td><input id="ChartName" name="ChartName" class="easyui-validatebox" data-options="required:true" validtype="length[1,40]" invalidMessage="有效长度1-40" style="width: 160px;"/></td>
+                </tr>
+                <tr>
+                    <td><label>项目功能：</label></td>
+                    <td><input id="ItemFunction" name="ItemFunction" class="easyui-combobox" data-options="required:true" style="width: 160px;"/></td>
+                </tr>
+                <tr>
+                    <td><label>项目类型：</label></td>
+                    <td><input id="ItemType" name="ItemType" class="easyui-combobox" data-options="required:true" style="width: 160px;"/></td>
+                </tr>
+                <tr>
+                    <td><label>项目名称：</label></td>
+                    <td><input id="ItemName" name="ItemName" class="easyui-combobox" data-options="required:true" style="width: 160px;"/></td>
+                </tr>
+                <tr>
+                    <td><label>项目编号：</label></td>
+                    <td>
+                        <input id="ItemID" name="ItemID" class="easyui-validatebox" data-options="required:true" validType="numberOfDigits[8,8]" style="width: 160px;"/>
+                        <input name="Test" id="test" type="hidden" />
+                        <input name="AdminID" id="AdminID" type="hidden" />
+                        <input id="key" name="key" onkeydown= "if(event.keyCode==13)reloadgrid()"  type="hidden"/>
+                    </td>
+                </tr>
+                <!--<tr>-->
+                <!--<td><label>是否显示：</label></td>-->
+                <!--<td>-->
+                <!--<select id="Viewable" class="easyui-combobox" name="Viewable" >-->
+                <!--<option value="1" selected="selected">是</option>-->
+                <!--<option value="0">否</option>-->
+                <!--</select>-->
+                <!--</td>-->
+                <!--</tr>-->
+            </table>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="saveData()">保存</a>
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close')">关闭</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

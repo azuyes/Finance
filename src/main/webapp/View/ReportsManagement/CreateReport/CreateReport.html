@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../JavaScript/easyui-validatebox-extend.js"></script>
+	<script type="text/javascript" src="../../JavaScript/handsontable.full.zh.js"></script>
+	<script type="text/javascript" src="../../JavaScript/layer/layer.js"></script>
+	<script type="text/javascript" src="CreateReport.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../CSS/handsontable.full.min.css" />
+
+    <style>
+        body {font-family:Serif;}
+        *{
+            white-space:nowrap;
+        }
+    </style>
+
+    <style media="print" type="text/css">
+        .noprint{visibility:hidden}
+        th{visibility:hidden}
+        thead{visibility:hidden}
+    </style>
+
+    <style type="text/css">
+        /*input css*/
+        .iInput{
+            position: absolute;
+            width: 160px;
+            height: 16px;
+            left: 1px;
+            top: 3px;
+            border-bottom: 0px;
+            border-right: 0px;
+            border-left: 0px;
+            border-top: 0px;
+        }
+    </style>
+
+</head>
+<body>
+<div style="height:140px;">
+	<div id="toolBar" class="noprint" style="border-bottom:1px solid lightgray;">
+		<table cellspacing="0" cellpadding="5" style="">
+			<tr>
+				<td style="border-left:1px solid lightgray;border-right:1px solid lightgray">
+					<table cellspacing="0" cellpadding="5" width="100%">
+						<tr>
+							<td rowspan="2" style="text-align: center;">
+								<button id="newReport" title="新建报表" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/filenew.png);height: 32px;width: 32px;"></button>
+								<br />
+								<span style="font-size:small;">新建</span>
+							</td>
+							<td>
+								<button id="openReport" title="打开报表" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/files.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td>
+								<button id="reportProp" title="报表属性" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/property.png);height: 16px;width: 16px;"></button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button id="printReport" title="打印" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/print.png);height: 16px;width: 16px;" onclick="doPrint()"></button>
+							</td>
+							<td>
+								<button id="saveReport" title="保存" style="background-color:transparent;border:0px; background-image: url(../../CSS/excelIcon/disk.png);height: 16px;width: 16px;"></button>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td style="border-right:1px solid lightgray">
+					<table cellspacing="0" cellpadding="5" width="100%">
+						<tr>
+							<td rowspan="2">
+								<button id="pasteCont" title="粘贴(Ctrl V)" style="background-color:transparent;border: 0px;background-image:url(../../CSS/excelIcon/paste.png);height: 32px;width: 32px;"></button><br />
+								<span style="font-size: small;">粘贴</span>
+							</td>
+							<td>
+								<button id="cutCont" title="剪切(Ctrl X)" style="background-color:transparent;border: 0px;background-image:url(../../CSS/excelIcon/scissors-blue.png);height: 16px;width: 16px;"></button>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button id="copyCont" title="复制(Ctrl C)" style="background-color:transparent;border: 0px;background-image:url(../../CSS/excelIcon/documents-text.png);height: 16px;width: 16px;"></button>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td style="border-right:1px solid lightgray">
+					<table cellspacing="0" cellpadding="5" width="100%">
+						<tr>
+							<td colspan="3">
+								<select style="width: 100%;">
+									<option value="font_class">宋体</option>
+								</select>
+							</td>
+							<!--<td>-->
+							<!--<select style="width: 100%;">-->
+							<!--<option value="font_size">11</option>-->
+							<!--</select>-->
+							<!--</td>-->
+							<!--<td>-->
+							<!--<button id="fontSizeUp" title="增大字号" style="background-color:transparent;;border: 0px;background-image: url(../../CSS/excelIcon/增大字号.png);height: 16px;width: 16px;"></button>-->
+							<!--</td>-->
+						</tr>
+						<tr>
+							<td>
+								<button id="fontB" title="加粗" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-bold.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td>
+								<button id="fontLean" title="倾斜" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-italic.png);height: 16px;width: 16px;"></button>
+							</td>
+							<!--<td style="border-right:1px solid lightgray">-->
+							<td>
+								<button id="fontUnderline" title="下划线" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-underline.png);height: 16px;width: 16px;"></button>
+							</td>
+							<!--<td style="border-right:1px solid lightgray;text-align: center;">-->
+							<!--<button id="fontBorder" title="边框" style="background-color:transparent;;border: 0px;background-image: url(../../CSS/excelIcon/border.png);height: 16px;width: 16px;"></button>-->
+							<!--</td>-->
+							<!--<td>-->
+							<!--<button id="fontSizeDown" title="减小字号" style="background-color:transparent;;border: 0px;background-image: url(../../CSS/excelIcon/缩小字号.png);height: 16px;width: 16px;"></button>-->
+							<!--</td>-->
+						</tr>
+					</table>
+				</td>
+				<td style="border-right:1px solid lightgray">
+					<table cellspacing="0" cellpadding="5" width="100%">
+						<tr>
+							<td>
+								<button id="fontUp" title="顶端对齐" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit_vertical_alignment_top.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td>
+								<button id="fontMid" title="垂直居中" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-vertical-alignment-middle.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td style="border-right:1px solid lightgray">
+								<button id="fontDown" title="底端对齐" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-vertical-alignment.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td style="border-right:1px solid lightgray">
+								<button id="rightMove" title="右缩进" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-indent.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td>
+								<button id="mergeAndCenter" title="合并后居中" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/合并后居中.png);height: 16px;width: 16px;"></button>
+								<span style="font-size: small;vertical-align:top;">合并后居中</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button id="fontLeft" title="左对齐" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-alignment.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td>
+								<button id="fontCenter" title="居中" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit_alignment_center.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td style="border-right:1px solid lightgray">
+								<button id="fontRight" title="右对齐" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-alignment-right.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td style="border-right:1px solid lightgray">
+								<button id="leftMove" title="左缩进" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-indent-rtl.png);height: 16px;width: 16px;"></button>
+							</td>
+							<td>
+								<!--<button id="autoWarp" title="自动换行" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/自动换行.png);height: 16px;width: 16px;"></button>
+                                <span style="font-size: small;vertical-align:top;">自动换行</span>-->
+                                <button id="mergeCancel" title="取消合并" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/mergeCancel.png);height: 16px;width: 16px;"></button>
+                                <span style="font-size: small;vertical-align:top;">取消合并</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="border-right:1px solid lightgray">
+                    <table cellspacing="0" cellpadding="5" width="100%">
+                        <tr>
+                            <td colspan="4">
+                                <select id="CellType" style="width: 100%;">
+                                    <option value="常规">常规</option>
+                                    <option value="数字">数字</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="percentBt" title="百分数" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-percent.png);height: 16px;width: 16px;"></button>
+                            </td>
+                            <td style="border-right:1px solid lightgray">
+                                <button id="commaBt" title="逗号" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/edit-comma.png);height: 16px;width: 16px;"></button>
+                            </td>
+                            <td>
+                                <button id="increaseDec" title="增加小数位数" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/增加小数位数.png);height: 16px;width: 16px;"></button>
+                            </td>
+                            <td>
+                                <button id="reduceDec" title="减少小数位数" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/减少小数位数.png);height: 16px;width: 16px;"></button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="border-right:1px solid lightgray">
+                    <table cellspacing="0" cellpadding="5" width="100%">
+                        <tr>
+                            <td colspan="3">
+                                <select id="BBState" style="width: 100%;">
+                                    <option value="数据">数据状态</option>
+                                    <option value="公式">公式状态</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:20px;border-right:1px solid lightgray;text-align: center;">
+                                <button id="calculateRp" title="计算报表" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/calculator.png);height: 16px;width: 16px;"></button>
+                            </td>
+                            <td style="width:20px;border-right:1px solid lightgray;text-align: center;">
+                                <button id="reportMove" title="报表结转" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/disks-black.png);height: 16px;width: 16px;"></button>
+                            </td>
+                            <td style="width:20px;text-align: center;">
+                                <button id="excelOutput" title="导出Excel" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/excel_export.png);height: 16px;width: 16px;"></button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="border-right:1px solid lightgray">
+
+                </td>
+            </tr>
+            <tr>
+                <td style="border-left:1px solid lightgray;border-right:1px solid lightgray;text-align: center;padding-top: 0;margin-top: 0;">
+                    <span style="font-size: small;">报表</span>
+                </td>
+                <td style="border-right:1px solid lightgray;text-align: center;padding-top: 0;margin-top: 0;">
+                    <span style="font-size: small;">剪贴板</span>
+                </td>
+                <td style="border-right:1px solid lightgray;text-align: center;padding-top: 0;margin-top: 0;">
+                    <span style="font-size: small;">字体</span>
+                </td>
+                <td style="border-right:1px solid lightgray;text-align: center;padding-top: 0;margin-top: 0;">
+                    <span style="font-size: small;">对齐方式</span>
+                </td>
+                <td style="border-right:1px solid lightgray;text-align: center;padding-top: 0;margin-top: 0;">
+                    <span style="font-size: small;">数字</span>
+                </td>
+                <td style="border-right:1px solid lightgray;text-align: center;padding-top: 0;margin-top: 0;">
+                    <span style="font-size: small;">其他</span>
+                </td>
+                <td style="border-right:1px solid lightgray;text-align: center;padding-top: 0;margin-top: 0;">
+                    <span style="font-size: small;">...</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="formulaBar"  class="noprint">
+        <table cellspacing="0" cellpadding="5" width="100%" style="table-layout: fixed;">
+            <tr>
+                <td width="180px">
+                    <div style="position:relative;">
+                        <select id="cellPos" style="height:22px;text-align: center;width:180px;">
+                            <option selected="selected" value="cellValue" style="text-align:center;">A1</option>
+                        </select>
+                        <input id="cellPos_input" name="cellPos_input" class="iInput" type="text">
+                        <select id="functionItems" style="display:none;height:22px;text-align:center;width:180px;">
+                            <option selected="selected" value="BBfunction" style="text-align:center;">报表函数</option>
+                            <option value="KMJEfunction" style="text-align:center;">科目金额函数</option>
+                            <option value="XMJEfunction" style="text-align:center;">项目金额函数</option>
+                            <option value="WLJEfunction" style="text-align:center;">往来金额函数</option>
+                        </select>
+                    </div>
+                </td>
+                <td width="20px" style="vertical-align:middle">
+                    <button id="cellContConfm" title="内容确定/保存公式" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/tick.png);height: 16px;width: 16px;"></button>
+                </td>
+                <td width="20px" style="vertical-align:middle">
+                    <button id="cellContdel" title="内容清空/清空公式" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/cross.png);height: 16px;width: 16px;"></button>
+                </td>
+                <td width="20px" style="vertical-align:middle">
+                    <button id="formulaTip" title="公式提示" style="background-color:transparent;border: 0px;background-image: url(../../CSS/excelIcon/equals.png);height:16px;width:16px;"></button>
+                </td>
+                <td>
+                    <input id="formulabox" style="width:100%;border:1px solid lightgray;" type="text" width="100%"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="excelContent" style="position:relative;left:0px;top:0px;width:99%;border:1px solid lightgray;background-color:#E5E5E5;overflow:scroll;position:absolute;top:145px;bottom:0px;left: 8px;">
+    <div id="functionBox" style="display:none;position: absolute;left: 1px;top: 1px;z-index:100;width:500px;background: white;padding:3px 5px;border:1px solid #95B8E7;">
+        <div style="border:1px solid lightgray;width:100%;">
+            <div style="background:#E0ECFF;padding-left: 2px">
+                <span class="BBview">BB（报表函数）</span>
+                <span class="KMJEview" style="display: none;">KMJE（科目金额函数）</span>
+                <span class="XMJEview" style="display: none;">XMJE（项目金额函数）</span>
+                <span class="WLJEview" style="display: none;">WLJE（往来金额函数）</span>
+                <span id="rptDateNow" style="float:right;"></span>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>会计年度</td>
+                        <td>
+                            <input id="BBFunctionYear" style="width: 160px;">
+                        </td>
+                        <td>会计月份</td>
+                        <td>
+                            <input id="BBFunctionMonth" style="width: 160px;">
+                        </td>
+                    </tr>
+                    <tr class="BBview">
+                        <td>报表编号</td>
+                        <td>
+                            <input id="BBNum" style="width: 160px;">
+                        </td>
+                        <td>单元格范围</td>
+                        <td>
+                            <input id="BBCellRange" style="width: 160px;">
+                        </td>
+                    </tr>
+                    <tr class="KMJEview" style="display: none;">
+                        <td>科目编号</td>
+                        <td>
+                            <input id="KMJEClassNum" style="width: 160px;">
+                        </td>
+                        <td>取数对象</td>
+                        <td>
+                            <input id="KMJENumObj" style="width: 160px;">
+                        </td>
+                    </tr>
+                    <tr class="KMJEview" style="display: none;">
+                        <td>取数条件</td>
+                        <td>
+                            <input id="KMJENumFactor" style="width: 160px;">
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="XMJEview" style="display: none;">
+                        <td>科目编号</td>
+                        <td>
+                            <input id="XMJEClassNum" style="width: 160px;">
+                        </td>
+                        <td>专项项目编号</td>
+                        <td>
+                            <input id="XMJESubNum" style="width: 160px;">
+                        </td>
+                    </tr>
+                    <tr class="XMJEview" style="display: none;">
+                        <td>取数对象</td>
+                        <td>
+                            <input id="XMJENumObj" style="width: 160px;">
+                        </td>
+                        <td>取数条件</td>
+                        <td>
+                            <input id="XMJENumFactor" style="width: 160px;">
+                        </td>
+                    </tr>
+                    <tr class="WLJEview" style="display: none;">
+                        <td>科目编号</td>
+                        <td>
+                            <input id="WLJEClassNum" style="width: 160px;">
+                        </td>
+                        <td>往来单位编号</td>
+                        <td>
+                            <input id="WLJEUnitNum" style="width: 160px;">
+                        </td>
+                    </tr>
+                    <tr class="WLJEview" style="display: none;">
+                        <td>取数对象</td>
+                        <td>
+                            <input id="WLJENumObj" style="width: 160px;">
+                        </td>
+                        <td>取数条件</td>
+                        <td>
+                            <input id="WLJENumFactor" style="width: 160px;">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="margin-bottom:3px;">
+            <p class="BBview" style="white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                < 报表类 > < 报表函数 > < BB ( [年,月,] [报表编号,] 单元格范围 ) >
+            </p>
+            <p class="KMJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                < 科目类 > < 科目金额函数 > < KMJE ( [年,月,] 科目编号,取数对象式 [,条件] ) >
+            </p>
+            <p class="XMJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                < 专项核算类 > < 项目金额函数 > < KMJE ( [年,月,] 科目编号,专项项目编号,取数对象 [,条件] ) >
+            </p>
+            <p class="WLJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                < 往来单位类 > < 往来金额函数 > < WLJE ( [年,月,] 科目编号,往来单位编号,取数对象 [,条件] ) >
+            </p>
+        </div>
+        <div id="functionDescription" style="display: none;border:1px solid lightgray;width:100%;margin-bottom:3px;">
+            <div style="background:#E0ECFF;">
+                &nbsp;&nbsp;
+                <span id="BBFunctionName">函数说明</span>
+            </div>
+            <div>
+                <p class="BBview" style="white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    直接从报表管理系统中取数，取出某年、某月、某报表、某单元格的数据。
+                </p>
+                <p class="KMJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    直接从报表管理系统中取出对应年月、对应科目编号下符合条件的取数对象数据。
+                </p>
+                <p class="XMJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    直接从报表管理系统中取出对应年月、对应科目编号及专项核算编号1、2下符合条件的取数对象数据。
+                </p>
+                <p class="WLJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    直接从报表管理系统中取出对应年月、对应科目编号及往来单位编号下符合条件的取数对象数据。由于往来单位的分类（往来类别）是分级结构,因此如果指定非明细级的类别,应使用like比较符,例如WLLB like ‘08%’。
+                </p>
+            </div>
+        </div>
+        <div id="parameterDescription" style="display: none;border:1px solid lightgray;width:100%;margin-bottom:3px;">
+            <div style="background:#E0ECFF;">
+                &nbsp;&nbsp;
+                <span id="BBParameterName">参数说明</span>
+            </div>
+            <div>
+                <p class="BBview" style="white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    [ ]为可选项，其中年月必须同时存在或缺省。年月缺省默认为当前年月 (数据库存储为0)，可以用绝对数，如：2002，也可以用相对数，如 -1 表示上年或上月，0 默认为本月。报表编号缺省默认为当前报表。单元格范围形式如：A12或者A3:B5。
+                </p>
+                <p class="KMJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    [ ]为可选项，其中年月必须同时存在或缺省。年月缺省默认为当前年月 (数据库存储为0)，可以用绝对数，如：2002，也可以用相对数，如 -1 表示上年或上月，0 默认为本月。
+                </p>
+                <p class="XMJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    [ ]为可选项，其中年月必须同时存在或缺省。年月缺省默认为当前年月 (数据库存储为0)，可以用绝对数，如：2002，也可以用相对数，如 -1 表示上年或上月，0 默认为本月。
+                </p>
+                <p class="WLJEview" style="display: none;white-space:normal;width:500px;word-break:break-all;margin: 2px 2px;">
+                    [ ]为可选项，其中年月必须同时存在或缺省。年月缺省默认为当前年月 (数据库存储为0)，可以用绝对数，如：2002，也可以用相对数，如 -1 表示上年或上月，0 默认为本月。
+                </p>
+            </div>
+        </div>
+        <div>
+            <select id="operatorItems" style="width: 20%;">
+                <option value="err" selected="selected">运算符</option>
+                <option value="BBsum">SUM</option>
+                <option value="BBadd">+</option>
+                <option value="BBminus">-</option>
+                <option value="BBmultiply">*</option>
+                <option value="BBdivide">/</option>
+                <option value="BBleft">(</option>
+                <option value="BBright">)</option>
+            </select>
+            <input style="float: right;margin: 0px 5px;" type="button" id="exitFunction" value="退出"/>
+            <input style="float: right;margin: 0px 5px;" type="button" id="FunctionDetail" value="详细说明>>"/>
+            <input style="float: right;margin: 0px 5px;" type="button" id="saveFunction" value="保存公式" />
+            <input title="追加函数至公式编辑框当前光标处，默认追加运算符是+" style="float: right;margin: 0px 5px;" type="button" id="addFunction" value="追加函数" />
+        </div>
+    </div>
+
+    <!--startprint-->
+    <div id="data_box"></div>
+    <!--endprint-->
+</div>
+
+	<!-- 弹出操作框 -->
+    <div id="dlg" class="easyui-dialog" style="width:330px; height: auto; padding: 10px 20px"
+         data-options="buttons:'#dlg-buttons',title:'报表属性',closable:false">
+		<table>
+			<tr>
+				<td colspan="4"><label>报表编号：</label>
+					<input id="reportNo" name="reportNo" class="easyui-validatebox" style="width:190px;" data-options="required:true" maxlength="4" />  </td>
+			</tr>
+			<tr>
+				<td colspan="4"><label>报表名称：</label>
+					<input id="reportName" name="reportName" class="easyui-validatebox" style="width:190px;" data-options="required:true" validtype="length[1,10]" invalidMessage="有效长度为1-10"/> </td>
+			</tr>
+			<tr>
+				<td> <label>标题行数：</label></td>
+				<td>
+					<input id="titleRow" name="titleRow" class="easyui-numberspinner" style="width:60px;" data-options="value:2,min:2,precision:0"/>
+				</td>
+				<td> <label> 表头行数：</label></td>
+				<td>
+					<input id="headRow" name="headRow" class="easyui-numberspinner" style="width:60px;" data-options="value:1,min:1,precision:0"/>
+				</td>
+			</tr>
+			<tr>
+				<td> <label>表体行数：</label></td>
+				<td>
+					<input id="contentRow" name="contentRow" class="easyui-numberspinner" style="width:60px;" data-options="value:20,min:1,precision:0"/>
+				</td>
+				<td> <label>表尾行数：</label></td>
+				<td>
+					<input id="endRow" name="endRow" class="easyui-numberspinner" style="width:60px;" data-options="value:1,min:1,precision:0"/>
+				</td>
+			</tr>
+			<tr>
+				<td> <label>报表列数：</label></td>
+				<td>
+					<input id="reportCol" name="reportCol" class="easyui-numberspinner" style="width:60px;" data-options="value:4,min:3,precision:0"/>
+				</td>
+				<td> <label id="createYear_label"></label></td>
+				<td>
+					<input id="createMonth" name="createMonth" style="width:60px;"/>
+				</td>
+				</td>
+			</tr>
+		</table>
+    </div>
+    <div id="dlg-buttons">
+         <a href="#" id="newReportBt" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+         <a href="#" class="easyui-linkbutton" style="margin-right:30px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg').dialog('close');window.parent.tabsClose('#tab1');">取消</a>
+    </div>
+
+    <!--弹出会计年度操作框-->
+    <div id="dlg_BBFunctionYear" class="easyui-dialog" style="width:240px; height: auto; padding: 10px 10px;"
+         data-options="buttons:'#dlg_buttons_BBFunctionYear',title:'会计年度',closed:true">
+        <table style="border:1px solid lightgray;width: 200px;">
+            <tr>
+                <td>
+                    <label>表示方式</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="BBYear" value="relativeType" checked="checked"/>
+                    <label>相对方式(例:0为当前年度)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="BBYear" value="absoluteType"/>
+                    <label>绝对方式(例:2015)</label>
+                </td>
+            </tr>
+        </table>
+        <table style="border:1px solid lightgray;width: 200px;margin-top: 10px;">
+            <tr>
+                <td>
+                    <label>定义框</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>会计年度：</label>
+                    <input id="BBYear" name="titleRow" class="easyui-numberspinner" style="width:100px;" data-options="value:0,precision:0"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="dlg_buttons_BBFunctionYear">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="BBFunctionYear_ok();">确定</a>
+        <a href="#" class="easyui-linkbutton" style="margin-right:30px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_BBFunctionYear').dialog('close')">取消</a>
+    </div>
+    <!--弹出会计月份操作框-->
+    <div id="dlg_BBFunctionMonth" class="easyui-dialog" style="width:240px; height: auto; padding: 10px 10px"
+         data-options="buttons:'#dlg_buttons_BBFunctionMonth',title:'会计月份',closed:true">
+        <span>会计区间最大值：12</span>
+        <table style="border:1px solid lightgray;width: 200px;margin-top: 10px;">
+            <tr>
+                <td>
+                    <label>定义框</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>会计月份：</label>
+                    <input id="BBMonth" name="titleRow" class="easyui-numberspinner" style="width:100px;" data-options="value:0,min:-12,max:12,precision:0"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="dlg_buttons_BBFunctionMonth">
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="BBFunctionMonth_ok();">确定</a>
+        <a href="#" class="easyui-linkbutton" style="margin-right:30px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_BBFunctionMonth').dialog('close')">取消</a>
+    </div>
+
+    <!-- 弹出报表属性操作框 -->
+    <div id="dlg_property" class="easyui-dialog" style="width:400px; height: auto; padding: 10px 20px"
+         data-options="buttons:'#dlg-buttons_property',title:'报表属性',closed:true">
+        <div style="border:1px solid lightgrey;padding: 2px 5px;margin-bottom: 15px;">
+            <table cellpadding="2">
+                <tr>
+                    <td colspan="5"><label>报表编号：</label>
+                        <input id="property_reportNo" name="property_reportNo" style="width:252px;text-align: center;" maxlength="4" />  </td>
+                </tr>
+                <tr>
+                    <td colspan="5"><label>报表名称：</label>
+                        <input id="property_reportName" name="property_reportName" style="width:250px;text-align: center;"/> </td>
+                </tr>
+                <tr>
+                    <td> <label>标题行数：</label></td>
+                    <td>
+                        <input id="property_titleRow" name="property_titleRow" style="width:70px;"/>
+                    </td>
+                    <td style="width:35px;"></td>
+                    <td> <label>表头行数：</label></td>
+                    <td>
+                        <input id="property_headRow" name="property_headRow" style="width:70px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label>表体行数：</label></td>
+                    <td>
+                        <input id="property_contentRow" name="property_contentRow" style="width:70px;"/>
+                    </td>
+                    <td style="width:35px;"></td>
+                    <td> <label>表尾行数：</label></td>
+                    <td>
+                        <input id="property_endRow" name="property_endRow" style="width:70px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>总 行 数： </label></td>
+                    <td>
+                        <input id="property_reportRow" name="property_reportRow" style="width:70px;"/>
+                    </td>
+                    <td style="width:35px;"></td>
+                    <td> <label>报表列数：</label></td>
+                    <td>
+                        <input id="property_reportCol" name="property_reportCol" style="width:70px;"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="border:1px solid lightgrey;padding: 2px 4px;">
+            <table>
+                <tr>
+                    <td>
+                        <label>列集合：</label>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table id="col_list" style="width:210px;height: 150px;"></table>
+                    </td>
+                    <td style="padding-left:15px;">
+                        <table id="col_prop" style="width:100px;height: 150px;"></table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div id="dlg-buttons_property">
+        <a href="#" id="propertyBt" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+        <a href="#" class="easyui-linkbutton" style="margin-right:30px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_property').dialog('close');">取消</a>
+    </div>
+
+    <!-- 弹出报表编号-帮助框 -->
+    <div id="dlg_RptNos_help" class="easyui-dialog" style="width:320px; height:auto; padding: 10px 10px"
+         data-options="buttons:'#dlg_RptNos_help-buttons',title:'帮助--报表编号',closed:true,iconCls:'icon-help'">
+        <div>
+            <table id="RptNosBox_help" style="width:100%;height:350px;margin-top:10px;">
+            </table>
+        </div>
+        <div>
+            <input id="dlg_RptNos_help_searchBox" class="easyui-textbox" style="width:230px">
+            <a id="dlg_RptNos_help_search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="dg_search('#RptNosBox_help','#dlg_RptNos_help_searchBox')">查询</a>
+        </div>
+    </div>
+    <div id="dlg_RptNos_help-buttons">
+        <a href="#" id="dlg_RptNos_help_ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="dlg_RptNos_help_ok();">确定</a>
+        <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_RptNos_help').dialog('close');">取消</a>
+    </div>
+
+    <!-- 弹出专项项目编号-帮助框 -->
+    <div id="dlg_SubNum_help" class="easyui-dialog" style="width:320px; height:auto; padding: 10px 10px"
+         data-options="buttons:'#dlg_SubNum_help-buttons',title:'帮助--专项项目编号',closed:true,iconCls:'icon-help'">
+        <div>
+            <table id="SubNumBox_help" style="width:100%;height:350px;margin-top:10px;">
+            </table>
+        </div>
+        <div>
+            <input id="dlg_SubNum_help_searchBox" class="easyui-textbox" style="width:230px">
+            <a id="dlg_SubNum_help_search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="dg_search('#SubNumBox_help','#dlg_SubNum_help_searchBox')">查询</a>
+        </div>
+    </div>
+    <div id="dlg_SubNum_help-buttons">
+        <a href="#" id="dlg_SubNum_help_ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="dlg_SubNum_help_ok();">确定</a>
+        <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_SubNum_help').dialog('close');">取消</a>
+    </div>
+
+    <!-- 弹出往来单位编号-帮助框 -->
+    <div id="dlg_UnitNum_help" class="easyui-dialog" style="width:320px; height:auto; padding: 10px 10px"
+         data-options="buttons:'#dlg_UnitNum_help-buttons',title:'帮助--往来单位编号',closed:true,iconCls:'icon-help'">
+        <div>
+            <table id="UnitNumBox_help" style="width:100%;height:350px;margin-top:10px;">
+            </table>
+        </div>
+        <div>
+            <input id="dlg_UnitNum_help_searchBox" class="easyui-textbox" style="width:230px">
+            <a id="dlg_UnitNum_help_search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="dg_search('#UnitNumBox_help','#dlg_UnitNum_help_searchBox')">查询</a>
+        </div>
+    </div>
+    <div id="dlg_UnitNum_help-buttons">
+        <a href="#" id="dlg_UnitNum_help_ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="dlg_UnitNum_help_ok();">确定</a>
+        <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_UnitNum_help').dialog('close');">取消</a>
+    </div>
+
+    <!--帮助窗口，提示科目编号-->
+    <div id="helpWin" style="position:relative;">
+        <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+            <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="helpWin_searchBox" type="text"/>
+                <a id="helpWin_search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="dg_search('#itemTable','#helpWin_searchBox')">查找</a>
+            </p>
+            <p><label>上级名称:</label> <input class="easyui-textbox" style="width:295px" id="Text2" type="text"/></p>
+        </div>
+
+        <div  style="height:84%" >
+            <table id="itemTable"></table>
+        </div>
+
+    </div>
+
+    <div id="tb_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevel_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectClick()">选定</a>
+    </div>
+
+    <!-- 弹出选择取数对象-帮助框 -->
+    <div id="dlg_NumObj_help" class="easyui-dialog" style="width:320px; height:auto; padding: 10px 10px"
+         data-options="buttons:'#dlg_NumObj_help-buttons',title:'帮助--取数对象',closed:true,iconCls:'icon-help'">
+        <div>
+            <table id="NumObjBox_help" style="width:100%;height:350px;margin-top:10px;">
+            </table>
+        </div>
+        <div>
+            <input class="easyui-textbox" style="width:230px">
+            <a id="dlg_NumObj_help_search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+        </div>
+    </div>
+    <div id="dlg_NumObj_help-buttons">
+        <a href="#" id="dlg_NumObj_help_ok" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" onclick="dlg_NumObj_help_ok();">确定</a>
+        <a href="#" class="easyui-linkbutton" style="margin-right:15px" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_NumObj_help').dialog('close');">取消</a>
+    </div>
+
+    <!-- 弹出选择取数条件-帮助框 -->
+    <div id="dlg_NumFactor_help" class="easyui-dialog" style="width:550px; height:auto; padding: 10px 10px"
+         data-options="title:'帮助--取数条件',closed:true,iconCls:'icon-help'">
+        <table style="height:200px;">
+            <tr>
+                <td rowspan="2">
+                    <table id="NumFactorBox_help" style="width:450px;height:200px;margin-top:10px;">
+                    </table>
+                </td>
+                <td style="vertical-align: top;">
+                    <a id="dlg_NumFactor_help_add" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-list-add-below'" style="margin-bottom: 5px" onclick="appendRow();">追加</a><br>
+                    <a id="dlg_NumFactor_help_insert" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-list-add'" style="margin-bottom: 5px" onclick="insertRow();">插入</a><br>
+                    <a id="dlg_NumFactor_help_delete" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-list-delete'" onclick="deleteRow();">删除</a><br>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: bottom;">
+                    <a id="dlg_NumFactor_help_ok" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="margin-bottom: 5px" onclick="NumFactorBox_help_ok();">确认</a><br>
+                    <a id="dlg_NumFactor_help_cancle" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#dlg_NumFactor_help').dialog('close');">取消</a><br>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

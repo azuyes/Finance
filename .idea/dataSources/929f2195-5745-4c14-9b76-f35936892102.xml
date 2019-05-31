@@ -1,0 +1,2713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ssh_finance@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="ssh_finance">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="financialmanagement"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="jeasyui"/>
+    <schema id="6" parent="1" name="mybatis"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="sqltest"/>
+    <schema id="10" parent="1" name="ssm_crud"/>
+    <schema id="11" parent="1" name="thinkphp"/>
+    <table id="12" parent="2" name="lcbbgs"/>
+    <table id="13" parent="2" name="lcbzd"/>
+    <table id="14" parent="2" name="lcdyzd"/>
+    <table id="15" parent="2" name="lchzd">
+      <Comment>���ֵ�</Comment>
+    </table>
+    <table id="16" parent="2" name="lclzd">
+      <Comment>���ֵ�</Comment>
+    </table>
+    <table id="17" parent="2" name="lsconf"/>
+    <table id="18" parent="2" name="lsgnbh"/>
+    <table id="19" parent="2" name="lshsfl"/>
+    <table id="20" parent="2" name="lshsje"/>
+    <table id="21" parent="2" name="lshspz"/>
+    <table id="22" parent="2" name="lshssl"/>
+    <table id="23" parent="2" name="lshszd"/>
+    <table id="24" parent="2" name="lskmsl"/>
+    <table id="25" parent="2" name="lskmzd"/>
+    <table id="26" parent="2" name="lspass"/>
+    <table id="27" parent="2" name="lspzbh"/>
+    <table id="28" parent="2" name="lspzk1"/>
+    <table id="29" parent="2" name="lsszzd">
+      <Comment>��ӡ��������</Comment>
+    </table>
+    <table id="30" parent="2" name="lsusgn"/>
+    <table id="31" parent="2" name="lswldw"/>
+    <table id="32" parent="2" name="lswlfl"/>
+    <table id="33" parent="2" name="lswlje">
+      <Comment>�������</Comment>
+    </table>
+    <table id="34" parent="2" name="lswlsl">
+      <Comment>��������</Comment>
+    </table>
+    <table id="35" parent="2" name="lswlys"/>
+    <table id="36" parent="2" name="lsyspz">
+      <Comment>�ռ��˿�Ŀ</Comment>
+    </table>
+    <table id="37" parent="2" name="lszcdy"/>
+    <table id="38" parent="2" name="lszczd"/>
+    <column id="39" parent="12" name="BBGS_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="40" parent="12" name="RptNo">
+      <Position>2</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="41" parent="12" name="RptDate">
+      <Position>3</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="42" parent="12" name="BBZD_GS">
+      <Position>4</Position>
+      <DataType>longblob|0</DataType>
+    </column>
+    <column id="43" parent="12" name="BBZD_XH">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="44" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>BBGS_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="13" name="RptOrde">
+      <Position>1</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="46" parent="13" name="RptNo">
+      <Position>2</Position>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="13" name="RptDate">
+      <Position>3</Position>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="13" name="RptName">
+      <Position>4</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="49" parent="13" name="TitleRules">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="50" parent="13" name="HeadRules">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="51" parent="13" name="BodyRules">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="52" parent="13" name="TotalRules">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="53" parent="13" name="RptCol">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="54" parent="13" name="FixRow">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="55" parent="13" name="FixCol">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="56" parent="13" name="ReportNo">
+      <Position>12</Position>
+      <DataType>varchar(4)|0</DataType>
+    </column>
+    <column id="57" parent="13" name="BBZD_FCBZ">
+      <Position>13</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="58" parent="13" name="BBZD_NB">
+      <Position>14</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="59" parent="13" name="BBZD_XF">
+      <Position>15</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="60" parent="13" name="BBZD_GS">
+      <Position>16</Position>
+      <DataType>longblob|0</DataType>
+    </column>
+    <column id="61" parent="13" name="BBZD_SBXZ">
+      <Position>17</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="62" parent="13" name="BBZD_LX">
+      <Position>18</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="63" parent="13" name="TZZD_OEDE">
+      <Position>19</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="64" parent="13" name="BBZD_FIXRN">
+      <Position>20</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="65" parent="13" name="BBZD_FIXCN">
+      <Position>21</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="66" parent="13" name="BBZD_SPLIT">
+      <Position>22</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="67" parent="13" name="BBZD_USE">
+      <Position>23</Position>
+      <DataType>decimal(1)|0</DataType>
+    </column>
+    <key id="68" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>RptNo
+RptDate</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="69" parent="14" name="CDYZD_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="70" parent="14" name="LCB_RptNo">
+      <Position>2</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="71" parent="14" name="LCB_RptDate">
+      <Position>3</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="72" parent="14" name="RptNo">
+      <Position>4</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="73" parent="14" name="RptDate">
+      <Position>5</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="74" parent="14" name="CellNo">
+      <Position>6</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="75" parent="14" name="RowInfoNo">
+      <Position>7</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="76" parent="14" name="ColInfoNo">
+      <Position>8</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="77" parent="14" name="CellType">
+      <Position>9</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="78" parent="14" name="CellContent">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="79" parent="14" name="CellData">
+      <Position>11</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="80" parent="14" name="Formula">
+      <Position>12</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="81" parent="14" name="CellWidth">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="82" parent="14" name="CellHeight">
+      <Position>14</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="83" parent="14" name="FontSize">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="84" parent="14" name="AutoEnter">
+      <Position>16</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="85" parent="14" name="DYZD_SFTZ">
+      <Position>17</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="86" parent="14" name="DYZD_SFBH">
+      <Position>18</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="87" parent="14" name="DYZD_HOOFFSET">
+      <Position>19</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="88" parent="14" name="DYZD_LOOFFSET">
+      <Position>20</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="89" parent="14" name="DYZD_GSX1">
+      <Position>21</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="90" parent="14" name="DYZD_GSBZ">
+      <Position>22</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="91" parent="14" name="DYZD_GSJB">
+      <Position>23</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="92" parent="14" name="DYZD_GSX2">
+      <Position>24</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="93" parent="14" name="DYZD_GSX3">
+      <Position>25</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="94" parent="14" name="DYZD_GSX4">
+      <Position>26</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="95" parent="14" name="DYZD_GSX5">
+      <Position>27</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="96" parent="14" name="H_BZBM">
+      <Position>28</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="97" parent="14" name="L_BZBM">
+      <Position>29</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="98" parent="14" name="DYZD_DEC">
+      <Position>30</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="99" parent="14" name="FK_LCDYZD_LCBZD_R">
+      <ColNames>LCB_RptNo
+LCB_RptDate</ColNames>
+    </index>
+    <key id="100" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CDYZD_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="101" parent="14" name="FK_LCDYZD_LCBZD_R">
+      <ColNames>LCB_RptNo
+LCB_RptDate</ColNames>
+      <RefSchemaName>ssh_finance</RefSchemaName>
+      <RefTableName>lcbzd</RefTableName>
+      <RefColNames>RptNo
+RptDate</RefColNames>
+    </foreign-key>
+    <column id="102" parent="15" name="CHZD_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="103" parent="15" name="RptDate">
+      <Position>2</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="104" parent="15" name="RptNo">
+      <Position>3</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="105" parent="15" name="RowInfoNo">
+      <Position>4</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="106" parent="15" name="HZD_ZB">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="107" parent="15" name="BZBN_BM">
+      <Position>6</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <key id="108" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CHZD_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="109" parent="16" name="CLZD_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="110" parent="16" name="RptNo">
+      <Position>2</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="111" parent="16" name="RptDate">
+      <Position>3</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="112" parent="16" name="ColInfoNo">
+      <Position>4</Position>
+      <DataType>varchar(9)|0</DataType>
+    </column>
+    <column id="113" parent="16" name="ColName">
+      <Position>5</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="114" parent="16" name="TotalCol">
+      <Position>6</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="115" parent="16" name="TextCol">
+      <Position>7</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="116" parent="16" name="LZD_PX">
+      <Position>8</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="117" parent="16" name="LZD_ZB">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="118" parent="16" name="BZBM_BM">
+      <Position>10</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="119" parent="16" name="LZD_SZ">
+      <Position>11</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <column id="120" parent="16" name="LZD_TZ">
+      <Position>12</Position>
+      <DataType>varchar(1)|0</DataType>
+    </column>
+    <key id="121" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CLZD_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="122" parent="17" name="Conf_Key">
+      <Position>1</Position>
+      <DataType>char(16)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="123" parent="17" name="Conf_Value">
+      <Position>2</Position>
+      <DataType>char(30)|0</DataType>
+    </column>
+    <column id="124" parent="17" name="Conf_Note">
+      <Position>3</Position>
+      <DataType>char(14)|0</DataType>
+    </column>
+    <key id="125" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Conf_Key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="126" parent="18" name="MenuNo">
+      <Position>1</Position>
+      <DataType>varchar(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="127" parent="18" name="MenuName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="128" parent="18" name="SubSysNo">
+      <Position>3</Position>
+      <DataType>varchar(4)|0</DataType>
+    </column>
+    <column id="129" parent="18" name="F_FPCT">
+      <Position>4</Position>
+      <DataType>char(6)|0</DataType>
+    </column>
+    <key id="130" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MenuNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="131" parent="19" name="CatNo">
+      <Position>1</Position>
+      <DataType>char(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="132" parent="19" name="CatName">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <key id="133" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CatNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="134" parent="20" name="LSK_ItemNo">
+      <Position>1</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="135" parent="20" name="HSJE_AutoId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="136" parent="20" name="ItemNo">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="137" parent="20" name="SpNo1">
+      <Position>4</Position>
+      <DataType>char(12)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="138" parent="20" name="SpNo2">
+      <Position>5</Position>
+      <DataType>char(12)|0</DataType>
+    </column>
+    <column id="139" parent="20" name="Balance">
+      <Position>6</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="140" parent="20" name="DebitMoney">
+      <Position>7</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="141" parent="20" name="CreditMoney">
+      <Position>8</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="142" parent="20" name="SupMoney">
+      <Position>9</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="143" parent="20" name="DebitMoneySup">
+      <Position>10</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="144" parent="20" name="CreditMoneySup">
+      <Position>11</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="145" parent="20" name="DebitMoneyAcm">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="146" parent="20" name="CreditMoneyAcm">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="147" parent="20" name="DebitMoney01">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="148" parent="20" name="CreditMoney01">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="149" parent="20" name="Balance01">
+      <Position>16</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="150" parent="20" name="DebitMoney02">
+      <Position>17</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="151" parent="20" name="CreditMoney02">
+      <Position>18</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="152" parent="20" name="Balance02">
+      <Position>19</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="153" parent="20" name="DebitMoney03">
+      <Position>20</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="154" parent="20" name="CreditMoney03">
+      <Position>21</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="155" parent="20" name="Balance03">
+      <Position>22</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="156" parent="20" name="DebitMoney04">
+      <Position>23</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="157" parent="20" name="CreditMoney04">
+      <Position>24</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="158" parent="20" name="Balance04">
+      <Position>25</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="159" parent="20" name="DebitMoney05">
+      <Position>26</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="160" parent="20" name="CreditMoney05">
+      <Position>27</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="161" parent="20" name="Balance05">
+      <Position>28</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="162" parent="20" name="DebitMoney06">
+      <Position>29</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="163" parent="20" name="CreditMoney06">
+      <Position>30</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="164" parent="20" name="Balance06">
+      <Position>31</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="165" parent="20" name="DebitMoney07">
+      <Position>32</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="166" parent="20" name="CreditMoney07">
+      <Position>33</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="167" parent="20" name="Balance07">
+      <Position>34</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="168" parent="20" name="DebitMoney08">
+      <Position>35</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="169" parent="20" name="CreditMoney08">
+      <Position>36</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="170" parent="20" name="Balance08">
+      <Position>37</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="171" parent="20" name="DebitMoney09">
+      <Position>38</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="172" parent="20" name="CreditMoney09">
+      <Position>39</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="173" parent="20" name="Balance09">
+      <Position>40</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="174" parent="20" name="DebitMoney10">
+      <Position>41</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="175" parent="20" name="CreditMoney10">
+      <Position>42</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="176" parent="20" name="Balance10">
+      <Position>43</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="177" parent="20" name="DebitMoney11">
+      <Position>44</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="178" parent="20" name="CreditMoney11">
+      <Position>45</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="179" parent="20" name="Balance11">
+      <Position>46</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="180" parent="20" name="DebitMoney12">
+      <Position>47</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="181" parent="20" name="CreditMoney12">
+      <Position>48</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="182" parent="20" name="Balance12">
+      <Position>49</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="183" parent="20" name="F_JF13">
+      <Position>50</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="184" parent="20" name="F_DF13">
+      <Position>51</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="185" parent="20" name="F_YE13">
+      <Position>52</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="186" parent="20" name="F_YSSX">
+      <Position>53</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="187" parent="20" name="F_YSXX">
+      <Position>54</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="188" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>HSJE_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="189" parent="21" name="HSPZ_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="190" parent="21" name="LSP_InputDate">
+      <Position>2</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="191" parent="21" name="LSP_VoucherNo">
+      <Position>3</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="192" parent="21" name="LSP_EntryNo">
+      <Position>4</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="193" parent="21" name="InputDate">
+      <Position>5</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="194" parent="21" name="VoucherNo">
+      <Position>6</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="195" parent="21" name="EntryNo">
+      <Position>7</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="196" parent="21" name="ItemNo">
+      <Position>8</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="197" parent="21" name="SpNo1">
+      <Position>9</Position>
+      <DataType>char(12)|0</DataType>
+    </column>
+    <column id="198" parent="21" name="SpNo2">
+      <Position>10</Position>
+      <DataType>char(12)|0</DataType>
+    </column>
+    <column id="199" parent="21" name="BkpDirection">
+      <Position>11</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="200" parent="21" name="Money">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="201" parent="21" name="Qty">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="202" parent="21" name="F_WB">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="203" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>HSPZ_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="204" parent="22" name="LSK_ItemNo">
+      <Position>1</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="205" parent="22" name="HSSL_AutoId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="206" parent="22" name="ItemNo">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="207" parent="22" name="SpNo1">
+      <Position>4</Position>
+      <DataType>char(12)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="208" parent="22" name="SpNo2">
+      <Position>5</Position>
+      <DataType>char(12)|0</DataType>
+    </column>
+    <column id="209" parent="22" name="BudQty">
+      <Position>6</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="210" parent="22" name="LeftQty">
+      <Position>7</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="211" parent="22" name="UnitPrice">
+      <Position>8</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="212" parent="22" name="DebitQty">
+      <Position>9</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="213" parent="22" name="CreditQty">
+      <Position>10</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="214" parent="22" name="SupQty">
+      <Position>11</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="215" parent="22" name="DebitQtySup">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="216" parent="22" name="CreditQtySup">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="217" parent="22" name="DebitQtyAcm">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="218" parent="22" name="CreditQtyAcm">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="219" parent="22" name="DebitQty01">
+      <Position>16</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="220" parent="22" name="CreditQty01">
+      <Position>17</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="221" parent="22" name="LeftQty01">
+      <Position>18</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="222" parent="22" name="DebitQty02">
+      <Position>19</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="223" parent="22" name="CreditQty02">
+      <Position>20</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="224" parent="22" name="LeftQty02">
+      <Position>21</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="225" parent="22" name="DebitQty03">
+      <Position>22</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="226" parent="22" name="CreditQty03">
+      <Position>23</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="227" parent="22" name="LeftQty03">
+      <Position>24</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="228" parent="22" name="DebitQty04">
+      <Position>25</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="229" parent="22" name="CreditQty04">
+      <Position>26</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="230" parent="22" name="LeftQty04">
+      <Position>27</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="231" parent="22" name="DebitQty05">
+      <Position>28</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="232" parent="22" name="CreditQty05">
+      <Position>29</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="233" parent="22" name="LeftQty05">
+      <Position>30</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="234" parent="22" name="DebitQty06">
+      <Position>31</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="235" parent="22" name="CreditQty06">
+      <Position>32</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="236" parent="22" name="LeftQty06">
+      <Position>33</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="237" parent="22" name="DebitQty07">
+      <Position>34</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="238" parent="22" name="CreditQty07">
+      <Position>35</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="239" parent="22" name="LeftQty07">
+      <Position>36</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="240" parent="22" name="DebitQty08">
+      <Position>37</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="241" parent="22" name="CreditQty08">
+      <Position>38</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="242" parent="22" name="LeftQty08">
+      <Position>39</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="243" parent="22" name="DebitQty09">
+      <Position>40</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="244" parent="22" name="CreditQty09">
+      <Position>41</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="245" parent="22" name="LeftQty09">
+      <Position>42</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="246" parent="22" name="DebitQty10">
+      <Position>43</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="247" parent="22" name="CreditQty10">
+      <Position>44</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="248" parent="22" name="LeftQty10">
+      <Position>45</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="249" parent="22" name="DebitQty11">
+      <Position>46</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="250" parent="22" name="CreditQty11">
+      <Position>47</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="251" parent="22" name="LeftQty11">
+      <Position>48</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="252" parent="22" name="DebitQty12">
+      <Position>49</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="253" parent="22" name="CreditQty12">
+      <Position>50</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="254" parent="22" name="LeftQty12">
+      <Position>51</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="255" parent="22" name="F_JS13">
+      <Position>52</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="256" parent="22" name="F_DS13">
+      <Position>53</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="257" parent="22" name="F_SL13">
+      <Position>54</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="258" parent="22" name="F_YSXL">
+      <Position>55</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="259" parent="22" name="F_YSSX">
+      <Position>56</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="260" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>HSSL_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="261" parent="23" name="LSH_CatNo">
+      <Position>1</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="262" parent="23" name="HSZD_AutoId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="263" parent="23" name="SpNo">
+      <Position>3</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="264" parent="23" name="SpLevel">
+      <Position>4</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="265" parent="23" name="FinLevel">
+      <Position>5</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="266" parent="23" name="SpName">
+      <Position>6</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="267" parent="23" name="CatNo">
+      <Position>7</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="268" parent="23" name="ItemNo">
+      <Position>8</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="269" parent="23" name="F_WBBH">
+      <Position>9</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="270" parent="23" name="F_BZLB">
+      <Position>10</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="271" parent="23" name="F_BZBM">
+      <Position>11</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="272" parent="23" name="F_SYBH">
+      <Position>12</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="273" parent="23" name="F_FJ01">
+      <Position>13</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="274" parent="23" name="F_FJ02">
+      <Position>14</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="275" parent="23" name="F_FJ03">
+      <Position>15</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="276" parent="23" name="F_FJ04">
+      <Position>16</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="277" parent="23" name="F_FJ05">
+      <Position>17</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="278" parent="23" name="F_FJ06">
+      <Position>18</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="279" parent="23" name="F_FJ07">
+      <Position>19</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="280" parent="23" name="F_FJ08">
+      <Position>20</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="281" parent="23" name="F_FJ09">
+      <Position>21</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="282" parent="23" name="F_FJ10">
+      <Position>22</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="283" parent="23" name="F_FJ11">
+      <Position>23</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="284" parent="23" name="F_FJ12">
+      <Position>24</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="285" parent="23" name="F_FJ13">
+      <Position>25</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="286" parent="23" name="F_FJ14">
+      <Position>26</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="287" parent="23" name="F_FJ15">
+      <Position>27</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="288" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>HSZD_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="289" parent="24" name="KMSL_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="290" parent="24" name="LSK_ItemNo">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="291" parent="24" name="ItemNo">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="292" parent="24" name="Head1">
+      <Position>4</Position>
+      <DataType>varchar(14)|0</DataType>
+    </column>
+    <column id="293" parent="24" name="Head2">
+      <Position>5</Position>
+      <DataType>varchar(14)|0</DataType>
+    </column>
+    <column id="294" parent="24" name="Head3">
+      <Position>6</Position>
+      <DataType>varchar(14)|0</DataType>
+    </column>
+    <column id="295" parent="24" name="Head4">
+      <Position>7</Position>
+      <DataType>varchar(14)|0</DataType>
+    </column>
+    <column id="296" parent="24" name="Head5">
+      <Position>8</Position>
+      <DataType>varchar(14)|0</DataType>
+    </column>
+    <column id="297" parent="24" name="Head6">
+      <Position>9</Position>
+      <DataType>varchar(14)|0</DataType>
+    </column>
+    <column id="298" parent="24" name="BudQty">
+      <Position>10</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="299" parent="24" name="LeftQty">
+      <Position>11</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="300" parent="24" name="UnitPrice">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="301" parent="24" name="DebitQty">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="302" parent="24" name="CreditQty">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="303" parent="24" name="SupQty">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="304" parent="24" name="DebitQtySup">
+      <Position>16</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="305" parent="24" name="CreditQtySup">
+      <Position>17</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="306" parent="24" name="DebitMoneyAcm">
+      <Position>18</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="307" parent="24" name="CreditMoneyAcm">
+      <Position>19</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="308" parent="24" name="DebitQty01">
+      <Position>20</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="309" parent="24" name="CreditQty01">
+      <Position>21</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="310" parent="24" name="LeftQty01">
+      <Position>22</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="311" parent="24" name="DebitQty02">
+      <Position>23</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="312" parent="24" name="CreditQty02">
+      <Position>24</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="313" parent="24" name="LeftQty02">
+      <Position>25</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="314" parent="24" name="DebitQty03">
+      <Position>26</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="315" parent="24" name="CreditQty03">
+      <Position>27</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="316" parent="24" name="LeftQty03">
+      <Position>28</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="317" parent="24" name="DebitQty04">
+      <Position>29</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="318" parent="24" name="CreditQty04">
+      <Position>30</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="319" parent="24" name="LeftQty04">
+      <Position>31</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="320" parent="24" name="DebitQty05">
+      <Position>32</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="321" parent="24" name="CreditQty05">
+      <Position>33</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="322" parent="24" name="LeftQty05">
+      <Position>34</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="323" parent="24" name="DebitQty06">
+      <Position>35</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="324" parent="24" name="CreditQty06">
+      <Position>36</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="325" parent="24" name="LeftQty06">
+      <Position>37</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="326" parent="24" name="DebitQty07">
+      <Position>38</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="327" parent="24" name="CreditQty07">
+      <Position>39</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="328" parent="24" name="LeftQty07">
+      <Position>40</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="329" parent="24" name="DebitQty08">
+      <Position>41</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="330" parent="24" name="CreditQty08">
+      <Position>42</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="331" parent="24" name="LeftQty08">
+      <Position>43</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="332" parent="24" name="DebitQty09">
+      <Position>44</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="333" parent="24" name="CreditQty09">
+      <Position>45</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="334" parent="24" name="LeftQty09">
+      <Position>46</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="335" parent="24" name="DebitQty10">
+      <Position>47</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="336" parent="24" name="CreditQty10">
+      <Position>48</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="337" parent="24" name="LeftQty10">
+      <Position>49</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="338" parent="24" name="DebitQty11">
+      <Position>50</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="339" parent="24" name="CreditQty11">
+      <Position>51</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="340" parent="24" name="LeftQty11">
+      <Position>52</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="341" parent="24" name="DebitQty12">
+      <Position>53</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="342" parent="24" name="CreditQty12">
+      <Position>54</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="343" parent="24" name="LeftQty12">
+      <Position>55</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="344" parent="24" name="F_YSXL">
+      <Position>56</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="345" parent="24" name="F_DS13">
+      <Position>57</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="346" parent="24" name="F_JS13">
+      <Position>58</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="347" parent="24" name="F_SL13">
+      <Position>59</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="348" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>KMSL_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="349" parent="25" name="Item">
+      <Position>1</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="350" parent="25" name="ItemNo">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="351" parent="25" name="ItemName">
+      <Position>3</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="352" parent="25" name="Ele">
+      <Position>4</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="353" parent="25" name="AccType">
+      <Position>5</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="354" parent="25" name="SpType">
+      <Position>6</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="355" parent="25" name="Exchang">
+      <Position>7</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="356" parent="25" name="SupAcc1">
+      <Position>8</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="357" parent="25" name="SupAcc2">
+      <Position>9</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="358" parent="25" name="Journal">
+      <Position>10</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="359" parent="25" name="FinLevel">
+      <Position>11</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="360" parent="25" name="Balance">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="361" parent="25" name="DebitMoney">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="362" parent="25" name="CreditMoney">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="363" parent="25" name="SupMoney">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="364" parent="25" name="DebitMoneySup">
+      <Position>16</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="365" parent="25" name="CreditMoneySup">
+      <Position>17</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="366" parent="25" name="DebitMoneyAcm">
+      <Position>18</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="367" parent="25" name="CreditMoneyAcm">
+      <Position>19</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="368" parent="25" name="DebitMoney01">
+      <Position>20</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="369" parent="25" name="CreditMoney01">
+      <Position>21</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="370" parent="25" name="Balance01">
+      <Position>22</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="371" parent="25" name="DebitMoney02">
+      <Position>23</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="372" parent="25" name="CreditMoney02">
+      <Position>24</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="373" parent="25" name="Balance02">
+      <Position>25</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="374" parent="25" name="DebitMoney03">
+      <Position>26</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="375" parent="25" name="CreditMoney03">
+      <Position>27</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="376" parent="25" name="Balance03">
+      <Position>28</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="377" parent="25" name="DebitMoney04">
+      <Position>29</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="378" parent="25" name="CreditMoney04">
+      <Position>30</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="379" parent="25" name="Balance04">
+      <Position>31</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="380" parent="25" name="DebitMoney05">
+      <Position>32</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="381" parent="25" name="CreditMoney05">
+      <Position>33</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="382" parent="25" name="Balance05">
+      <Position>34</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="383" parent="25" name="DebitMoney06">
+      <Position>35</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="384" parent="25" name="CreditMoney06">
+      <Position>36</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="385" parent="25" name="Balance06">
+      <Position>37</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="386" parent="25" name="DebitMoney07">
+      <Position>38</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="387" parent="25" name="CreditMoney07">
+      <Position>39</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="388" parent="25" name="Balance07">
+      <Position>40</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="389" parent="25" name="DebitMoney08">
+      <Position>41</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="390" parent="25" name="CreditMoney08">
+      <Position>42</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="391" parent="25" name="Balance08">
+      <Position>43</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="392" parent="25" name="DebitMoney09">
+      <Position>44</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="393" parent="25" name="CreditMoney09">
+      <Position>45</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="394" parent="25" name="Balance09">
+      <Position>46</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="395" parent="25" name="DebitMoney10">
+      <Position>47</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="396" parent="25" name="CreditMoney10">
+      <Position>48</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="397" parent="25" name="Balance10">
+      <Position>49</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="398" parent="25" name="DebitMoney11">
+      <Position>50</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="399" parent="25" name="CreditMoney11">
+      <Position>51</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="400" parent="25" name="Balance11">
+      <Position>52</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="401" parent="25" name="DebitMoney12">
+      <Position>53</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="402" parent="25" name="CreditMoney12">
+      <Position>54</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="403" parent="25" name="Balance12">
+      <Position>55</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="404" parent="25" name="F_KZJM">
+      <Position>56</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="405" parent="25" name="F_KJQJ">
+      <Position>57</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="406" parent="25" name="F_DZ">
+      <Position>58</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="407" parent="25" name="F_DZOK">
+      <Position>59</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="408" parent="25" name="F_PZSY">
+      <Position>60</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="409" parent="25" name="F_DYKM">
+      <Position>61</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="410" parent="25" name="F_PJMC">
+      <Position>62</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="411" parent="25" name="F_SJLY">
+      <Position>63</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="412" parent="25" name="F_YSSX">
+      <Position>64</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="413" parent="25" name="F_YSXX">
+      <Position>65</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="414" parent="25" name="F_DF13">
+      <Position>66</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="415" parent="25" name="F_JF13">
+      <Position>67</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="416" parent="25" name="F_YE13">
+      <Position>68</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="417" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ItemNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="418" parent="26" name="UserNo">
+      <Position>1</Position>
+      <DataType>varchar(12)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="419" parent="26" name="UserPass">
+      <Position>2</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="420" parent="26" name="UserName">
+      <Position>3</Position>
+      <DataType>char(12)|0</DataType>
+    </column>
+    <column id="421" parent="26" name="UserID">
+      <Position>4</Position>
+      <DataType>varchar(18)|0</DataType>
+    </column>
+    <column id="422" parent="26" name="Department">
+      <Position>5</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="423" parent="26" name="F_SYKM">
+      <Position>6</Position>
+      <DataType>smallint(6)|0</DataType>
+    </column>
+    <column id="424" parent="26" name="F_SYBB">
+      <Position>7</Position>
+      <DataType>smallint(6)|0</DataType>
+    </column>
+    <key id="425" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>UserNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="426" parent="27" name="PZBH_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="427" parent="27" name="VoucherName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="428" parent="27" name="VoucherFirstChar">
+      <Position>3</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="429" parent="27" name="VoucherNo">
+      <Position>4</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="430" parent="27" name="IniDate">
+      <Position>5</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="431" parent="27" name="F_PZGS">
+      <Position>6</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="432" parent="27" name="F_PZYS">
+      <Position>7</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <key id="433" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>PZBH_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="434" parent="28" name="ItemNo">
+      <Position>1</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="435" parent="28" name="InputDate">
+      <Position>2</Position>
+      <DataType>char(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="436" parent="28" name="VoucherNo">
+      <Position>3</Position>
+      <DataType>char(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="437" parent="28" name="EntryNo">
+      <Position>4</Position>
+      <DataType>char(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="438" parent="28" name="AcsDocCnt">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="439" parent="28" name="VoucherType">
+      <Position>6</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="440" parent="28" name="Summary">
+      <Position>7</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="441" parent="28" name="BkpDirection">
+      <Position>8</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="442" parent="28" name="Money">
+      <Position>9</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="443" parent="28" name="Qty">
+      <Position>10</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="444" parent="28" name="PreActDoc">
+      <Position>11</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="445" parent="28" name="PreActNo">
+      <Position>12</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="446" parent="28" name="Auditor">
+      <Position>13</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="447" parent="28" name="AuditorNo">
+      <Position>14</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="448" parent="28" name="DirectorName">
+      <Position>15</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="449" parent="28" name="AuditSign">
+      <Position>16</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="450" parent="28" name="CompanyNo">
+      <Position>17</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="451" parent="28" name="UserNo">
+      <Position>18</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="452" parent="28" name="F_WB">
+      <Position>19</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="453" parent="28" name="F_JZXM">
+      <Position>20</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="454" parent="28" name="F_HZ">
+      <Position>21</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="455" parent="28" name="F_JZ">
+      <Position>22</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="456" parent="28" name="F_DZ">
+      <Position>23</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="457" parent="28" name="F_TZBH">
+      <Position>24</Position>
+      <DataType>char(6)|0</DataType>
+    </column>
+    <column id="458" parent="28" name="F_CCZS">
+      <Position>25</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="459" parent="28" name="F_JWDW">
+      <Position>26</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="460" parent="28" name="F_QTWB">
+      <Position>27</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="461" parent="28" name="F_DEWB">
+      <Position>28</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <key id="462" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>InputDate
+VoucherNo
+EntryNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="463" parent="29" name="SZZD_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="464" parent="29" name="PrintNo">
+      <Position>2</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="465" parent="29" name="SetNo">
+      <Position>3</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="466" parent="29" name="SetNote">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="467" parent="29" name="TitleFont">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="468" parent="29" name="TitleSize">
+      <Position>6</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="469" parent="29" name="BodyFont">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="470" parent="29" name="BodySize">
+      <Position>8</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="471" parent="29" name="HorZoom">
+      <Position>9</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="472" parent="29" name="VerZoom">
+      <Position>10</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="473" parent="29" name="PrintQua">
+      <Position>11</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="474" parent="29" name="OutputType">
+      <Position>12</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="475" parent="29" name="PageSize">
+      <Position>13</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="476" parent="29" name="LeftMargin">
+      <Position>14</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="477" parent="29" name="RightMargin">
+      <Position>15</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="478" parent="29" name="TopMargin">
+      <Position>16</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="479" parent="29" name="BottomMargin">
+      <Position>17</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="480" parent="29" name="DefaulTuse">
+      <Position>18</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <key id="481" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SZZD_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="482" parent="30" name="USGN_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="483" parent="30" name="LSP_UserNo">
+      <Position>2</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="484" parent="30" name="LSG_MenuNo">
+      <Position>3</Position>
+      <DataType>varchar(6)|0</DataType>
+    </column>
+    <column id="485" parent="30" name="UserNo">
+      <Position>4</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="486" parent="30" name="MenuNo">
+      <Position>5</Position>
+      <DataType>varchar(6)|0</DataType>
+    </column>
+    <key id="487" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USGN_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="488" parent="31" name="CompanyNo">
+      <Position>1</Position>
+      <DataType>varchar(12)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="489" parent="31" name="LSW_CatNo1">
+      <Position>2</Position>
+      <DataType>char(6)|0</DataType>
+    </column>
+    <column id="490" parent="31" name="CompanyName">
+      <Position>3</Position>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <column id="491" parent="31" name="CatNo1">
+      <Position>4</Position>
+      <DataType>char(6)|0</DataType>
+    </column>
+    <column id="492" parent="31" name="Cont">
+      <Position>5</Position>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="493" parent="31" name="Tel">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="494" parent="31" name="CompanyAddr">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="495" parent="31" name="CompanyPost">
+      <Position>8</Position>
+      <DataType>char(6)|0</DataType>
+    </column>
+    <column id="496" parent="31" name="Bank">
+      <Position>9</Position>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <column id="497" parent="31" name="Account">
+      <Position>10</Position>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <column id="498" parent="31" name="CreditStanding">
+      <Position>11</Position>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="499" parent="31" name="TaxIdNo">
+      <Position>12</Position>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <column id="500" parent="31" name="Memo">
+      <Position>13</Position>
+      <DataType>varchar(36)|0</DataType>
+    </column>
+    <column id="501" parent="31" name="F_WBBH">
+      <Position>14</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="502" parent="31" name="F_BZLB">
+      <Position>15</Position>
+      <DataType>char(2)|0</DataType>
+    </column>
+    <column id="503" parent="31" name="F_BZBM">
+      <Position>16</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <key id="504" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CompanyNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="505" parent="32" name="CatNo1">
+      <Position>1</Position>
+      <DataType>char(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="506" parent="32" name="CatLevel">
+      <Position>2</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="507" parent="32" name="FinLevel">
+      <Position>3</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="508" parent="32" name="CatName1">
+      <Position>4</Position>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <key id="509" parent="32" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CatNo1</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="510" parent="33" name="LSW_CompanyNo">
+      <Position>1</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="511" parent="33" name="LSK_ItemNo">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="512" parent="33" name="WLJE_AutoId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="513" parent="33" name="ItemNo">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="514" parent="33" name="CompanyNo">
+      <Position>5</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="515" parent="33" name="Balance">
+      <Position>6</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="516" parent="33" name="DebitMoney">
+      <Position>7</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="517" parent="33" name="CreditMoney">
+      <Position>8</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="518" parent="33" name="SupMoney">
+      <Position>9</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="519" parent="33" name="DebitMoneySup">
+      <Position>10</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="520" parent="33" name="CreditMoneySup">
+      <Position>11</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="521" parent="33" name="DebitMoneyAcm">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="522" parent="33" name="CreditMoneyAcm">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="523" parent="33" name="DebitMoney01">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="524" parent="33" name="CreditMoney01">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="525" parent="33" name="Balance01">
+      <Position>16</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="526" parent="33" name="DebitMoney02">
+      <Position>17</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="527" parent="33" name="CreditMoney02">
+      <Position>18</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="528" parent="33" name="Balance02">
+      <Position>19</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="529" parent="33" name="DebitMoney03">
+      <Position>20</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="530" parent="33" name="CreditMoney03">
+      <Position>21</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="531" parent="33" name="Balance03">
+      <Position>22</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="532" parent="33" name="DebitMoney04">
+      <Position>23</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="533" parent="33" name="CreditMoney04">
+      <Position>24</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="534" parent="33" name="Balance04">
+      <Position>25</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="535" parent="33" name="DebitMoney05">
+      <Position>26</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="536" parent="33" name="CreditMoney05">
+      <Position>27</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="537" parent="33" name="Balance05">
+      <Position>28</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="538" parent="33" name="DebitMoney06">
+      <Position>29</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="539" parent="33" name="CreditMoney06">
+      <Position>30</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="540" parent="33" name="Balance06">
+      <Position>31</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="541" parent="33" name="DebitMoney07">
+      <Position>32</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="542" parent="33" name="CreditMoney07">
+      <Position>33</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="543" parent="33" name="Balance07">
+      <Position>34</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="544" parent="33" name="DebitMoney08">
+      <Position>35</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="545" parent="33" name="CreditMoney08">
+      <Position>36</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="546" parent="33" name="Balance08">
+      <Position>37</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="547" parent="33" name="DebitMoney09">
+      <Position>38</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="548" parent="33" name="CreditMoney09">
+      <Position>39</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="549" parent="33" name="Balance09">
+      <Position>40</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="550" parent="33" name="DebitMoney10">
+      <Position>41</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="551" parent="33" name="CreditMoney10">
+      <Position>42</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="552" parent="33" name="Balance10">
+      <Position>43</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="553" parent="33" name="DebitMoney11">
+      <Position>44</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="554" parent="33" name="CreditMoney11">
+      <Position>45</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="555" parent="33" name="Balance11">
+      <Position>46</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="556" parent="33" name="DebitMoney12">
+      <Position>47</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="557" parent="33" name="CreditMoney12">
+      <Position>48</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="558" parent="33" name="Balance12">
+      <Position>49</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="559" parent="33" name="F_DF13">
+      <Position>50</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="560" parent="33" name="F_JF13">
+      <Position>51</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="561" parent="33" name="F_YE13">
+      <Position>52</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="562" parent="33" name="F_YSSX">
+      <Position>53</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="563" parent="33" name="F_YSXX">
+      <Position>54</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="564" parent="33" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>WLJE_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="565" parent="34" name="LSK_ItemNo">
+      <Position>1</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="566" parent="34" name="LSW_CompanyNo">
+      <Position>2</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="567" parent="34" name="WLSL_AutoId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="568" parent="34" name="ItemNo">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="569" parent="34" name="CompanyNo">
+      <Position>5</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="570" parent="34" name="LeftQty">
+      <Position>6</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="571" parent="34" name="UnitPrice">
+      <Position>7</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="572" parent="34" name="DebitQty">
+      <Position>8</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="573" parent="34" name="CreditQty">
+      <Position>9</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="574" parent="34" name="SupQty">
+      <Position>10</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="575" parent="34" name="DebitQtySup">
+      <Position>11</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="576" parent="34" name="CreditQtySup">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="577" parent="34" name="DebitQtyAcm">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="578" parent="34" name="CreditQtyAcm">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="579" parent="34" name="DebitQty01">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="580" parent="34" name="CreditQty01">
+      <Position>16</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="581" parent="34" name="LeftQty01">
+      <Position>17</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="582" parent="34" name="DebitQty02">
+      <Position>18</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="583" parent="34" name="CreditQty02">
+      <Position>19</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="584" parent="34" name="LeftQty02">
+      <Position>20</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="585" parent="34" name="DebitQty03">
+      <Position>21</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="586" parent="34" name="CreditQty03">
+      <Position>22</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="587" parent="34" name="LeftQty03">
+      <Position>23</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="588" parent="34" name="DebitQty04">
+      <Position>24</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="589" parent="34" name="CreditQty04">
+      <Position>25</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="590" parent="34" name="LeftQty04">
+      <Position>26</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="591" parent="34" name="DebitQty05">
+      <Position>27</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="592" parent="34" name="CreditQty05">
+      <Position>28</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="593" parent="34" name="LeftQty05">
+      <Position>29</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="594" parent="34" name="DebitQty06">
+      <Position>30</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="595" parent="34" name="CreditQty06">
+      <Position>31</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="596" parent="34" name="LeftQty06">
+      <Position>32</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="597" parent="34" name="DebitQty07">
+      <Position>33</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="598" parent="34" name="CreditQty07">
+      <Position>34</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="599" parent="34" name="LeftQty07">
+      <Position>35</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="600" parent="34" name="DebitQty08">
+      <Position>36</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="601" parent="34" name="LeftQty08">
+      <Position>37</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="602" parent="34" name="CreditQty08">
+      <Position>38</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="603" parent="34" name="DebitQty09">
+      <Position>39</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="604" parent="34" name="CreditQty09">
+      <Position>40</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="605" parent="34" name="LeftQty09">
+      <Position>41</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="606" parent="34" name="DebitQty10">
+      <Position>42</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="607" parent="34" name="CreditQty10">
+      <Position>43</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="608" parent="34" name="LeftQty10">
+      <Position>44</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="609" parent="34" name="DebitQty11">
+      <Position>45</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="610" parent="34" name="CreditQty11">
+      <Position>46</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="611" parent="34" name="LeftQty11">
+      <Position>47</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="612" parent="34" name="DebitQty12">
+      <Position>48</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="613" parent="34" name="CreditQty12">
+      <Position>49</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="614" parent="34" name="LeftQty12">
+      <Position>50</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="615" parent="34" name="F_DS13">
+      <Position>51</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="616" parent="34" name="F_JF13">
+      <Position>52</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="617" parent="34" name="F_SL13">
+      <Position>53</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="618" parent="34" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>WLSL_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="619" parent="35" name="WLYS_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="620" parent="35" name="ItemNo">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="621" parent="35" name="InputDate">
+      <Position>3</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="622" parent="35" name="F_YSBH">
+      <Position>4</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="623" parent="35" name="VoucherNo">
+      <Position>5</Position>
+      <DataType>char(5)|0</DataType>
+    </column>
+    <column id="624" parent="35" name="VoucherDate">
+      <Position>6</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="625" parent="35" name="CatNo">
+      <Position>7</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="626" parent="35" name="CompanyNo">
+      <Position>8</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="627" parent="35" name="UserNo">
+      <Position>9</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="628" parent="35" name="OppItem">
+      <Position>10</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="629" parent="35" name="Summary">
+      <Position>11</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="630" parent="35" name="BkpDirection">
+      <Position>12</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="631" parent="35" name="Money">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="632" parent="35" name="Qty">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="633" parent="35" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>WLYS_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="634" parent="36" name="YSPZ_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="635" parent="36" name="LSP_InputDate">
+      <Position>2</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="636" parent="36" name="LSP_VoucherNo">
+      <Position>3</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="637" parent="36" name="LSP_EntryNo">
+      <Position>4</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="638" parent="36" name="ItemNo">
+      <Position>5</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="639" parent="36" name="InputDate">
+      <Position>6</Position>
+      <DataType>char(8)|0</DataType>
+    </column>
+    <column id="640" parent="36" name="VoucherNo">
+      <Position>7</Position>
+      <DataType>char(5)|0</DataType>
+    </column>
+    <column id="641" parent="36" name="EntryNo">
+      <Position>8</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="642" parent="36" name="Summary">
+      <Position>9</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="643" parent="36" name="BkpDirection">
+      <Position>10</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="644" parent="36" name="Money">
+      <Position>11</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="645" parent="36" name="Qty">
+      <Position>12</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="646" parent="36" name="UnitPrice">
+      <Position>13</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="647" parent="36" name="F_WB">
+      <Position>14</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="648" parent="36" name="F_QT">
+      <Position>15</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="649" parent="36" name="F_HL">
+      <Position>16</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="650" parent="36" name="F_QTWB">
+      <Position>17</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="651" parent="36" name="F_QTHL">
+      <Position>18</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <key id="652" parent="36" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>YSPZ_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="653" parent="37" name="ZCDY_AutoId">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="654" parent="37" name="LSZ_AcontBookNo">
+      <Position>2</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="655" parent="37" name="LSK_ItemNo">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="656" parent="37" name="AcontBookNo">
+      <Position>4</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="657" parent="37" name="ItemNo">
+      <Position>5</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="658" parent="37" name="AccLevel">
+      <Position>6</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="659" parent="37" name="CombineEntry">
+      <Position>7</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="660" parent="37" name="OppItem">
+      <Position>8</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="661" parent="37" name="Summary">
+      <Position>9</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="662" parent="37" name="DaysTge">
+      <Position>10</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="663" parent="37" name="ListItemLevel">
+      <Position>11</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="664" parent="37" name="ItemDir">
+      <Position>12</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="665" parent="37" name="PrintUse">
+      <Position>13</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="666" parent="37" name="FixCol">
+      <Position>14</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="667" parent="37" name="PageCol">
+      <Position>15</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="668" parent="37" name="F_HBLM">
+      <Position>16</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <key id="669" parent="37" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ZCDY_AutoId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="670" parent="38" name="AcontBookNo">
+      <Position>1</Position>
+      <DataType>char(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="671" parent="38" name="AccBookName">
+      <Position>2</Position>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="672" parent="38" name="AccBookType">
+      <Position>3</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="673" parent="38" name="AccType">
+      <Position>4</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="674" parent="38" name="PageRules">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="675" parent="38" name="AbsWidth">
+      <Position>6</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="676" parent="38" name="ChaPage">
+      <Position>7</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="677" parent="38" name="PrintFor">
+      <Position>8</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="678" parent="38" name="FormatNo">
+      <Position>9</Position>
+      <DataType>char(10)|0</DataType>
+    </column>
+    <column id="679" parent="38" name="AddEmptyRow">
+      <Position>10</Position>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="680" parent="38" name="F_TDYN">
+      <Position>11</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <key id="681" parent="38" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>AcontBookNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

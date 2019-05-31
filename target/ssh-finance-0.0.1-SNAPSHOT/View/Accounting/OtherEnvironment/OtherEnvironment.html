@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+        <style>
+            div.frame{
+                height:auto;
+                width:auto;
+                position:relative;
+                padding:10px;
+                margin:10px;
+                background:#fafafa;
+                border:1px solid #ccc;
+            }
+            td.head{
+                text-align-last:justify;
+            }
+        </style>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="OtherEnvironment.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table>
+        <tr>
+            <td colspan="2">
+                <div id="voucher_set" class="frame">
+                    <table>
+                        <tr>
+                            <td class="head">摘要方式：</td>
+                            <td><input type="radio" id="single_abs" name="摘要方式" checked="true" value="单摘要"/>单摘要</td>
+                            <td><input type="radio" id="multi_abs" name="摘要方式" value="多摘要"/>多摘要</td>
+                        </tr>
+                        <tr>
+                            <td class="head">凭证打印行：</td>
+                            <td><input id="print_row" name="凭证打印行" type="number" value="1" class="easyui-numberbox" style="width:40px" min="1"/></td>
+                        </tr>
+                        <tr>
+                            <td class="head">纸张大小：</td>
+                            <td><input type="radio" id="a4" name="纸张大小" checked="true" value="A4"/>A4</td>
+                            <td><input type="radio" id="thin" name="纸张大小" value="窄行纸"/>窄行纸</td>
+                        </tr>
+                        <tr>
+                            <td class="head">会计凭证要素选项：</td>
+                            <td><input type="checkbox" id="acc_officer" name="会计凭证要素选项" value="会计主管"/>会计主管</td>
+                            <td><input type="checkbox" id="auditor" name="会计凭证要素选项" value="审核"/>审核</td>
+                            <td><input type="checkbox" id="touching" name="会计凭证要素选项" value="制单"/>制单</td>
+                            <td><input type="checkbox" id="cashier" name="会计凭证要素选项" value="出纳"/>出纳</td>
+                            <td><input type="checkbox" id="operator" name="会计凭证要素选项" value="经办人"/>经办人</td>
+                        </tr>
+                        <!--<tr>-->
+                            <!--<td class="head"><label id="first_number_label" class="label_text">凭证首位编号</label></td>-->
+                            <!--<td></td>-->
+                            <!--<td colspan="3"><input id="first_number_input" class="easyui-textbox"/></td>-->
+                        <!--</tr>-->
+                        <tr>
+                            <td class="head">打印内容：</td>
+                            <td><input type="checkbox" id="sp_acc" name="打印内容" value="专项核算"/>专项核算</td>
+                            <td><input type="checkbox" id="contact_unit" name="打印内容" value="往来单位"/>往来单位</td>
+                        </tr>
+                        <tr>
+                            <td class="head">对账单号长度：</td>
+                            <td colspan="3"><input type="number" id="bill_length" class="easyui-numberbox" value="1" style="width:40px" min="1" name="对账单号长度"/></td>
+                        </tr>
+                        <tr>
+                            <td class="head">帐页每页行数：</td>
+                            <td colspan="3"><input type="number" id="bill_row" class="easyui-numberbox" style="width:40px" value="1" min="1" name="帐页每页行数"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2" valign="top">
+                <div id="table_head" class="frame">
+                    <table>
+                        <tr>
+                            <td>表 头 1：</td>
+                            <td><input type="text" id="table1" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="表头1" /></td>
+                        </tr>
+                        <tr>
+                            <td>表 头 2：</td>
+                            <td><input type="text" id="table2" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="表头2"/></td>
+                        </tr>
+                        <tr>
+                            <td>表 头 3：</td>
+                            <td><input type="text" id="table3" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="表头3"/></td>
+                        </tr>
+                        <tr>
+                            <td>表 头 4：</td>
+                            <td><input type="text" id="table4" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="表头4"/></td>
+                        </tr>
+                        <tr>
+                            <td>表 头 5：</td>
+                            <td><input type="text" id="table5" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="表头5"/></td>
+                        </tr>
+                        <tr>
+                            <td>表 头 6：</td>
+                            <td><input type="text" id="table6" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="表头6"/></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </td>
+            <td valign="top">
+                <div id="unit_set" class="frame">
+                    <table>
+                        <tr>
+                            <td colspan="2"><label id="accounting_manager_label" class="label_text">会计主管：</label></td>
+                            <td></td>
+                            <td><input type="text" id="acc_manager" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="会计主管"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><label id="unit_name_label" class="label_text">单位名称：</label></td>
+                            <td></td>
+                            <td><input type="text" id="unit_name" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="单位名称"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><label id="unit_number_label" class="label_text">单位编号：</label></td>
+                            <td></td>
+                            <td><input type="text" id="unit_number" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="单位编号"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><label id="superior_unit_label" class="label_text">上级单位：</label></td>
+                            <td></td>
+                            <td><input type="text" id="superior_unit" class="easyui-validatebox textbox" data-options="required:true" missingMessage="不能为空" name="上级单位"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <div id="button_group" class="frame" style="padding: 0px; border: none; background: none;">
+                    <a id="button_input" href="#" class="easyui-linkbutton" style="width:49%;height:30px;" iconCls="icon-edit">月结检查定义</a>
+                    <a id="button_change" href="#" class="easyui-linkbutton" style="width:49%;height:30px;float:right" iconCls="icon-ok" onclick="request()">确认</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    </form>
+</body>
+</html>

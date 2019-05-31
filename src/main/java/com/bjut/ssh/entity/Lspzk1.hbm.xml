@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lspzk1" table="lspzk1" schema="ssh_finance">
+        <id name="pzk1AutoId" column="PZK1_AutoId" />
+        <property name="itemNo" column="ItemNo"/>
+        <property name="inputDate" column="InputDate"/>
+        <property name="voucherNo" column="VoucherNo"/>
+        <property name="entryNo" column="EntryNo"/>
+        <property name="acsDocCnt" column="AcsDocCnt"/>
+        <property name="voucherType" column="VoucherType"/>
+        <property name="summary" column="Summary"/>
+        <property name="bkpDirection" column="BkpDirection"/>
+        <property name="money" column="Money"/>
+        <property name="qty" column="Qty"/>
+        <property name="preActDoc" column="PreActDoc"/>
+        <property name="preActNo" column="PreActNo"/>
+        <property name="auditor" column="Auditor"/>
+        <property name="auditorNo" column="AuditorNo"/>
+        <property name="directorName" column="DirectorName"/>
+        <property name="auditSign" column="AuditSign"/>
+        <property name="companyNo" column="CompanyNo"/>
+        <property name="userNo" column="UserNo"/>
+        <property name="fWb" column="F_WB"/>
+        <property name="fJzxm" column="F_JZXM"/>
+        <property name="fHz" column="F_HZ"/>
+        <property name="fJz" column="F_JZ"/>
+        <property name="fDz" column="F_DZ"/>
+        <property name="fTzbh" column="F_TZBH"/>
+        <property name="fCczs" column="F_CCZS"/>
+        <property name="fJwdw" column="F_JWDW"/>
+        <property name="fQtwb" column="F_QTWB"/>
+        <property name="fDewb" column="F_DEWB"/>
+    </class>
+</hibernate-mapping>

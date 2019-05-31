@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lcdyzd" table="lcdyzd" schema="ssh_finance">
+        <id name="dyzdAutoId" column="DYZD_AutoId"/>
+        <property name="bzdAutoId" column="BZD_AutoId"/>
+        <property name="rptNo" column="RptNo"/>
+        <property name="rptDate" column="RptDate"/>
+        <property name="cellNo" column="CellNo"/>
+        <property name="rowInfoNo" column="RowInfoNo"/>
+        <property name="colInfoNo" column="ColInfoNo"/>
+        <property name="endRow" column="EndRow"/>
+        <property name="endCol" column="EndCol"/>
+        <property name="cellType" column="CellType"/>
+        <property name="cellContent" column="CellContent"/>
+        <property name="cellData" column="CellData"/>
+        <property name="formulaRange" column="FormulaRange"/>
+        <property name="formula" column="Formula"/>
+        <property name="cellClassName" column="CellClassName"/>
+        <property name="cellWidth" column="CellWidth"/>
+        <property name="cellHeight" column="CellHeight"/>
+        <property name="fontStyle" column="FontStyle"/>
+        <property name="fontSize" column="FontSize"/>
+        <property name="autoEnter" column="AutoEnter"/>
+        <property name="dyzdSftz" column="DYZD_SFTZ"/>
+        <property name="dyzdSfbh" column="DYZD_SFBH"/>
+        <property name="dyzdHooffset" column="DYZD_HOOFFSET"/>
+        <property name="dyzdLooffset" column="DYZD_LOOFFSET"/>
+        <property name="dyzdGsx1" column="DYZD_GSX1"/>
+        <property name="dyzdGsbz" column="DYZD_GSBZ"/>
+        <property name="dyzdGsjb" column="DYZD_GSJB"/>
+        <property name="dyzdGsx2" column="DYZD_GSX2"/>
+        <property name="dyzdGsx3" column="DYZD_GSX3"/>
+        <property name="dyzdGsx4" column="DYZD_GSX4"/>
+        <property name="dyzdGsx5" column="DYZD_GSX5"/>
+        <property name="hBzbm" column="H_BZBM"/>
+        <property name="lBzbm" column="L_BZBM"/>
+        <property name="dyzdDec" column="DYZD_DEC"/>
+    </class>
+</hibernate-mapping>

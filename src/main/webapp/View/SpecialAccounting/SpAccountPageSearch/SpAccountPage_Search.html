@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html style="height:98%;width:99% ;">
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="SpAccountPage_Search.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+    <style>
+        .textbox{
+            height:20px;
+            margin:0;
+            padding:0 2px;
+            box-sizing:content-box;
+        }
+        #mainDisplay table{
+            border: 2px solid green;
+        }
+
+        #mainDisplay td{
+            border: 1px solid green;
+        }
+        #mainDisplay tr{
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body style="height:100%;width:100%" >
+
+<div id="spAccountPageSearch_Win" style="position:relative;" >
+    <div style="margin:10px;padding:5px 20px; border:1px solid #ccc" >
+        <p><label>请输入查询日期:</label>
+            <input id="year_Input" class="easyui-numberspinner" data-options="value:2018,rmin:2000,max:2018,required:true" style="width:65px;"/>
+            <label>&nbsp;年&nbsp;</label>
+            <input id="monthFrom_Input" class="easyui-numberspinner" data-options="value:1,min:1,max:12,required:true" style="width:65px;"/>
+            <label>&nbsp;月&nbsp;</label>
+            <input id="monthTo_Input" class="easyui-numberspinner" data-options="value:1,min:1,max:12,required:true" style="width:65px;"/>
+            <label>&nbsp;月</label>
+        </p>
+        <p><label>请输入科目编号:</label> <input class="easyui-textbox" style="width: 235px;" id="itemNo_Input"  data-options="required:true" ondblclick="selectItemNoClick()" missingMessage="请输入单位编号或通配符!" ondblclick=""/>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'" onclick="wildcardForItemNoClick()"></a></p>
+        <p><label>请输入核算类别:</label> <input class="easyui-textbox" style="width: 235px;" id="catNo1_Input" data-options="required:true" ondblclick="selectcatNo1Click()"/></p>
+        <p><label>请输入核算编号:</label> <input class="easyui-textbox" style="width: 235px;" id="spNo1_Input" data-options="required:true" ondblclick="selectSpNo1Click()"/>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-tip'" onclick="wildcardForSpNoClick()"></a></p>
+        <p><label>请输入账页起始的页号:</label> <input class="textbox" style="width: 220px;" id="printNum_Input" type="text"/></p>
+    </div>
+
+    <div style="margin:10px 10px 5px 10px;padding:10px 20px 15px 20px; border:1px solid #ccc;" >
+        <label>设置查询选项：</label><br>
+        <table border="0">
+            <tr>
+                <td><input type="checkbox" style="width:30px" name="option5" value="5"><span>包含账前凭证</span></td>
+                <td><input type="checkbox" style="width:30px" name="option6" value="6"><span>无余额，发生额不打印</span></td>
+            </tr>
+        </table>
+
+    </div>
+    <div id="item" style="margin:5px;height:30px;padding:5px 10px; background:#fafafa;" >
+        <div style="float:right;">
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchClick()">确定</a>
+            <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" onclick="javascript:$('#spAccountPageSearch_Win').window('close')">关闭</a>
+        </div>
+    </div>
+</div>
+
+<!--往来初始化界面-->
+<div id="mainDisplay" style="visibility:hidden;height:100%;width:100%;">
+    <div style="padding:0px 0px 10px 5px;height:70px;background:#fafafa;border:1px solid #ccc">
+        <div style="width:100px;margin: 10px auto;">
+            <font size="5">明细账</font>
+        </div>
+        <div  id="head_info_area"></div>
+
+    </div>
+    <div id="main" style="top:70px;bottom:0px;width:100%;height:auto">
+        <table id="main_table"></table>
+    </div>
+    <div id="tbSearchAccountPage" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="searchAccountPage()">账页</a>
+    </div>
+
+</div>
+
+<!--帮助窗口，提示科目编号-->
+<div id="itemNo_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_ItemNo" type="text"/>
+            <a id="searchItemNo" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItemNoClick()" >查找</a>
+        </p>
+        <p>
+            <label>上级名称:</label>
+            <label id="upperIntemName_label"></label>
+            <!--&lt;!&ndash;<input class="easyui-textbox" style="border-style:none;width:295px" id="uperItemName" readonly="true" type="text"/>-->
+        </p>
+
+    </div>
+
+    <div  style="height:84%" >
+        <table id="itemTable"></table>
+    </div>
+
+    <div id="tbItem_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevel_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectItemNoClick(1)">选定</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectItemNoClick(2)">通配符</a>
+    </div>
+
+</div>
+
+<!--帮助窗口，提示核算分类编号1-->
+<div id="catNo1_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_CatNo1" type="text"/>
+            <a id="searchCatNo1" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchCatNo1Click()" >查找</a>
+        </p>
+        <p><label>上级名称:</label>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="catNo1Table"></table>
+    </div>
+
+    <div id="tbCatNo1_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" disabled="disabled" onclick="obj.uperLevel_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" disabled="disabled" onclick="obj.nextLevel_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectcatNo1Click()">选定</a>
+    </div>
+
+</div>
+
+<!--帮助窗口，提示核算对象编号1-->
+<div id="spNo1_HelpWin" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="searchText_SpNo1" type="text"/>
+            <a id="search" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchSpNo1Click()">查找</a>
+        </p>
+        <p><label>上级名称:</label>
+            <label id="upperSpName1_label"></label>
+            <!--<input class="easyui-textbox" style="width:295px" id="uperSpName_Show" type="text"/>-->
+        </p>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="spNo1Table"></table>
+    </div>
+
+    <div id="tbSpNo1_helpWin" style="padding:5px;height:auto">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevelSp_click()">上级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevelSp_click()">下级</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="selectSpNo1Click()">选定</a>
+    </div>
+
+</div>
+
+</body>
+</html>
+

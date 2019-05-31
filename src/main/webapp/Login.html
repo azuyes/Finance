@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>登录页面</title>
+		<script type="text/javascript" src="View/JavaScript/jquery.min.js"></script>
+	    <script type="text/javascript" src="View/JavaScript/jquery.easyui.min.js"></script>
+	    <link rel="stylesheet" type="text/css" href="View/CSS/themes/default/easyui.css" />
+	    <link rel="stylesheet" type="text/css" href="View/CSS/themes/icon.css" />
+	    <link rel="stylesheet" type="text/css" href="View/CSS/table.css" />
+	    <script type="text/javascript" src="View/JavaScript/easyui-lang-zh_CN.js"></script>
+	    <script type="text/javascript" src="View/JavaScript/easyui-validatebox-extend.js"></script>
+	    <script type="text/javascript" src="Login.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<style type="text/css">
+		    #Button1s{}.denglu {
+	            position: relative;
+	            display: inline-block;
+	            background-image: url(View/Resourse/Login/denglu1.png);
+	            height:60px;
+	            width:300px;
+	        }
+	        input:-webkit-autofill {
+	         -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset;
+	        }
+			::-moz-placeholder { color: #808080; }
+			::-webkit-input-placeholder { color:#808080; }
+			:-ms-input-placeholder { color:#808080; }
+	    </style>
+	</head>
+	<body style="background-image: url(View/Resourse/Login/login.png);">
+		<!--<div>-->
+			<!--<a href="#"  class="easyui-linkbutton"  onclick="setup()" >数据库配置</a>-->
+		<!--</div>-->
+		<form style="position: absolute; top: 30%; left: 41%; width: 308px;" method="post">
+			<!--<div>-->
+				<!--<select id="dataSource" name="userNo" type="text"style="font-size:25px;text-align:center;color:white;border-style: none; border-color: white; border-width: 0px; height:30px; background:none; width:250px" placeholder="请选择账套">-->
+					<!--<option value="dataSource">第一套账</option>-->
+					<!--<option value="dataSource1">第二套账</option>-->
+					<!--<option value="dataSource2">第三套账</option>-->
+				<!--</select>-->
+			<!--</div>-->
+			<!--<hr />-->
+		<div>
+	        <img alt="" src="View/Resourse/Login/user1.gif"  style="height: 30px; width: 30px"/>
+	        <input id="userNo" name="userNo" type="text"style="font-size:25px;text-align:center;color:white;border-style: none; border-color: white; border-width: 0px; height:30px; background:none; width:250px"
+				   placeholder="请输入用户编号" validtype="loginName"/>
+	    </div>
+	    <hr />
+	    <div >
+			 <img id="img" onclick="hideShowPsw()" src="View/Resourse/Login/invisible.png" style="height: 15px; width: 20px;position: absolute;right: 10px;margin:15px">
+	         <img alt="" src="View/Resourse/Login/pass.png" style="height: 30px; width: 30px" />
+	         <input id="userPass" type="password" style="font-size:25px;text-align:center;color:white;border-style:none; border-color: white; border-width: 0px; height:30px; background:none; width:250px" placeholder="请输入用户密码"/>
+	    </div>	    
+	    <br />
+	    <div>
+	        <a href="#"  class="denglu"  onclick="denglu()" ></a>
+			<a href="#"  onclick="addDatabase()" >增加数据库</a>
+	    </div>
+	          <br />
+			<div>
+				<label id="showInfo"  style="text-align:center;display:none;color:Red; height: 30px; width: 250px;margin-left:40px;"></label>
+			</div>
+		</form>
+	</body>
+</html>

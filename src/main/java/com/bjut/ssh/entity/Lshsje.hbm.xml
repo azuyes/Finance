@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lshsje" table="lshsje" schema="cx-finance">
+        <id name="hsjeAutoId" column="HSJE_AutoId"/>
+        <property name="itemNo" column="ItemNo"/>
+        <property name="spNo1" column="SpNo1"/>
+        <property name="spNo2" column="SpNo2"/>
+        <property name="balance" column="Balance"/>
+        <property name="debitMoney" column="DebitMoney"/>
+        <property name="creditMoney" column="CreditMoney"/>
+        <property name="budgetMoney" column="BudgetMoney"/>
+        <property name="supMoney" column="SupMoney"/>
+        <property name="debitMoneySup" column="DebitMoneySup"/>
+        <property name="creditMoneySup" column="CreditMoneySup"/>
+        <property name="debitMoneyAcm" column="DebitMoneyAcm"/>
+        <property name="creditMoneyAcm" column="CreditMoneyAcm"/>
+        <property name="debitMoney01" column="DebitMoney01"/>
+        <property name="creditMoney01" column="CreditMoney01"/>
+        <property name="balance01" column="Balance01"/>
+        <property name="debitMoney02" column="DebitMoney02"/>
+        <property name="creditMoney02" column="CreditMoney02"/>
+        <property name="balance02" column="Balance02"/>
+        <property name="debitMoney03" column="DebitMoney03"/>
+        <property name="creditMoney03" column="CreditMoney03"/>
+        <property name="balance03" column="Balance03"/>
+        <property name="debitMoney04" column="DebitMoney04"/>
+        <property name="creditMoney04" column="CreditMoney04"/>
+        <property name="balance04" column="Balance04"/>
+        <property name="debitMoney05" column="DebitMoney05"/>
+        <property name="creditMoney05" column="CreditMoney05"/>
+        <property name="balance05" column="Balance05"/>
+        <property name="debitMoney06" column="DebitMoney06"/>
+        <property name="creditMoney06" column="CreditMoney06"/>
+        <property name="balance06" column="Balance06"/>
+        <property name="debitMoney07" column="DebitMoney07"/>
+        <property name="creditMoney07" column="CreditMoney07"/>
+        <property name="balance07" column="Balance07"/>
+        <property name="debitMoney08" column="DebitMoney08"/>
+        <property name="creditMoney08" column="CreditMoney08"/>
+        <property name="balance08" column="Balance08"/>
+        <property name="debitMoney09" column="DebitMoney09"/>
+        <property name="creditMoney09" column="CreditMoney09"/>
+        <property name="balance09" column="Balance09"/>
+        <property name="debitMoney10" column="DebitMoney10"/>
+        <property name="creditMoney10" column="CreditMoney10"/>
+        <property name="balance10" column="Balance10"/>
+        <property name="debitMoney11" column="DebitMoney11"/>
+        <property name="creditMoney11" column="CreditMoney11"/>
+        <property name="balance11" column="Balance11"/>
+        <property name="debitMoney12" column="DebitMoney12"/>
+        <property name="creditMoney12" column="CreditMoney12"/>
+        <property name="balance12" column="Balance12"/>
+        <property name="fJf13" column="F_JF13"/>
+        <property name="fDf13" column="F_DF13"/>
+        <property name="fYe13" column="F_YE13"/>
+        <property name="fYssx" column="F_YSSX"/>
+        <property name="fYsxx" column="F_YSXX"/>
+    </class>
+</hibernate-mapping>

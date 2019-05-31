@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bjut.ssh.entity.Lcbzd" table="lcbzd" schema="ssh_finance">
+        <id name="bzdAutoId" column="BZD_AutoId"/>
+        <property name="rptNo" column="RptNo"/>
+        <property name="rptOrde" column="RptOrde"/>
+        <property name="rptDate" column="RptDate"/>
+        <property name="rptName" column="RptName"/>
+        <property name="titleRules" column="TitleRules"/>
+        <property name="headRules" column="HeadRules"/>
+        <property name="bodyRules" column="BodyRules"/>
+        <property name="totalRules" column="TotalRules"/>
+        <property name="rptCol" column="RptCol"/>
+        <property name="fixRow" column="FixRow"/>
+        <property name="fixCol" column="FixCol"/>
+        <property name="reportNo" column="ReportNo"/>
+        <property name="bbzdFcbz" column="BBZD_FCBZ"/>
+        <property name="bbzdNb" column="BBZD_NB"/>
+        <property name="bbzdXf" column="BBZD_XF"/>
+        <property name="bbzdGs" column="BBZD_GS"/>
+        <property name="bbzdSbxz" column="BBZD_SBXZ"/>
+        <property name="bbzdLx" column="BBZD_LX"/>
+        <property name="tzzdOede" column="TZZD_OEDE"/>
+        <property name="bbzdFixrn" column="BBZD_FIXRN"/>
+        <property name="bbzdFixcn" column="BBZD_FIXCN"/>
+        <property name="bbzdSplit" column="BBZD_SPLIT"/>
+        <property name="bbzdUse" column="BBZD_USE"/>
+    </class>
+</hibernate-mapping>

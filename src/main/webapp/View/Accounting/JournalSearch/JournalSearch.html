@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="JournalSearch.js"></script>
+    <script type="text/javascript" src="../../../main.js"></script>
+    <style>
+        #search_window td{
+            white-space: nowrap;
+            padding-right: 20px;
+        }
+        #search_window tr{
+            height: 30px;
+        }
+        td.margin{
+            width: 0px;
+        }
+        td.title{
+            text-align-last:justify;
+        }
+        .textbox{
+            height:20px;
+            width:150px;
+            margin:0;
+            padding:0 2px;
+            box-sizing:content-box;
+        }
+        .cond-btn{
+            height: 30px;
+            width: 40px;
+            margin: 5px;
+        }
+        .module{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background: #fafafa;
+        }
+        .module > a{
+            width: 19%;
+            height: 30px;
+            margin: 5px;
+        }
+        #main_window table{
+            border: 2px solid green;
+        }
+
+        #main_window td{
+            border: 1px solid green;
+        }
+        #main_window tr{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<!--帮助窗口，提示科目编号-->
+<div id="help_window" class="easyui-window" style="position:relative;">
+    <div style="height:16%;width:100% ;padding:3px 20px; border:1px solid #ccc" >
+        <p><label>模糊查找编号或名称:</label> <input class="easyui-textbox" id="Text1" type="text"/>
+            <a id="search" href="###" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchItemNoClick()">查找</a>
+        </p>
+        <p><label>上级名称:</label> <input class="easyui-textbox" style="width:295px" id="Text2" type="text"/></p>
+    </div>
+
+    <div  style="height:84%" >
+        <table id="itemTable"></table>
+    </div>
+</div>
+
+<div id="tb_helpWin" style="padding:5px;height:auto">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-back" onclick="obj.uperLevel_click()">上级</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-next" onclick="obj.nextLevel_click()">下级</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="obj.selectClick()">选定</a>
+</div>
+
+<div id="cond_window" class="easyui-window">
+    <div>
+        <div style="float: left; margin: 20px; background:#fafafa;">
+            <label><b>设置维护</b></label>
+            <div style="margin: 10px; width: 100px; height: 250px">
+                <ul id="cond_list" class="easyui-datalist">
+                    <li value="month">月</li>
+                    <li value="day">日</li>
+                    <li value="voucherNo">凭证编号</li>
+                    <li value="summary">摘要</li>
+                    <li value="debitMoney">借方金额</li>
+                    <li value="creditMoney">贷方金额</li>
+                    <li value="balance">当前余额</li>
+                </ul>
+            </div>
+        </div>
+        <div style="float: right; margin-top: 10px; margin-right: 20px; height: 295px;">
+            <div class="module">
+                <label><b>条件比较符</b></label>
+                <table>
+                    <tr>
+                        <td><a href="#" class="easyui-linkbutton cond-btn" onclick="obj.equal()"> ＝ </a></td>
+                        <td><a href="#" class="easyui-linkbutton cond-btn" onclick="obj.greater()"> ＞ </a></td>
+                        <td><a href="#" class="easyui-linkbutton cond-btn" onclick="obj.less()"> ＜ </a></td>
+                        <td rowspan="2" colspan="2"><a href="#" class="easyui-linkbutton" style="height: 60px; width: 60px; margin: 5px" onclick="obj.contain()"> 包含 </a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" class="easyui-linkbutton cond-btn" onclick="obj.notEqual()"> ≠ </a></td>
+                        <td><a href="#" class="easyui-linkbutton cond-btn" onclick="obj.notLess()"> ≥ </a></td>
+                        <td><a href="#" class="easyui-linkbutton cond-btn" onclick="obj.notGreater()"> ≤ </a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="module">
+                <label><b>逻辑连接符</b></label>
+                <div>
+                    <a href="#" class="easyui-linkbutton cond-btn" onclick="obj.and()"> 并且 </a>
+                    <a href="#" class="easyui-linkbutton cond-btn" onclick="obj.or()"> 或者 </a>
+                    <a href="#" class="easyui-linkbutton cond-btn" onclick="obj.not()"> 非 </a>
+                    <a href="#" class="easyui-linkbutton cond-btn" onclick="obj.left()"> ( </a>
+                    <a href="#" class="easyui-linkbutton cond-btn" onclick="obj.right()"> ) </a>
+                </div>
+            </div>
+            <div class="module">
+                <label><b>项目运算设置</b></label>
+                <div>
+                    <input type="checkbox" id="contain" name="查询范围" value="包含账前凭证" style="margin: 10px" checked="true"/>子串
+                </div>
+            </div>
+            <div class="module">
+                <a href="#" class="easyui-linkbutton" onclick="obj.backspace()"> 回退 </a>
+                <a href="#" class="easyui-linkbutton" onclick="obj.reselect()"> 重选 </a>
+                <a href="#" class="easyui-linkbutton" onclick="obj.confirm()"> 确认 </a>
+                <a href="#" class="easyui-linkbutton" onclick="obj.query()"> 查询 </a>
+            </div>
+        </div>
+    </div>
+    <div style="width: 96%; height: 30px; margin-left: 20px; float:left">
+        <input id="left_box" class="easyui-textbox" style="width: 177px" readonly>
+        <input id="middle_box" class="easyui-textbox" style="width: 50px" readonly>
+        <input id="right_box" class="easyui-textbox" style="width: 177px">
+    </div>
+    <div style="width: 90%; margin: 20px"><input id="sql_box" class="easyui-textbox"></div>
+</div>
+
+<div id="search_window" class="easyui-window" style="padding: 10px">
+    <table>
+        <tr>
+            <td class="title">日记账方式：</td>
+            <td class="margin"></td>
+            <td><input type="radio" id="by_month" name="content" value="by_month" checked="true"/>按月查询</td>
+            <td><input type="radio" id="by_day" name="content" value="by_day"/>按日查询</td>
+        </tr>
+        <tr id="bymonth">
+            <td class="title">查询日期：</td>
+            <td class="margin"></td>
+            <td><input id="year_bymonth" type="number" class="easyui-numberbox" style="width: 70px" min="1000"/>年</td>
+            <td><input id="month_from" type="number" class="easyui-numberbox" style="width: 40px" min="1" max="12"/>月到</td>
+            <td><input id="month_to" type="number" class="easyui-numberbox" style="width: 40px" min="1" max="12"/>月</td>
+        </tr>
+        <tr id="byday">
+            <td class="title">查询日期：</td>
+            <td class="margin"></td>
+            <td><input id="year_byday" type="number" class="easyui-numberbox" style="width: 70px; display: none" min="1900" max="2050"/>年</td>
+            <td><input id="month" type="number" class="easyui-numberbox" style="width: 40px; display: none" min="1" max="12"/>月</td>
+            <td><input id="day_from" type="number" class="easyui-numberbox" style="width: 40px; display: none" min="1" max="31"/>日到</td>
+            <td><input id="day_to" type="number" class="easyui-numberbox" style="width: 40px; display: none" min="1" max="31"/>日</td>
+        </tr>
+        </tr>
+        <tr>
+            <td class="title">科目编号：</td>
+            <td class="margin"></td>
+            <td colspan="2"><input id="itemNo" class="textbox" ondblclick="obj.select()"/></td>
+        </tr>
+        <tr>
+            <td class="title">查询范围：</td>
+            <td class="margin"></td>
+            <td><input type="checkbox" id="contained" name="查询范围" value="包含账前凭证" checked="true"/>包含账前凭证</td>
+        </tr>
+        <tr>
+            <td class="title">摘要形成方式：</td>
+            <td class="margin"></td>
+            <td colspan="2"><input type="radio" id="use" name="summary" value="use" checked="true"/>使用原始凭证用途</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="2"><input type="radio" id="summ" name="summary" value="summ"/>使用记账凭证摘要</td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <a id="yes_button" href="#" class="easyui-linkbutton" style="width:70px;height:30px;float:right" iconCls="icon-ok">确认</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="main_window" style="height: 100%; width: 100%">
+    <div id="button_group" >
+        <a id="cond_button" href="###" class="easyui-linkbutton" iconCls= "icon-search" onclick="obj.condSearch();">条件查询</a>
+        <a id="vou_button" href="###" class="easyui-linkbutton" iconCls= "icon-search" onclick="obj.voucherSearch();">凭证查询</a>
+    </div>
+    <br/>
+    <div style="position: absolute; top: 0px; height: 94%; width: 100%;">
+        <div style="height: 30px; width: 100%; padding-left: 10px; font-size: 15px; line-height: 30px; border: 1px solid #ccc">
+            科目名称：<input id="s_title" type="text" style="width: 100px; border-width: 0px" readonly/>
+        </div>
+        <div style="position: absolute; bottom: 0px; top: 40px; padding: 5px; width: 100%; border: 1px solid #ccc">
+            <table id="main_table"></table>
+        </div>
+    </div>
+</div>
+
+<div id="voucher_window">
+    <input name="Hidden_data" type="hidden" />
+    <!--<div id="voucher_button">-->
+        <!--<a id="search_button" href="#" class="easyui-linkbutton" iconCls= "icon-search">查找</a>-->
+        <!--<a id="last_button" href="#" class="easyui-linkbutton" iconCls= "icon-back" onclick="obj.back()">上一张</a>-->
+        <!--<a id="next_button" href="#" class="easyui-linkbutton" iconCls= "icon-next" onclick="obj.next()">下一张</a>-->
+    <!--</div>-->
+    <!--<h1 class="title_text">记账凭证</h1>-->
+    <div style="width:98%;height:30px;vertical-align:middle; ">
+        <div style="float: left;">
+            <label class="label_text" style="margin-left: 5px">日 期：</label>
+            <input id="year_month_day" type="text" style="border: 0; font-size:16px; width:120px" readonly>
+        </div>
+        <div style="float: right;" >
+            <label class="label_text">凭证编号：</label>
+            <input id="voucher_no" type="text" style="border: 0; width: 50px;" readonly/>
+        </div>
+    </div>
+    <br />
+
+    <div style=" position: absolute;
+                         top:50px;
+                         bottom: 80px;
+                         padding: 5px;
+                         width: 97%;
+                         border: 1px solid #ccc">
+        <div>
+            <div style="float: left;">
+                <label class="label_text">摘 要：</label>
+                <input id="summary" style=" width: 500px; border: 0" readonly/>
+            </div>
+            <div  style="float: right;" >
+                <label class="label_text">附 件：</label>
+                <input id="atta" type="number" style="border: 0; width: 30px" readonly/>张
+            </div>
+        </div>
+        <table id="voucher_table" style="top:30px"></table>
+    </div>
+    <div style="position: absolute;
+                        bottom: 50px;
+                        height: 30px;
+                        width: 98%;
+                        vertical-align:middle; ">
+        <div style="position:relative; float:right">
+            <label class="label_text" >复 核：</label>
+            <input id="auditor" type="text" style="border: 0" readonly/>
+            <label class="label_text" >制 证：</label>
+            <input id="preact_doc" type="text" style="border: 0" readonly/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

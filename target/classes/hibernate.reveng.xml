@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<type-mapping>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+		<sql-type jdbc-type="INTEGER" hibernate-type="int"
+			not-null="true">
+		</sql-type>
+	</type-mapping>
+	<table-filter match-name="user" match-catalog="ssh_finance"></table-filter>
+	<table catalog="ssh_finance" name="orderdetail"></table>
+	<table catalog="ssh_finance" name="user"></table>
+	<table catalog="ssh_finance" name="orders"></table>
+	<table catalog="ssh_finance" name="items"></table>
+</hibernate-reverse-engineering>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset = "utf-8" />
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts.js"></script>
+    <script type="text/javascript" src="../../JavaScript/echarts/echarts3.js"></script>
+    <script src="../../JavaScript/echarts/theme3/theme1.js"></script>
+    <script src="../../JavaScript/echarts/theme3/chalk.js"></script>
+    <script src="../../JavaScript/echarts/theme3/dark.js"></script>
+    <script src="../../JavaScript/echarts/theme3/essos.js"></script>
+    <script src="../../JavaScript/echarts/theme3/halloween.js"></script>
+    <script src="../../JavaScript/echarts/theme3/infographic.js"></script>
+    <script src="../../JavaScript/echarts/theme3/macarons.js"></script>
+    <script src="../../JavaScript/echarts/theme3/purple-passion.js"></script>
+    <script src="../../JavaScript/echarts/theme3/roma.js"></script>
+    <script src="../../JavaScript/echarts/theme3/shine.js"></script>
+    <script src="../../JavaScript/echarts/theme3/vintage.js"></script>
+    <script src="../../JavaScript/echarts/theme3/walden.js"></script>
+    <script src="../../JavaScript/echarts/theme3/westeros.js"></script>
+    <script src="../../JavaScript/echarts/theme3/wonderland.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.min.js"></script>
+    <script type="text/javascript" src="../../JavaScript/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="ManagementCost.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/table.css" />
+    <title></title>
+</head>
+<body>
+<form id="form1" runat="server">
+    <div id="Head" runat="server">
+        <input id="DropDownList_SelectTime" style="width: 70px" />
+        <a id="Button_ToReport"  class="easyui-linkbutton" style="width: 80px;" >转到报表</a>
+    </div>
+    <div id="ReportForm" runat="server" style="position:absolute;overflow-y:hidden;height:92%;left:4px;right:0px;display:none;margin-right:4px;">
+        <a id="Export" href="#" class="easyui-linkbutton" style="width: 80px;" >导出报表</a>
+        <a id="Back" href="#" class="easyui-linkbutton" style="width: 80px;" >返回</a>
+        <table id="DataGrid1" class="easyui-datagrid" style="width:550px;"></table>
+    </div>
+</form>
+<div id="Chart" runat="server" style="position:absolute;overflow-y:auto;height:92%;width:99%;">
+    <div id="main" style="height:79%;"></div>
+</div>
+<script type="text/javascript">
+    myCharts1();
+</script>
+</body>
+</html>
